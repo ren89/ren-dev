@@ -1,10 +1,8 @@
-const HomePage = () => {
-  return (
-    <div>
-      <h1>Welcome to the Homepage</h1>
-      <p>This is the homepage of our Next.js app.</p>
-    </div>
-  );
+import React from "react";
+import { HomePage } from "./homepage/page";
+
+const Page: React.FC = () => {
+  return <HomePage />;
 };
 
-export default HomePage;
+export default Page;
