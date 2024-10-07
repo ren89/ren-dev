@@ -6,7 +6,7 @@ import { ExperienceSection } from "@/components/main/ExperienceSection";
 import { ProjectSection } from "@/components/main/ProjectSection";
 import { myExperiences, myProjects } from "@/data/data";
 
-export function HomePage() {
+const HomePage: React.FC = () => {
   return (
     <div className="lg:flex lg:justify-between lg:gap-4">
       <header className="lg:sticky lg:top-0 lg:flex lg:h-screen lg:w-1/2 lg:flex-col lg:justify-between lg:py-24">
@@ -23,4 +23,6 @@ export function HomePage() {
       </main>
     </div>
   );
-}
+};
+
+export default HomePage;
