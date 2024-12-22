@@ -24,7 +24,7 @@ export function Content() {
         Full Stack Web Developer
       </h2>
       <p className="mt-4 max-w-xs leading-normal w-full">
-        I've been working with web technologies for {timeDifference}
+        I&apos;ve been working with web technologies for {timeDifference}
       </p>
     </div>
   );
