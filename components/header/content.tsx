@@ -1,5 +1,6 @@
 "use client";
 import { formatDateDifference } from "@/lib/utils";
+import Image from "next/image";
 import { useEffect, useState, useMemo } from "react";
 
 export function Content() {
@@ -17,6 +18,18 @@ export function Content() {
   }, [pastDate]);
   return (
     <div className="w-full">
+      <div className="w-full pb-4 ">
+        <div className="inline-block relative rounded-xl">
+          <div className="absolute top-3 left-3 w-[200px] h-[200px] rounded-xl border-2 border-teal-300 z-10" />
+          <Image
+            src={"/images/profile.jpg"}
+            alt={"Profile Picture"}
+            width={200}
+            height={200}
+            className="rounded-xl bg-transparent z-20 relative object-cover h-[200px]"
+          />
+        </div>
+      </div>
       <h1 className="text-4xl font-bold tracking-tight sm:text-5xl">
         Reniel Avellano
       </h1>
