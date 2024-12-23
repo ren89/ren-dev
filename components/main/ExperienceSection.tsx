@@ -1,35 +1,84 @@
-import { Experience } from "@/lib/types";
+"use client";
+
+import { Experience, Company, CompanyEnum } from "@/lib/types";
 import { ChipGroup } from "./chipGroup";
 import { Section } from "./section";
+import { useState } from "react";
+import FadeIn from "react-fade-in";
+import { motion } from "framer-motion";
 
 export function ExperienceSection({
   experiences,
 }: {
   experiences: Experience[];
 }) {
+  const [selectedCompany, setSelectedCompany] = useState<Company>(experiences[0].company);
+  const [isTransitioning, setIsTransitioning] = useState(true);
+
+  const handleButtonClick = (company: Company) => {
+    setSelectedCompany(company);
+    if (selectedCompany !== company) {
+      setIsTransitioning(false);
+      setTimeout(() => {
+        setIsTransitioning(true);
+      }, 300);
+    }
+  };
+
+  const selectedExperience = experiences.find(
+    (exp) => exp.company === selectedCompany
+  );
+
   return (
     <Section title="Experience">
-      <ol className="group/list">
-        {experiences.map((exp) => (
-          <li className="mb-12" key={exp.title}>
-            <div className="group relative grid pb-1 transition-all sm:grid-cols-8 sm:gap-8 md:gap-4 lg:hover:!opacity-100 lg:group-hover/list:opacity-50">
-              <div className="absolute -inset-x-4 -inset-y-4 z-0 hidden rounded-md transition motion-reduce:transition-none lg:-inset-x-6 lg:block lg:group-hover:bg-slate-800/50 lg:group-hover:shadow-[inset_0_1px_0_0_rgba(148,163,184,0.1)] lg:group-hover:drop-shadow-lg"></div>
-              <header className="z-10 mb-2 mt-1 text-xs font-semibold uppercase tracking-wide text-[#6c7a97] sm:col-span-2">
-                {exp.date}
-              </header>
-              <div className="z-10 sm:col-span-6">
-                <h3 className="font-medium leading-snug ">
-                  <span className="inline-flex items-baseline font-medium text-white leading-tight group/link text-base">
-                    {exp.title} • {exp.company}
-                  </span>
-                </h3>
-                <p className="mt-2 text-sm leading-normal">{exp.description}</p>
-                <ChipGroup values={exp.technologies} />
-              </div>
+      <div className="flex flex-col space-x-4 sm:flex-row space-y-4 sm:space-y-0">
+        {/* Company buttons */}
+        <div className="flex flex-row sm:flex-col w-full">
+          {Object.keys(CompanyEnum).map((company) => (
+            <motion.button
+            
+            initial={{ opacity: 0, x: -100 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            transition={{ duration: 1 }}
+              key={company}
+              onClick={() => handleButtonClick(company as Company)}
+              className={`text-left p-2 border-l-0 border-t-2 sm:border-t-0 sm:border-l-2 ${
+                selectedCompany === company
+                  ? "border-teal-300 bg-slate-800 text-teal-300"
+                  : "border-slate-800 bg-slate-900"
+              }`}
+            >
+              {company}
+            </motion.button>
+          ))}
+        </div>
+
+        {selectedExperience && (
+          <FadeIn visible={isTransitioning}>
+            <div className="w-full">
+              <motion.h3 
+            initial={{ opacity: 0, x: -100 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            transition={{ duration: 1 }} className="font-medium leading-snug">
+                <span className="inline-flex items-baseline font-medium text-white leading-tight group/link text-base">
+                  {selectedExperience.title} • {selectedExperience.company}
+                </span>
+              </motion.h3>
+              <motion.h4 initial={{ opacity: 0, x: -100 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            transition={{ duration: 1 }} className="z-10 mb-2 mt-1 text-xs font-semibold uppercase tracking-wide text-[#6c7a97] sm:col-span-2">
+                {selectedExperience.date}
+              </motion.h4>
+              <motion.p initial={{ opacity: 0, x: -100 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            transition={{ duration: 1 }} className="mt-2 text-sm leading-normal">
+                {selectedExperience.description}
+              </motion.p>
+              <ChipGroup values={selectedExperience.technologies} />
             </div>
-          </li>
-        ))}
-      </ol>
+          </FadeIn>
+        )}
+      </div>
     </Section>
   );
 }

@@ -1,3 +1,5 @@
+import { myExperiences } from "@/data/data";
+
 export type Experience = {
   title: string;
   company: string;
@@ -13,3 +15,10 @@ export type Project = {
   technologies: string[];
   href?: string;
 };
+
+export type Company = (typeof myExperiences)[number]["company"];
+
+export const CompanyEnum = myExperiences.reduce((acc, { company }, index) => {
+  acc[company] = company;
+  return acc;
+}, {} as Record<Company, string>);

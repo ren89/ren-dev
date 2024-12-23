@@ -1,10 +1,9 @@
-export function Section({
-  children,
-  title,
-}: {
+import React from "react";
+interface SectionProps {
+  title: string;
   children: React.ReactNode;
-  title?: string;
-}) {
+}
+export const Section: React.FC<SectionProps> = ({ title, children }) => {
   return (
     <section
       className="mb-16 scroll-mt-16 md:mb-24 lg:mb-36 lg:scroll-mt-24"
@@ -18,4 +17,4 @@ export function Section({
       {children}
     </section>
   );
-}
+};
