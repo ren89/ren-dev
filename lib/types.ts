@@ -18,7 +18,7 @@ export type Project = {
 
 export type Company = (typeof myExperiences)[number]["company"];
 
-export const CompanyEnum = myExperiences.reduce((acc, { company }, index) => {
+export const CompanyEnum = myExperiences.reduce((acc, { company }) => {
   acc[company] = company;
   return acc;
 }, {} as Record<Company, string>);
