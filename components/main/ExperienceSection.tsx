@@ -31,7 +31,7 @@ export function ExperienceSection({
         <div className="flex flex-row sm:flex-col w-full pl-3 sm:pl-0">
           {Object.keys(CompanyEnum).map((company) => (
             <motion.button
-              initial={{ opacity: 0, x: -100 }}
+              initial={{ opacity: 0, x: -70 }}
               whileInView={{ opacity: 1, x: 0 }}
               transition={{ duration: 1 }}
               key={company}
@@ -58,7 +58,7 @@ export function ExperienceSection({
             >
               <div className="w-full">
                 <motion.h3
-                  initial={{ opacity: 0, x: -100 }}
+                  initial={{ opacity: 0, x: -70 }}
                   whileInView={{ opacity: 1, x: 0 }}
                   exit={{ opacity: 0, x: 100 }}
                   transition={{ duration: 1 }}
@@ -69,7 +69,7 @@ export function ExperienceSection({
                   </span>
                 </motion.h3>
                 <motion.h4
-                  initial={{ opacity: 0, x: -100 }}
+                  initial={{ opacity: 0, x: -70 }}
                   whileInView={{ opacity: 1, x: 0 }}
                   exit={{ opacity: 0, x: 100 }}
                   transition={{ duration: 1 }}
@@ -78,7 +78,7 @@ export function ExperienceSection({
                   {selectedExperience.date}
                 </motion.h4>
                 <motion.p
-                  initial={{ opacity: 0, x: -100 }}
+                  initial={{ opacity: 0, x: -70 }}
                   whileInView={{ opacity: 1, x: 0 }}
                   exit={{ opacity: 0, x: 100 }}
                   transition={{ duration: 1 }}

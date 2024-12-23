@@ -19,7 +19,7 @@ export function AboutSection() {
     <Section title="about">
       <div>
         <motion.div
-          initial={{ opacity: 0, x: -100 }}
+          initial={{ opacity: 0, x: -70 }}
           whileInView={{ opacity: 1, x: 0 }}
           transition={{ duration: 1 }}
         >
