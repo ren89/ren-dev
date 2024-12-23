@@ -28,7 +28,7 @@ export function ExperienceSection({
   return (
     <Section title="Experience">
       <div className="flex flex-col space-x-4 sm:flex-row space-y-4 sm:space-y-0">
-        <div className="flex flex-row sm:flex-col w-full">
+        <div className="flex flex-row sm:flex-col w-full pl-3 sm:pl-0">
           {Object.keys(CompanyEnum).map((company) => (
             <motion.button
               initial={{ opacity: 0, x: -100 }}
@@ -36,7 +36,7 @@ export function ExperienceSection({
               transition={{ duration: 1 }}
               key={company}
               onClick={() => handleButtonClick(company as Company)}
-              className={`text-left p-2 border-l-0 border-t-2 sm:border-t-0 sm:border-l-2 ${
+              className={`text-left p-2 border-l-0 border-t-2 sm:border-t-0 sm:border-l-2 w-full ${
                 selectedCompany === company
                   ? "border-teal-300 bg-slate-800 text-teal-300"
                   : "border-slate-800 bg-slate-900"
