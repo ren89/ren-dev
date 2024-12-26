@@ -29,10 +29,10 @@ export function Alert({
   return (
     <AlertDialog>
       <AlertDialogTrigger className="w-full">{children}</AlertDialogTrigger>
-      <AlertDialogContent className="bg-slate-900 p-1 ">
+      <AlertDialogContent className="bg-slate-900 p-4 rounded-lg w-[100%] sm:w-[60%] justify-center">
         {showCloseButton && (
-          <div className="w-full text-end h-auto">
-            <AlertDialogCancel className="p-0 m-0 text-white bg-transparent border-0 h-auto">
+          <div className="absolute right-4 top-3">
+            <AlertDialogCancel className="p-0 m-0 text-white bg-transparent border-0 h-auto text-4xl">
               <XCircleIcon />
             </AlertDialogCancel>
           </div>
