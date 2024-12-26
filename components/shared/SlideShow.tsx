@@ -28,8 +28,8 @@ export function SlideShow({
   }, [api]);
 
   return (
-    <div className="mx-auto w-[75%] sm:w-full max-w-3xl">
-      <Carousel setApi={setApi} className="w-full max-w-3xl">
+    <div className="mx-auto w-full ">
+      <Carousel setApi={setApi}>
         <CarouselContent>
           {images.map((_, index) => (
             <CarouselItem key={index}>
@@ -39,14 +39,22 @@ export function SlideShow({
                 width={700}
                 height={200}
                 quality={100}
-                className="rounded border-2 border-slate-200/10 transition-transform duration-300 ease-in-out transform group-hover:scale-110 sm:order-1 sm:col-span-2 sm:translate-y-1"
+                className="rounded border-2 w-full border-slate-200/10 transition-transform duration-300 ease-in-out transform group-hover:scale-110 sm:order-1 sm:col-span-2 sm:translate-y-1"
               />
             </CarouselItem>
           ))}
         </CarouselContent>
-        <CarouselPrevious />
-        <CarouselNext />
       </Carousel>
+      <div className="text-center text-sm text-muted-foreground text-white">
+        {images.map((_, index) => (
+          <span
+            key={index}
+            className={`inline-block w-1 h-1 sm:w-2 sm:h-2 mx-1 rounded-full ${
+              current === index ? "bg-slate-200" : "bg-slate-200/50"
+            }`}
+          ></span>
+        ))}
+      </div>
       <div className="py-2 text-center text-sm text-muted-foreground text-white">
         {images[current]?.name ?? ""}
       </div>

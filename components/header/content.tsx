@@ -26,7 +26,7 @@ export function Content() {
             alt={"Profile Picture"}
             width={200}
             height={200}
-            className="rounded-xl bg-transparent z-20 relative object-cover h-[200px]"
+            className="rounded-xl bg-transparent z-20 relative object-cover h-[200px] hover:scale-110 transition-transform duration-300"
           />
         </div>
       </div>
