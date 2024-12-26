@@ -9,32 +9,45 @@ import {
   AlertDialogTitle,
   AlertDialogTrigger,
 } from "@/components/ui/alert-dialog";
+import { XCircleIcon } from "lucide-react";
 
 export function Alert({
   children,
   title,
   description,
-  cancelText = "Close",
+  cancelText,
   actionText,
+  showCloseButton = false,
 }: {
   children: React.ReactNode;
   title?: string;
   description?: string | React.ReactNode;
   cancelText?: string;
   actionText?: string;
+  showCloseButton?: boolean;
 }) {
   return (
     <AlertDialog>
-      <AlertDialogTrigger>{children}</AlertDialogTrigger>
-      <AlertDialogContent className="bg-slate-900">
-        <AlertDialogHeader>
+      <AlertDialogTrigger className="w-full">{children}</AlertDialogTrigger>
+      <AlertDialogContent className="bg-slate-900 p-1 ">
+        {showCloseButton && (
+          <div className="w-full text-end h-auto">
+            <AlertDialogCancel className="p-0 m-0 text-white bg-transparent border-0 h-auto">
+              <XCircleIcon />
+            </AlertDialogCancel>
+          </div>
+        )}
+
+        <AlertDialogHeader className="px-5">
           <AlertDialogTitle>{title}</AlertDialogTitle>
           <AlertDialogDescription>{description}</AlertDialogDescription>
         </AlertDialogHeader>
         <AlertDialogFooter>
-          <AlertDialogCancel className="bg-[#fff]">
-            {cancelText}
-          </AlertDialogCancel>
+          {cancelText && (
+            <AlertDialogCancel className="bg-[#fff] text-black">
+              {cancelText}
+            </AlertDialogCancel>
+          )}
           {actionText && (
             <AlertDialogAction className="bg-[#1e2e54]">
               {actionText}

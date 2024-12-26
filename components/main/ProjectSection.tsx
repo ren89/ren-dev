@@ -30,16 +30,18 @@ export function ProjectSection({ projects }: { projects: Project[] }) {
                       alt={project.name}
                       width={700}
                       height={200}
-                      className="rounded border-2 border-slate-200/10 transition-transform duration-300 ease-in-out transform group-hover:scale-110 sm:order-1 sm:col-span-2 sm:translate-y-1"
+                      className="rounded border-2 border-slate-200/10 transition-transform duration-300 ease-in-out transform group-hover:scale-110 sm:order-1 sm:col-span-2 sm:translate-y-1 "
                     />
                   }
+                  showCloseButton={true}
                 >
                   <Image
                     src={project.image}
                     alt={project.name}
                     width={200}
                     height={70}
-                    className="rounded border-2 border-slate-200/10 transition-transform duration-300 ease-in-out transform group-hover:scale-110 sm:order-1 sm:col-span-2 sm:translate-y-1"
+                    quality={100}
+                    className="rounded border-2 border-slate-200/10 transition-transform duration-300 ease-in-out transform group-hover:scale-110 sm:order-1 sm:col-span-2 sm:translate-y-1 w-full object-fill"
                   />
                 </Alert>
               </motion.header>
