@@ -57,7 +57,22 @@ export const myProjects: Project[] = [
       "SQLite",
       "Primsa",
     ],
-    image: "/images/buildustry.png",
+    image: "/images/buildustry/dashboard.png",
+    images: [
+      { image: "/images/buildustry/dashboard.png", name: "Dashboard" },
+      { image: "/images/buildustry/search.png", name: "Search" },
+      { image: "/images/buildustry/workerHomepage.png", name: "Worker Home" },
+      { image: "/images/buildustry/workerProfile.png", name: "Worker Profile" },
+      { image: "/images/buildustry/login.png", name: "Login" },
+      { image: "/images/buildustry/register.png", name: "Register" },
+      { image: "/images/buildustry/history.png", name: "History" },
+      { image: "/images/buildustry/messages.png", name: "Messages" },
+      { image: "/images/buildustry/myTeam.png", name: "My Team" },
+      {
+        image: "/images/buildustry/requestService.png",
+        name: "Request Service",
+      },
+    ],
   },
   {
     href: undefined,
@@ -65,7 +80,35 @@ export const myProjects: Project[] = [
     description:
       "Shuffled is an e-commerce platform for pre-loved clothing, featuring live selling with a unique “mine” button. During live sales, the first user to click “mine” claims the item, which is added to their cart with a checkout timer. If they don’t complete the purchase in time, the item returns to the sale. Shuffled also includes all standard e-commerce features: stores, user profiles, search, categories, cart, payment, shipping, and a live comment section for real-time interaction.",
     technologies: ["MongoDB", "Express", "React", "NodeJS"],
-    image: "/images/shuffled.png",
+    image: "/images/shuffled/homeScreen.png",
+    images: [
+      // { image: "/images/shuffled/homeScreen.png", name: "Home Screen" }, remove profile face
+      { image: "/images/shuffled/homeScreenSeller.png", name: "Home Screen" }, // to remove
+      {
+        image: "/images/shuffled/homeScreenSeller.png",
+        name: "Seller's Home Screen",
+      },
+      // { remove face
+      //   image: "/images/shuffled/homeScreenUser.png",
+      //   name: "User's Home Screen",
+      // },
+      // { image: "/images/shuffled/search.png", name: "Filter Search" }, remove profile face
+      { image: "/images/shuffled/cart.png", name: "Shopping Cart" },
+      // { image: "/images/shuffled/checkout.png", name: "Checkout" }, remove profile face
+      // { image: "/images/shuffled/checkout1.png", name: "Payment Method" }, remove profile face
+      // { image: "/images/shuffled/checkout2.png", name: "Payment" }, remove name
+      { image: "/images/shuffled/inventory.png", name: "Inventory" },
+      { image: "/images/shuffled/addProduct.png", name: "Add Product" },
+      // { image: "/images/shuffled/orderList.png", name: "Order List" }, remove name and profilepic
+      { image: "/images/shuffled/updateOrder.png", name: "Update Order" },
+      // { remove face
+      //   image: "/images/shuffled/liveSellUser.png",
+      //   name: "Live Sell Buyer's View",
+      // },
+      { image: "/images/shuffled/liveSell.png", name: "Start Live Sell" },
+      { image: "/images/shuffled/liveSell1.png", name: "Live Selling" },
+      { image: "/images/shuffled/liveSell2.png", name: "Live Sell Items" },
+    ],
   },
 
   {
@@ -74,6 +117,7 @@ export const myProjects: Project[] = [
     description:
       "e-Vill is a web platform designed for barangays, enabling citizens to request documents, file complaints online and track their status, reducing the need for multiple trips. The admin side allows barangay officials to manage requests, post announcements, and address citizen complaints, complete with image attachments. e-Vill fosters efficient, transparent, and connected barangay services.",
     technologies: ["HTML", "CSS", "NodeJs", "Firebase"],
-    image: "/images/evill.png",
+    image: "/images/eVill/home.png",
+    images: [{ image: "/images/eVill/home.png", name: "Home Screen" }],
   },
 ];
