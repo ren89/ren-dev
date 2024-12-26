@@ -1,4 +1,3 @@
-import { Card, CardContent } from "@/components/ui/card";
 import {
   Carousel,
   CarouselContent,
@@ -22,9 +21,9 @@ export function SlideShow({
     if (!api) {
       return;
     }
-    setCurrent(api.selectedScrollSnap() + 1);
+    setCurrent(api.selectedScrollSnap());
     api.on("select", () => {
-      setCurrent(api.selectedScrollSnap() + 1);
+      setCurrent(api.selectedScrollSnap());
     });
   }, [api]);
 
@@ -49,7 +48,7 @@ export function SlideShow({
         <CarouselNext />
       </Carousel>
       <div className="py-2 text-center text-sm text-muted-foreground text-white">
-        {images[current - 1]?.name ?? ""}
+        {images[current]?.name ?? ""}
       </div>
     </div>
   );
