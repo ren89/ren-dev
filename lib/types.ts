@@ -14,6 +14,7 @@ export type Project = {
   description: string;
   technologies: string[];
   href?: string;
+  images?: { image: string; name: string }[];
 };
 
 export type Company = (typeof myExperiences)[number]["company"];

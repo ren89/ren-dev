@@ -7,6 +7,7 @@ import Image from "next/image";
 import { Alert } from "../shared/alert";
 
 import { motion } from "framer-motion";
+import { SlideShow } from "../shared/SlideShow";
 
 export function ProjectSection({ projects }: { projects: Project[] }) {
   return (
@@ -25,14 +26,15 @@ export function ProjectSection({ projects }: { projects: Project[] }) {
               >
                 <Alert
                   description={
-                    <Image
-                      src={project.image}
-                      alt={project.name}
-                      width={700}
-                      height={200}
-                      className="rounded border-2 border-slate-200/10 transition-transform duration-300 ease-in-out transform group-hover:scale-110 sm:order-1 sm:col-span-2 sm:translate-y-1 "
+                    <SlideShow
+                      images={
+                        project.images ?? [
+                          { image: project.image, name: "Preview" },
+                        ]
+                      }
                     />
                   }
+                  title={project.name}
                   showCloseButton={true}
                 >
                   <Image
