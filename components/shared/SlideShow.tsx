@@ -26,7 +26,7 @@ export function SlideShow({
   }, [api]);
 
   return (
-    <div className="mx-auto w-full ">
+    <div className="mx-auto w-full">
       <Carousel setApi={setApi}>
         <CarouselContent>
           {images.map((_, index) => (
@@ -37,7 +37,7 @@ export function SlideShow({
                 width={700}
                 height={200}
                 quality={100}
-                className="rounded border-2 w-full border-slate-200/10 transition-transform duration-300 ease-in-out transform group-hover:scale-110 sm:order-1 sm:col-span-2 sm:translate-y-1"
+                className="rounded-lg border-2 w-full border-slate-200/10 transition-transform duration-300 ease-in-out transform group-hover:scale-110 sm:order-1 sm:col-span-2 sm:translate-y-1"
               />
             </CarouselItem>
           ))}

@@ -16,7 +16,7 @@ export function AboutSection() {
   }
 
   return (
-    <Section title="about">
+    <Section title="About">
       <div>
         <motion.div
           initial={{ opacity: 0, x: -70 }}
