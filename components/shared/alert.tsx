@@ -10,7 +10,6 @@ import {
   AlertDialogTrigger,
 } from "@/components/ui/alert-dialog";
 import { XCircleIcon } from "lucide-react";
-import { icons } from "lucide-react";
 
 export function Alert({
   children,
