@@ -150,7 +150,7 @@ export const myProjects: Project[] = [
       "Frntlne is a marketing-tech platform focused on improving customer engagement and sales confidence. As a frontend developer, I contribute by implementing designs, optimizing code for scalability, fixing bugs, and occasionally providing technical support, all within the fast-paced startup environment.",
     technologies: ["Python", "Flutter", "AWS"],
     image: "/images/frntlne/frntlnev2.png",
-    images: [],
+    images: [{ image: "/images/frntlne/frntlnev2.png", name: "Home Screen" }],
   },
   {
     type: "cross-platform",

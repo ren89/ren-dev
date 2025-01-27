@@ -8,6 +8,7 @@ import { Alert } from "../shared/alert";
 
 import { motion } from "framer-motion";
 import { SlideShow } from "../shared/SlideShow";
+import { SquareArrowOutUpRight } from "lucide-react";
 
 export function ProjectSection({ projects }: { projects: Project[] }) {
   return (
@@ -54,21 +55,20 @@ export function ProjectSection({ projects }: { projects: Project[] }) {
                   initial={{ opacity: 0, x: -70 }}
                   whileInView={{ opacity: 1, x: 0 }}
                   transition={{ duration: 1 }}
-                  className="font-medium leading-snug "
+                  className="font-medium leading-snug"
                 >
-                  {project.href ? (
-                    <a
-                      href={project.href}
-                      target="_blank"
-                      className="inline-flex items-baseline font-medium text-white leading-tight group/link text-base"
-                    >
-                      {project.name}
-                    </a>
-                  ) : (
-                    <span className="inline-flex items-baseline font-medium text-white leading-tight group/link text-base">
-                      {project.name}
-                    </span>
-                  )}
+                  <span className="inline-flex items-baseline font-medium text-white leading-tight group/link text-base w-full justify-between">
+                    {project.name}
+                    {project.href ? (
+                      <a
+                        href={project.href}
+                        target="_blank"
+                        className="hover:text-teal-300"
+                      >
+                        <SquareArrowOutUpRight size={24} />
+                      </a>
+                    ) : null}
+                  </span>
                 </motion.h3>
                 <motion.p
                   initial={{ opacity: 0, x: -70 }}
