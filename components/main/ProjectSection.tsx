@@ -57,7 +57,7 @@ export function ProjectSection({ projects }: { projects: Project[] }) {
                   transition={{ duration: 1 }}
                   className="font-medium leading-snug"
                 >
-                  <span className="inline-flex items-baseline font-medium text-white leading-tight group/link text-base w-full justify-between">
+                  <span className="inline-flex items-baseline font-medium text-white leading-tight group/link text-base w-full justify-between mt-8 sm:mt-0">
                     {project.name}
                     {project.href ? (
                       <a
