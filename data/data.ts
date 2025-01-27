@@ -169,7 +169,17 @@ export const myProjects: Project[] = [
       "TypeScript",
     ],
     image: "/images/frntlne/frntlne.png",
-    images: [{ image: "/images/frntlne/frntlne.png", name: "Login Screen" }],
+    images: [
+      { image: "/images/frntlne/frntlne.png", name: "Login Screen" },
+      { image: "/images/frntlne/homePage.jpg", name: "Home" },
+      { image: "/images/frntlne/course.jpg", name: "Course" },
+      { image: "/images/frntlne/course1.jpg", name: "Course" },
+      { image: "/images/frntlne/courseVideo.jpg", name: "CourseVideo" },
+      { image: "/images/frntlne/question.jpg", name: "Question" },
+      { image: "/images/frntlne/question1.jpg", name: "Question" },
+      { image: "/images/frntlne/successSection.jpg", name: "Section Passed" },
+      { image: "/images/frntlne/notification.jpg", name: "Notification" },
+    ],
   },
   {
     type: "mobile",
