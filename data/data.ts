@@ -45,6 +45,7 @@ export const myProjects: Project[] = [
   //   image: "/images/portfolio.png",
   // },
   {
+    type: "web",
     href: undefined,
     name: "Buildustry",
     description:
@@ -75,6 +76,7 @@ export const myProjects: Project[] = [
     ],
   },
   {
+    type: "web",
     href: undefined,
     name: "Shuffled",
     description:
@@ -110,14 +112,123 @@ export const myProjects: Project[] = [
       { image: "/images/shuffled/liveSell2.png", name: "Live Sell Items" },
     ],
   },
-
   {
+    type: "web",
     href: undefined,
     name: "E-Vill",
     description:
       "e-Vill is a web platform designed for barangays, enabling citizens to request documents, file complaints online and track their status, reducing the need for multiple trips. The admin side allows barangay officials to manage requests, post announcements, and address citizen complaints, complete with image attachments. e-Vill fosters efficient, transparent, and connected barangay services.",
     technologies: ["HTML", "CSS", "NodeJs", "Firebase"],
-    image: "/images/eVill/home.png",
-    images: [{ image: "/images/eVill/home.png", name: "Home Screen" }],
+    image: "/images/eVill/barangayHome.png",
+    images: [
+      { image: "/images/eVill/login.png", name: "Login" },
+      { image: "/images/eVill/complaintPage.png", name: "Complaints" },
+      {
+        image: "/images/eVill/documentRequestPage.png",
+        name: "Document Requests",
+      },
+      { image: "/images/eVill/barangayHome.png", name: "Admin Home" },
+      {
+        image: "/images/eVill/barangayComplaints.png",
+        name: "Admin Complaint",
+      },
+      {
+        image: "/images/eVill/barangayRequests.png",
+        name: "Admin Document Request",
+      },
+      {
+        image: "/images/eVill/barangayResidents.png",
+        name: "Admin Resident List",
+      },
+    ],
+  },
+  {
+    type: "mobile",
+    href: undefined,
+    name: "frntlne V2",
+    description:
+      "Frntlne is a marketing-tech platform focused on improving customer engagement and sales confidence. As a frontend developer, I contribute by implementing designs, optimizing code for scalability, fixing bugs, and occasionally providing technical support, all within the fast-paced startup environment.",
+    technologies: ["Python", "Flutter", "AWS"],
+    image: "/images/frntlne/frntlnev2.png",
+    images: [],
+  },
+  {
+    type: "cross-platform",
+    href: "https://app.frntlne.com/",
+    name: "frntlne",
+    description:
+      "The latest version of Frntlne, I work as a full stack developer. We transformed it into a cross-platform app using React Native and Expo, and it’s now available for download on both the App Store and Google Play Store.",
+    technologies: [
+      "NextJS",
+      "React Native",
+      "Expo",
+      "Hasura",
+      "GraphQL",
+      "AWS",
+      "Native Base",
+      "TypeScript",
+    ],
+    image: "/images/frntlne/frntlne.png",
+    images: [{ image: "/images/frntlne/frntlne.png", name: "Login Screen" }],
+  },
+  {
+    type: "mobile",
+    href: undefined,
+    name: "PicMe",
+    description:
+      "PicMe is a social media platform I created during my university days. It’s designed specifically for photographers, serving as a marketplace where people can hire and connect with photographers for their projects. We also extended this feature to models, allowing photographers and others to hire models as well.",
+    technologies: ["Flutter", "Firebase"],
+    image: "",
+    images: [],
+  },
+  {
+    type: "mobile",
+    href: undefined,
+    name: "Trashure",
+    description:
+      "Trashure is a mobile app connecting sellers of junk items with junkyards. Users can list items for sale, set pickup times, and locate nearby junkyards using the integrated map. The key feature is route optimization, allowing junkyard owners to plan the most efficient paths for collecting multiple purchases.",
+    technologies: ["Flutter", "Firebase", "Google Maps API"],
+    image: "",
+    images: [],
+  },
+  {
+    type: "mobile",
+    href: undefined,
+    name: "Serby",
+    description:
+      "Serby is a mobile game I developed for a company, designed specifically for toddlers. It features engaging and educational mini-games centered around animals, numbers, shapes, and colors.",
+    technologies: ["Flutter"],
+    image: "/images/serby/menu.png",
+    images: [
+      { image: "/images/serby/menu.png", name: "Menu Screen" },
+      { image: "/images/serby/matchingAnimals.png", name: "Matching Animals" },
+      { image: "/images/serby/matchingNumber.png", name: "Matching Numbers" },
+    ],
+  },
+  {
+    type: "mobile",
+    href: undefined,
+    name: "ServPay",
+    description:
+      "Servpay is an e-wallet UI I worked on during my time at my previous company, built using Flutter. The interface is designed to offer a seamless and intuitive experience for users, allowing for easy navigation and efficient management of digital transactions. I contributed to the development of its features, ensuring a smooth and responsive user experience.",
+    technologies: ["Flutter"],
+    image: "/images/servPay/splashScreen.png",
+    images: [
+      { image: "/images/servPay/menu.png", name: "Menu" },
+      { image: "/images/servPay/bank.png", name: "Bank Page" },
+      { image: "/images/servPay/bankGrid.png", name: "Bank Grid" },
+      { image: "/images/servPay/addBank.png", name: "Add Bank" },
+      { image: "/images/servPay/payment1.png", name: "Payment" },
+      {
+        image: "/images/servPay/paymentCOnfirmation.png",
+        name: "Payment Confirmation",
+      },
+      { image: "/images/servPay/transaction.png", name: "Transaction" },
+      { image: "/images/servPay/transaction1.png", name: "Transaction" },
+      { image: "/images/servPay/login.png", name: "Login" },
+      { image: "/images/servPay/forgotPassword.png", name: "Forgot Password" },
+      { image: "/images/servPay/otpVerification.png", name: "Verification" },
+      { image: "/images/servPay/newPassword.png", name: "newPassword" },
+    ],
   },
 ];

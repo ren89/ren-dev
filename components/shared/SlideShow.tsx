@@ -30,14 +30,18 @@ export function SlideShow({
       <Carousel setApi={setApi}>
         <CarouselContent>
           {images.map((_, index) => (
-            <CarouselItem key={index}>
+            <CarouselItem
+              key={index}
+              className="w-full flex items-center justify-center"
+            >
               <Image
                 src={images[index].image}
                 alt={"Buildustry"}
                 width={700}
                 height={200}
                 quality={100}
-                className="rounded-lg border-2 w-full border-slate-200/10 transition-transform duration-300 ease-in-out transform group-hover:scale-110 sm:order-1 sm:col-span-2 sm:translate-y-1"
+                className="bg-white rounded-lg border-2 border-slate-200/10 transition-transform duration-300 ease-in-out transform group-hover:scale-110 max-h-96"
+                style={{ width: "auto", height: "auto" }}
               />
             </CarouselItem>
           ))}

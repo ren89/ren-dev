@@ -34,7 +34,7 @@ export function Content() {
         Reniel Avellano
       </h1>
       <h2 className="mt-3 text-lg font-medium tracking-tight sm:text-xl">
-        Full Stack Web Developer
+        Full Stack Web & Mobile Developer
       </h2>
       <p className="mt-4 max-w-xs leading-normal w-full">
         I&apos;ve been working with web technologies for {timeDifference}
