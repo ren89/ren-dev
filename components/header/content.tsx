@@ -1,6 +1,6 @@
 "use client";
 import { formatDateDifference } from "@/lib/utils";
-import Image from "next/image";
+// import Image from "next/image";
 import { useEffect, useState, useMemo } from "react";
 
 export function Content() {
