@@ -9,6 +9,7 @@ export type Experience = {
 };
 
 export type Project = {
+  type: "mobile" | "web" | "cross-platform";
   image: string;
   name: string;
   description: string;

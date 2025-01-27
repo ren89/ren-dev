@@ -24,28 +24,30 @@ export function ProjectSection({ projects }: { projects: Project[] }) {
                 transition={{ duration: 1 }}
                 className="z-10 mb-2 mt-1 text-xs font-semibold uppercase tracking-wide text-[#6c7a97] sm:col-span-2"
               >
-                <Alert
-                  description={
-                    <SlideShow
-                      images={
-                        project.images ?? [
-                          { image: project.image, name: "Preview" },
-                        ]
-                      }
+                {project.image && (
+                  <Alert
+                    description={
+                      <SlideShow
+                        images={
+                          project.images ?? [
+                            { image: project.image, name: "Preview" },
+                          ]
+                        }
+                      />
+                    }
+                    title={project.name}
+                    showCloseButton={true}
+                  >
+                    <Image
+                      src={project.image}
+                      alt={project.name}
+                      width={200}
+                      height={70}
+                      quality={100}
+                      className="rounded border-2 border-slate-200/10 transition-transform duration-300 ease-in-out transform group-hover:scale-110 sm:order-1 sm:col-span-2 sm:translate-y-1 w-full object-fill"
                     />
-                  }
-                  title={project.name}
-                  showCloseButton={true}
-                >
-                  <Image
-                    src={project.image}
-                    alt={project.name}
-                    width={200}
-                    height={70}
-                    quality={100}
-                    className="rounded border-2 border-slate-200/10 transition-transform duration-300 ease-in-out transform group-hover:scale-110 sm:order-1 sm:col-span-2 sm:translate-y-1 w-full object-fill"
-                  />
-                </Alert>
+                  </Alert>
+                )}
               </motion.header>
               <div className="z-10 sm:col-span-6">
                 <motion.h3
