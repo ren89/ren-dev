@@ -10,20 +10,21 @@ export async function GET(request: NextRequest) {
   const type = searchParams.get("type") as EmailOtpType | null;
   const next = searchParams.get("next") ?? "/";
 
-  if (token_hash && type) {
-    const supabase = await createClient();
-
-    const { error } = await supabase.auth.verifyOtp({
-      type,
-      token_hash,
-    });
-    console.log("error", error);
-    if (!error) {
-      // redirect user to specified redirect URL or root of app
-      redirect(next);
-    }
+  if (!token_hash || !type) {
+    return redirect("/error?message=Invalid token or type");
   }
 
-  // redirect the user to an error page with some instructions
-  redirect("/error");
+  const supabase = await createClient();
+  const { error } = await supabase.auth.verifyOtp({ type, token_hash });
+
+  if (error) {
+    console.error("OTP verification failed:", error.message);
+    return redirect(`/error?message=${encodeURIComponent(error.message)}`);
+  }
+
+  if (!next.startsWith("/") || next.startsWith("//")) {
+    return redirect("/");
+  }
+
+  return redirect(next);
 }

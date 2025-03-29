@@ -1,11 +1,10 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
-import { redirect } from "next/navigation";
 
 import { createClient } from "@/utils/supabase/server";
 
-export async function login(formData: FormData) {
+export async function login(_: unknown, formData: FormData) {
   const supabase = await createClient();
 
   const data = {
@@ -16,14 +15,14 @@ export async function login(formData: FormData) {
   const { error } = await supabase.auth.signInWithPassword(data);
 
   if (error) {
-    redirect("/error");
+    return { error: error.message };
   }
 
   revalidatePath("/", "layout");
-  redirect("/");
+  return { success: true };
 }
 
-export async function signup(formData: FormData) {
+export async function signup(_: unknown, formData: FormData) {
   const supabase = await createClient();
 
   const data = {
@@ -34,11 +33,11 @@ export async function signup(formData: FormData) {
   const { error } = await supabase.auth.signUp(data);
 
   if (error) {
-    redirect("/error");
+    return { error: error.message };
   }
 
   revalidatePath("/", "layout");
-  redirect("/");
+  return { success: true };
 }
 
 export async function logout() {
@@ -47,9 +46,8 @@ export async function logout() {
   const { error } = await supabase.auth.signOut();
 
   if (error) {
-    throw new Error("Logout failed");
+    console.error("Error logging out:", error.message);
   }
 
-  // Optionally revalidate paths or redirect
   revalidatePath("/");
 }

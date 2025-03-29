@@ -1,3 +1,4 @@
+"use client";
 import { login } from "@/app/auth/actions";
 import { Button } from "../ui/button";
 import {
@@ -9,8 +10,21 @@ import {
 } from "../ui/card";
 import { Input } from "../ui/input";
 import { Label } from "../ui/label";
+import { useFormState } from "react-dom";
+import { useEffect, useState } from "react";
+import { redirect } from "next/navigation";
 
 export function LoginForm() {
+  const [state, formAction] = useFormState(login, null);
+  const [isLoading, setLoading] = useState(false);
+
+  useEffect(() => {
+    setLoading(false);
+    if (state?.success) {
+      redirect("/");
+    }
+  }, [state]);
+
   return (
     <div className={"h-screen flex items-center justify-center"}>
       <Card className="w-full max-w-sm">
@@ -19,9 +33,10 @@ export function LoginForm() {
           <CardDescription>
             Enter your email below to login to your account
           </CardDescription>
+          {state?.error && <p className="text-red-500">{state.error}</p>}
         </CardHeader>
         <CardContent>
-          <form>
+          <form action={formAction} onSubmit={() => setLoading(true)}>
             <div className="flex flex-col gap-6">
               <div className="grid gap-2">
                 <Label htmlFor="email">Email</Label>
@@ -45,8 +60,8 @@ export function LoginForm() {
                   </a>
                 </div> */}
               </div>
-              <Button formAction={login} className="w-full">
-                Login
+              <Button className="w-full" disabled={isLoading}>
+                {isLoading ? "Logging in..." : "Login"}
               </Button>
               {/* <Button variant="outline" className="w-full">
                 Login with Google

@@ -12,7 +12,7 @@ export default async function LogoutRoute() {
         console.error("Error logging out:", error.message);
       } else {
         console.log("Logged out successfully");
-        // Redirect to login or home page
+
         redirect("/login");
       }
     };
