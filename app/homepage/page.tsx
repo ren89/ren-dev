@@ -5,11 +5,12 @@ import { AboutSection } from "@/components/main/AboutSection";
 import { ExperienceSection } from "@/components/main/ExperienceSection";
 import { ProjectSection } from "@/components/main/ProjectSection";
 import { myExperiences, myProjects } from "@/data/data";
-import { useUser } from "@/hooks/useUser";
+import { getUser } from "@/hooks/useUser";
 import { logout } from "../auth/actions";
 
 export default async function HomePage() {
-  const user = await useUser();
+  const user = await getUser();
+
   return (
     <div className="lg:flex lg:justify-between lg:gap-4">
       {user && (
