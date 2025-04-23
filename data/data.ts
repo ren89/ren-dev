@@ -9,6 +9,7 @@ export const myExperiences: Experience[] = [
     technologies: [
       "TypeScript",
       "React Native",
+      "NextJS",
       "Native Base",
       "Hasura",
       "GraphQL",
