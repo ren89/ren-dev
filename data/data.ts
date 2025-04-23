@@ -51,7 +51,7 @@ export const myProjects: Project[] = [
     href: "https://ren-dev-black.vercel.app/tictactoe",
     name: "Tic Tac Toe",
     description:
-      "This is a classic Tic Tac Toe game that allows players to compete against an AI opponent or play in a player-vs-player mode. It features a simple and intuitive interface for a seamless gaming experience.",
+      "This is a classic Tic Tac Toe game that allows players to play in a player-vs-player mode. It features a simple and intuitive interface for a seamless gaming experience.",
     technologies: ["React"],
     image: "/images/tictactoe/tictactoe.png",
     images: [{ image: "/images/tictactoe/tictactoe.png", name: "Game board" }],
