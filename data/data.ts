@@ -28,6 +28,7 @@ export const myExperiences: Experience[] = [
       "Flutter",
       "Firebase",
       "SQL",
+      "AWS",
       "Python",
       "NextJS",
     ],
@@ -200,6 +201,16 @@ export const myProjects: Project[] = [
     technologies: ["Flutter", "Firebase", "Google Maps API"],
     image: "",
     images: [],
+  },
+  {
+    type: "web",
+    href: "http://localhost:3000/tictactoe",
+    name: "Tic Tac Toe",
+    description:
+      "This is a classic Tic Tac Toe game that allows players to compete against an AI opponent or play in a player-vs-player mode. It features a simple and intuitive interface for a seamless gaming experience.",
+    technologies: ["React"],
+    image: "/images/tictactoe/tictactoe.png",
+    images: [{ image: "/images/tictactoe/tictactoe.png", name: "Game board" }],
   },
   // {
   //   type: "mobile",

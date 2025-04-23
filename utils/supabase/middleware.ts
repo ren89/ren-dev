@@ -43,9 +43,14 @@ export async function updateSession(request: NextRequest) {
     // no user, potentially respond by redirecting the user to the login page
     const url = request.nextUrl.clone();
     if (
-      ["/", "/auth/signin", "/auth/signup", "/auth/confirm", "/error"].includes(
-        url.pathname
-      )
+      [
+        "/",
+        "/auth/signin",
+        "/auth/signup",
+        "/auth/confirm",
+        "/error",
+        "/tictactoe",
+      ].includes(url.pathname)
     ) {
       return NextResponse.next(); // Avoid infinite loop by skipping redirection
     }
