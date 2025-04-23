@@ -84,7 +84,7 @@ export default function TicTacToe() {
                 <p className="text-3xl text-white font-bold pb-4">
                   🎉 Game Over 🎉
                 </p>
-                <p className="text-xl">🤝 It's a draw! Well played! 🤝</p>
+                <p className="text-xl">🤝 Its a draw! Well played! 🤝</p>
                 <p className="text-xl">
                   👏 Great job! Ready for another round? 👏
                 </p>
