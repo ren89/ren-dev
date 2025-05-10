@@ -3,7 +3,6 @@
 import { useTodo } from "@/hooks/useTodo";
 import { Todo } from "@/components/todo/Todo";
 import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
 import { useRef } from "react";
 import { Button } from "@/components/ui/button";
 import { Plus } from "lucide-react";
