@@ -49,7 +49,8 @@ export async function updateSession(request: NextRequest) {
         "/auth/signup",
         "/auth/confirm",
         "/error",
-        "/tictactoe",
+        "/codeExercise/tictactoe",
+        "/codeExercise/todo",
       ].includes(url.pathname)
     ) {
       return NextResponse.next(); // Avoid infinite loop by skipping redirection

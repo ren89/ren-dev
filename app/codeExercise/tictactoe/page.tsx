@@ -3,6 +3,15 @@ import { Alert } from "@/components/shared/alert";
 import { Button } from "@/components/ui/button";
 import React, { useState } from "react";
 
+/*
+TODO: 
+  - vs. computer mode 
+    - easy, randomized empty squares
+    - middle,  block player & randomize empty squares
+    - hard,  block player & computer will fill winning squares
+    - impossible,  best course of action
+*/
+
 export default function TicTacToe() {
   const [board, setBoard] = useState(Array(9).fill(null));
   const [currentPlayer, setCurrentPlayer] = useState<"X" | "O">("X");
