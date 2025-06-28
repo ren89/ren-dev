@@ -18,6 +18,13 @@ export default function TodoPage() {
     }
   };
 
+  const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    if (e.key === "Enter") {
+      e.preventDefault();
+      handleAddTodo();
+    }
+  };
+
   return (
     <div className="flex flex-col gap-2 max-w-[600px] mx-auto my-12  ">
       <h1 className="text-4xl font-bold  mb-8">To Do</h1>
@@ -27,6 +34,7 @@ export default function TodoPage() {
             placeholder="Add Item"
             className="text-white bg-transparent border-0 focus-visible:ring-0 focus-visible:ring-offset-0"
             ref={taskRef}
+            onKeyDown={handleKeyDown}
           />
         </div>
         <Button variant={"secondary"} onClick={handleAddTodo}>
