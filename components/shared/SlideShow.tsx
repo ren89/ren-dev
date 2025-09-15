@@ -4,13 +4,13 @@ import {
   CarouselItem,
   type CarouselApi,
 } from "@/components/ui/carousel";
-import Image from "next/image";
+import Image, { StaticImageData } from "next/image";
 import { useEffect, useState } from "react";
 
 export function SlideShow({
   images,
 }: {
-  images: { image: string; name: string }[];
+  images: { image?: StaticImageData; name: string }[];
 }) {
   const [api, setApi] = useState<CarouselApi>();
   const [current, setCurrent] = useState(0);
@@ -35,8 +35,11 @@ export function SlideShow({
               className="w-full flex items-center justify-center"
             >
               <Image
-                src={images[index].image}
+                src={images[index].image ?? ""}
                 alt={"Buildustry"}
+                placeholder="blur"
+                priority={index === 0}
+                sizes=" (max-width: 768px) 100vw, 50vw"
                 width={700}
                 height={200}
                 quality={100}

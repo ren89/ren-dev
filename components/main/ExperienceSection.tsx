@@ -73,7 +73,7 @@ export function ExperienceSection({
                   whileInView={{ opacity: 1, x: 0 }}
                   exit={{ opacity: 0, x: 100 }}
                   transition={{ duration: 1 }}
-                  className="z-10 mb-2 mt-1 text-xs font-semibold uppercase tracking-wide text-[#6c7a97] sm:col-span-2"
+                  className="z-10 mb-2 mt-1 text-xs font-semibold uppercase tracking-wide text-[#9FABC6] sm:col-span-2"
                 >
                   {selectedExperience.date}
                 </motion.h4>

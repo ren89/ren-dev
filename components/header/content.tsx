@@ -5,11 +5,13 @@ import { useEffect, useState, useMemo } from "react";
 
 export function Content() {
   const pastDate = useMemo(() => new Date("2020-06-01T00:00:00Z"), []);
-  const [timeDifference, setTimeDifference] = useState(
-    formatDateDifference(pastDate)
-  );
+  const [timeDifference, setTimeDifference] = useState("");
+  const [isMounted, setIsMounted] = useState(false);
 
   useEffect(() => {
+    setIsMounted(true);
+    setTimeDifference(formatDateDifference(pastDate));
+
     const interval = setInterval(() => {
       setTimeDifference(formatDateDifference(pastDate));
     }, 1000);
@@ -37,7 +39,8 @@ export function Content() {
         Full Stack Web & Mobile Developer
       </h2>
       <p className="mt-4 max-w-xs leading-normal w-full">
-        I&apos;ve been working with web technologies for {timeDifference}
+        I&apos;ve been working with web technologies for{" "}
+        {isMounted ? timeDifference : "several years"}
       </p>
     </div>
   );
