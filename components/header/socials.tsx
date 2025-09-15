@@ -5,7 +5,10 @@ export function Socials() {
     <div className="gap-2 ml-1 mt-8 flex items-center">
       <a
         href="https://github.com/ren89"
+        about="link"
         target="_blank"
+        rel="noopener noreferrer"
+        aria-label="Visit My Github profile"
         className="hover:text-teal-300"
       >
         <Github strokeWidth={1} />
@@ -13,6 +16,8 @@ export function Socials() {
       <a
         href="https://www.linkedin.com/in/reniel-avellano-52072a233/"
         target="_blank"
+        rel="noopener noreferrer"
+        aria-label="Visit My LinkedIn profile"
         className="hover:text-teal-300"
       >
         <Linkedin strokeWidth={1} href="tr" target="_blank" />
@@ -20,6 +25,8 @@ export function Socials() {
       <a
         href="https://www.instagram.com/renrn_/"
         target="_blank"
+        rel="noopener noreferrer"
+        aria-label="Visit My Instagram"
         className="hover:text-teal-300"
       >
         <Instagram strokeWidth={1} href="tr" target="_blank" />

@@ -1,4 +1,5 @@
 import { myExperiences } from "@/data/data";
+import { StaticImageData } from "next/image";
 
 export type Experience = {
   title: string;
@@ -10,12 +11,12 @@ export type Experience = {
 
 export type Project = {
   type: "mobile" | "web" | "cross-platform";
-  image: string;
+  image?: StaticImageData;
   name: string;
   description: string;
   technologies: string[];
   href?: string;
-  images?: { image: string; name: string }[];
+  images?: { image?: StaticImageData; name: string }[];
 };
 
 export type Company = (typeof myExperiences)[number]["company"];
