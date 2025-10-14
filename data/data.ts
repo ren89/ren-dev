@@ -81,6 +81,11 @@ import campusEntryMonitorRoomManagementUpdateDeleteRoom from "@/public/images/ca
 import campusEntryMonitorRoomManagementChangeRoom from "@/public/images/campusEntryMonitor/room-management-change-room.jpg";
 import campusEntryMonitorLogin from "@/public/images/campusEntryMonitor/login.jpg";
 
+// blog images
+import blogPosts from "@/public/images/blog/blog.png";
+import blogHome from "@/public/images/blog/home.png";
+import blogProject from "@/public/images/blog/project.png";
+
 export const myExperiences: Experience[] = [
   {
     company: "Frntlne",
@@ -342,6 +347,23 @@ export const myProjects: Project[] = [
     technologies: ["Flutter", "Firebase", "Google Maps API"],
     image: undefined,
     images: [],
+  },
+  {
+    type: "web",
+    href: undefined,
+    name: "Portfolio",
+    description:
+      "A minimalist web portfolio built to experiment with modern web concepts — MDX content rendering, metadata handling, caching strategies, cookies, and theme toggling (dark/light mode). Also explores practical details like image optimization, font loading, and efficient data fetching from inconsistent data sources.",
+    technologies: ["NextJs", "TypeScript", "MDX", "Tailwind"],
+    image: blogPosts,
+    images: [
+      { image: blogPosts, name: "Blog Posts" },
+      {
+        image: blogHome,
+        name: "Home",
+      },
+      { image: blogProject, name: "Projects" },
+    ],
   },
   // {
   //   type: "mobile",
