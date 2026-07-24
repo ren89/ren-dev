@@ -1,6 +1,8 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { track } from "@vercel/analytics";
+import { Download } from "lucide-react";
 
 import { cn } from "@/lib/utils";
 import { ResumeView } from "./resume-view";
@@ -10,6 +12,7 @@ type View = "resume" | "profile";
 
 export function ResumeShell() {
   const [view, setView] = useState<View>("resume");
+  const [downloading, setDownloading] = useState(false);
 
   // Allow ?view=profile to deep-link a specific view.
   useEffect(() => {
@@ -25,9 +28,34 @@ export function ResumeShell() {
     window.history.replaceState(null, "", url);
   };
 
+  const downloadPdf = async () => {
+    setDownloading(true);
+    try {
+      // Loaded on demand so react-pdf stays out of the initial bundle.
+      const [{ pdf }, { ResumeDocument }] = await Promise.all([
+        import("@react-pdf/renderer"),
+        import("./resume-pdf"),
+      ]);
+      const blob = await pdf(<ResumeDocument />).toBlob();
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement("a");
+      a.href = url;
+      a.download = "Ren-Avellano-Resume.pdf";
+      document.body.appendChild(a);
+      a.click();
+      a.remove();
+      URL.revokeObjectURL(url);
+      track("resume_download", { format: "pdf" });
+    } catch (err) {
+      console.error("PDF generation failed:", err);
+    } finally {
+      setDownloading(false);
+    }
+  };
+
   return (
     <div className="container-page py-16 sm:py-24">
-      <div className="mb-10 flex justify-center print:hidden">
+      <div className="mb-10 flex flex-col items-center justify-center gap-4 print:hidden sm:flex-row">
         <div
           role="tablist"
           aria-label="Resume view"
@@ -43,6 +71,16 @@ export function ResumeShell() {
             Client profile
           </TabButton>
         </div>
+
+        <button
+          type="button"
+          onClick={downloadPdf}
+          disabled={downloading}
+          className="inline-flex h-10 items-center gap-2 rounded-full border border-input px-5 text-sm font-medium transition-colors hover:bg-accent hover:text-accent-foreground disabled:opacity-60"
+        >
+          <Download className="size-4" aria-hidden="true" />
+          {downloading ? "Preparing…" : "Download PDF"}
+        </button>
       </div>
 
       {view === "resume" ? <ResumeView /> : <ClientProfileView />}

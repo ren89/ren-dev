@@ -36,6 +36,9 @@ export type Education = {
 
 export type SkillGroup = { label: string; items: string[] };
 
+/** Shown in the PDF footer. Update when the résumé content changes. */
+export const updatedAt = "July 2026";
+
 export const profile: ResumeProfile = {
   name: SITE.fullName,
   title: "Full-Stack Web Developer",
