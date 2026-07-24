@@ -1,56 +1,74 @@
 import { FC, ReactNode } from "react";
+import type { Metadata } from "next";
+import { Analytics } from "@vercel/analytics/react";
+
+import { fontDisplay, fontMono, fontSans } from "@/lib/fonts";
+import { ThemeProvider } from "@/components/theme/theme-provider";
 import "../styles/globals.css";
-export const metadata = {
-  title: "Ren Avellano | Frontend Developer",
-  description:
-    "Frontend developer in the Philippines building fast, modern UIs with React, Next.js, and TypeScript. Open to freelance and full-time work.",
+
+const siteUrl =
+  process.env.NEXT_PUBLIC_SITE_URL ?? "https://ren-dev-black.vercel.app";
+const title = "Ren Avellano | Full-Stack Developer";
+const description =
+  "Full-stack developer building fast, modern web apps with React, Next.js, and TypeScript — from idea to launched product. Open to freelance and full-time work.";
+
+export const metadata: Metadata = {
+  metadataBase: new URL(siteUrl),
+  title,
+  description,
   keywords: [
+    "Full-Stack Developer",
     "Frontend Developer",
     "React Developer",
-    "Next.js Portfolio",
-    "Freelance Frontend Developer",
-    "Web Developer Philippines",
+    "Next.js Developer",
+    "Web App Developer",
+    "SaaS Developer",
   ],
-  authors: [{ name: "Ren Avellano", url: "https://yourdomain.com" }],
   creator: "Ren Avellano",
-  metadataBase: new URL("https://yourdomain.com"),
+  authors: [{ name: "Ren Avellano" }],
+  alternates: { canonical: "/" },
+  robots: { index: true, follow: true },
   openGraph: {
-    title: "Ren Avellano | Frontend Developer",
-    description:
-      "See my work in React, Next.js, and TypeScript. Available for freelance and full-time opportunities.",
-    url: "https://yourdomain.com",
-    siteName: "Ren Avellano Portfolio",
-    images: [
-      {
-        url: "/og-image.png",
-        width: 1200,
-        height: 630,
-        alt: "Ren Avellano - Frontend Developer Portfolio",
-      },
-    ],
     type: "website",
+    url: siteUrl,
+    siteName: "Ren Avellano",
+    title,
+    description,
   },
   twitter: {
     card: "summary_large_image",
-    title: "Ren Avellano | Frontend Developer",
-    description:
-      "Building clean UIs with React, Next.js, and TypeScript. View my portfolio.",
-    images: ["/og-image.png"],
-  },
-  robots: {
-    index: true,
-    follow: true,
-    nocache: false,
+    title,
+    description,
   },
 };
 
+// Runs before paint to set the theme class, preventing a light/dark flash.
+const themeScript = `
+(function () {
+  try {
+    var stored = localStorage.getItem('theme');
+    var prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    var theme = stored || (prefersDark ? 'dark' : 'light');
+    var root = document.documentElement;
+    root.classList.toggle('dark', theme === 'dark');
+    root.style.colorScheme = theme;
+  } catch (e) {}
+})();
+`;
+
 const RootLayout: FC<{ children: ReactNode }> = ({ children }) => {
   return (
-    <html lang="en" className="scroll-smooth">
-      <body className="bg-slate-900">
-        <main className="mx-auto min-h-screen max-w-screen-xl px-6 py-12 font-sans md:px-12 md:py-20 lg:px-24 lg:py-0">
-          {children}
-        </main>
+    <html
+      lang="en"
+      className={`${fontSans.variable} ${fontDisplay.variable} ${fontMono.variable} scroll-smooth`}
+      suppressHydrationWarning
+    >
+      <head>
+        <script dangerouslySetInnerHTML={{ __html: themeScript }} />
+      </head>
+      <body className="min-h-screen bg-background font-sans text-foreground">
+        <ThemeProvider>{children}</ThemeProvider>
+        <Analytics />
       </body>
     </html>
   );
