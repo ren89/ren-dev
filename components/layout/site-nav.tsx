@@ -119,7 +119,7 @@ export function SiteNav() {
   return (
     <header
       className={cn(
-        "sticky top-0 z-50 animate-fade-down border-b transition-colors duration-300",
+        "sticky top-0 z-50 animate-fade-down border-b transition-colors duration-300 print:hidden",
         scrolled
           ? "border-border/60 bg-background/80 backdrop-blur-sm supports-[backdrop-filter]:bg-background/60"
           : "border-transparent bg-transparent",

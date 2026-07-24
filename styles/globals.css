@@ -236,3 +236,42 @@
   letter-spacing: 0.1em;
   color: hsl(var(--muted-foreground));
 }
+
+/*
+ * PRINT - force a clean light theme (even from dark mode), drop chrome,
+ * animations and shadows. Used by the /resume page and PDF output.
+ */
+@media print {
+  :root,
+  .dark {
+    --background: 0 0% 100%;
+    --foreground: 240 10% 6%;
+    --card: 0 0% 100%;
+    --card-foreground: 240 10% 6%;
+    --muted: 240 5% 96%;
+    --muted-foreground: 240 5% 32%;
+    --secondary: 240 5% 96%;
+    --secondary-foreground: 240 6% 10%;
+    --accent: 262 83% 96%;
+    --border: 240 6% 85%;
+    --primary: 262 83% 45%;
+    --brand: 262 83% 45%;
+  }
+  body {
+    background: #fff !important;
+  }
+  .animate-page-in {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+  *,
+  *::before,
+  *::after {
+    animation: none !important;
+    transition: none !important;
+    box-shadow: none !important;
+  }
+  @page {
+    margin: 1.5cm;
+  }
+}

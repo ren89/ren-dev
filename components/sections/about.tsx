@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 import { CTA } from "@/lib/site";
 import { Reveal } from "@/components/ui/reveal";
 import { TrackCta } from "@/components/analytics/track-cta";
@@ -29,7 +31,6 @@ export function About() {
             Hi, I&apos;m Ren.
           </h2>
 
-          {/* DRAFT - verify: bio written from Ren's notes (6+ yrs, loves building) */}
           <div className="mt-5 space-y-4 text-muted-foreground">
             <p>
               I&apos;m a full-stack developer with{" "}
@@ -64,13 +65,21 @@ export function About() {
             ))}
           </dl>
 
-          <TrackCta
-            href={CTA.href}
-            source="about"
-            className="mt-8 inline-flex h-11 items-center justify-center rounded-full bg-primary px-6 text-sm font-medium text-primary-foreground transition-colors hover:bg-primary/90"
-          >
-            {CTA.label}
-          </TrackCta>
+          <div className="mt-8 flex flex-wrap items-center gap-4">
+            <TrackCta
+              href={CTA.href}
+              source="about"
+              className="inline-flex h-11 items-center justify-center rounded-full bg-primary px-6 text-sm font-medium text-primary-foreground transition-colors hover:bg-primary/90"
+            >
+              {CTA.label}
+            </TrackCta>
+            <Link
+              href="/resume"
+              className="text-sm font-medium text-muted-foreground transition-colors hover:text-brand"
+            >
+              View résumé
+            </Link>
+          </div>
         </Reveal>
       </div>
     </section>
