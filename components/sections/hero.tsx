@@ -1,6 +1,7 @@
 import { ArrowRight } from "lucide-react";
 
 import { CTA } from "@/lib/site";
+import { TrackCta } from "@/components/analytics/track-cta";
 
 /**
  * Hero — top of the homepage.
@@ -33,8 +34,9 @@ export function Hero() {
           </p>
 
           <div className="mt-9 flex animate-fade-up flex-col gap-3 [animation-delay:380ms] sm:flex-row sm:items-center">
-            <a
+            <TrackCta
               href={CTA.href}
+              source="hero"
               className="group inline-flex h-12 items-center justify-center gap-2 rounded-full bg-primary px-7 text-sm font-medium text-primary-foreground shadow-lg shadow-primary/20 transition-all hover:bg-primary/90 hover:shadow-primary/30"
             >
               {CTA.label}
@@ -42,7 +44,7 @@ export function Hero() {
                 className="h-4 w-4 transition-transform group-hover:translate-x-0.5"
                 aria-hidden="true"
               />
-            </a>
+            </TrackCta>
             <a
               href="#work"
               className="inline-flex h-12 items-center justify-center rounded-full border border-input bg-background/50 px-7 text-sm font-medium backdrop-blur-sm transition-colors hover:bg-accent hover:text-accent-foreground"

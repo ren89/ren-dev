@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { track } from "@vercel/analytics";
 import { MessageCircle } from "lucide-react";
 
 import { CTA } from "@/lib/site";
@@ -35,6 +36,7 @@ export function FloatingCta() {
   return (
     <a
       href={CTA.href}
+      onClick={() => track("cta_click", { source: "floating" })}
       className={cn(
         "fixed bottom-5 right-5 z-40 inline-flex items-center gap-2 rounded-full bg-primary px-5 py-3 text-sm font-medium text-primary-foreground shadow-lg shadow-primary/25 transition-all duration-300 md:hidden",
         visible

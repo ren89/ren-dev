@@ -14,6 +14,11 @@ Legend: ⬜ needed · 🟡 placeholder in place · ✅ provided
    Environment Variables, redeploy, and confirm the form via Formspree's first-submission email.
 2. **Analytics:** enable Analytics in the Vercel dashboard (the code is wired via
    `@vercel/analytics`; data only flows once enabled on a Vercel deployment).
+   Custom conversion events are also emitted — `contact_submitted` (with
+   `projectType` / `hasBudget`, no PII) and `cta_click` (with `source`: nav, hero,
+   floating, about, service_card, case_study, blog_post). These appear under
+   Web Analytics → Events (availability depends on your Vercel plan); "top projects"
+   come from normal page views on `/work/*` and `/blog/*`.
 3. **Site URL:** if you use a custom domain later, set `NEXT_PUBLIC_SITE_URL=https://yourdomain`
    in Vercel so canonical + OG/Twitter links are absolute and correct. (Defaults to
    `https://ren-dev-black.vercel.app`.)

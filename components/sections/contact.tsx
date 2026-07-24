@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, type FormEvent } from "react";
+import { track } from "@vercel/analytics";
 import { Mail, Send, CheckCircle2, AlertCircle } from "lucide-react";
 
 import { SITE } from "@/lib/site";
@@ -83,6 +84,16 @@ export function Contact() {
         body: new FormData(form),
       });
       if (res.ok) {
+        // Conversion event — no PII, just which service/budget was picked.
+        const projectType =
+          (form.elements.namedItem("projectType") as HTMLSelectElement)?.value ||
+          "unspecified";
+        const budget =
+          (form.elements.namedItem("budget") as HTMLSelectElement)?.value || "";
+        track("contact_submitted", {
+          projectType,
+          hasBudget: Boolean(budget),
+        });
         setStatus("success");
         form.reset();
       } else {

@@ -1,5 +1,6 @@
 import { CTA } from "@/lib/site";
 import { Reveal } from "@/components/ui/reveal";
+import { TrackCta } from "@/components/analytics/track-cta";
 
 const FACTS = [
   { value: "6+ yrs", label: "Experience" },
@@ -61,12 +62,13 @@ export function About() {
             ))}
           </dl>
 
-          <a
+          <TrackCta
             href={CTA.href}
+            source="about"
             className="mt-8 inline-flex h-11 items-center justify-center rounded-full bg-primary px-6 text-sm font-medium text-primary-foreground transition-colors hover:bg-primary/90"
           >
             {CTA.label}
-          </a>
+          </TrackCta>
         </Reveal>
       </div>
     </section>

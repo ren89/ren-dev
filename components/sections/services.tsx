@@ -12,6 +12,7 @@ import {
 import { services, type Service, type ServiceIcon } from "@/data/services";
 import { CTA } from "@/lib/site";
 import { Reveal } from "@/components/ui/reveal";
+import { TrackCta } from "@/components/analytics/track-cta";
 
 const ICONS: Record<ServiceIcon, LucideIcon> = {
   layers: Layers,
@@ -78,13 +79,14 @@ function ServiceCard({ service }: { service: Service }) {
         ))}
       </ul>
 
-      <a
+      <TrackCta
         href={CTA.href}
+        source="service_card"
         className="group/link mt-auto inline-flex items-center gap-1.5 pt-6 text-sm font-medium text-foreground transition-colors hover:text-brand"
       >
         Get a quote
         <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover/link:translate-x-0.5" />
-      </a>
+      </TrackCta>
     </article>
   );
 }

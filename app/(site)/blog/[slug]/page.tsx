@@ -8,6 +8,7 @@ import rehypePrettyCode, { type Options } from "rehype-pretty-code";
 
 import { getAllPosts, getPostBySlug } from "@/lib/blog";
 import { SITE } from "@/lib/site";
+import { TrackCta } from "@/components/analytics/track-cta";
 
 export function generateStaticParams() {
   return getAllPosts().map((post) => ({ slug: post.slug }));
@@ -137,12 +138,13 @@ export default async function BlogPostPage({
         <p className="mx-auto mt-2 max-w-md text-sm text-muted-foreground">
           I build web apps end to end. Tell me about your project.
         </p>
-        <Link
+        <TrackCta
           href="/#contact"
+          source="blog_post"
           className="mt-5 inline-flex h-11 items-center justify-center rounded-full bg-primary px-6 text-sm font-medium text-primary-foreground transition-colors hover:bg-primary/90"
         >
           Let&apos;s talk
-        </Link>
+        </TrackCta>
       </div>
     </article>
   );

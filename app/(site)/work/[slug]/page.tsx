@@ -10,6 +10,7 @@ import {
   type Project,
 } from "@/data/projects";
 import { ProjectMedia } from "@/components/work/project-media";
+import { TrackCta } from "@/components/analytics/track-cta";
 
 export function generateStaticParams() {
   return getProjectSlugs().map((slug) => ({ slug }));
@@ -157,12 +158,13 @@ export default async function CaseStudyPage({
           I build products end to end. Tell me what you&apos;re planning and
           let&apos;s see if I can help.
         </p>
-        <Link
+        <TrackCta
           href="/#contact"
+          source="case_study"
           className="mt-6 inline-flex h-11 items-center justify-center rounded-full bg-primary px-7 text-sm font-medium text-primary-foreground transition-colors hover:bg-primary/90"
         >
           Let&apos;s talk
-        </Link>
+        </TrackCta>
       </div>
     </article>
   );

@@ -3,6 +3,7 @@
 import { forwardRef, useCallback, useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { track } from "@vercel/analytics";
 import { Menu, X } from "lucide-react";
 
 import { CTA, NAV_LINKS, SECTION_IDS, SITE, type NavLink } from "@/lib/site";
@@ -146,7 +147,12 @@ export function SiteNav() {
         <div className="hidden items-center gap-2 md:flex">
           <ThemeToggle />
           <Button asChild size="sm" className="rounded-full">
-            <SmartLink href={ctaHref}>{CTA.label}</SmartLink>
+            <SmartLink
+              href={ctaHref}
+              onClick={() => track("cta_click", { source: "nav" })}
+            >
+              {CTA.label}
+            </SmartLink>
           </Button>
         </div>
 
@@ -239,9 +245,15 @@ export function SiteNav() {
           </ul>
 
           <Button asChild size="lg" className="mt-6 w-full rounded-full">
-            <Link href={ctaHref} onClick={closeMenu}>
+            <SmartLink
+              href={ctaHref}
+              onClick={() => {
+                track("cta_click", { source: "nav" });
+                closeMenu();
+              }}
+            >
               {CTA.label}
-            </Link>
+            </SmartLink>
           </Button>
         </div>
       </div>
