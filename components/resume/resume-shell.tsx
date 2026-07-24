@@ -72,15 +72,33 @@ export function ResumeShell() {
           </TabButton>
         </div>
 
-        <button
-          type="button"
-          onClick={downloadPdf}
-          disabled={downloading}
-          className="inline-flex h-10 items-center gap-2 rounded-full border border-input px-5 text-sm font-medium transition-colors hover:bg-accent hover:text-accent-foreground disabled:opacity-60"
-        >
-          <Download className="size-4" aria-hidden="true" />
-          {downloading ? "Preparing…" : "Download PDF"}
-        </button>
+        <div className="flex flex-wrap items-center justify-center gap-2">
+          <button
+            type="button"
+            onClick={downloadPdf}
+            disabled={downloading}
+            className="inline-flex h-10 items-center gap-2 rounded-full border border-input px-5 text-sm font-medium transition-colors hover:bg-accent hover:text-accent-foreground disabled:opacity-60"
+          >
+            <Download className="size-4" aria-hidden="true" />
+            {downloading ? "Preparing…" : "Download PDF"}
+          </button>
+          <a
+            href="/resume.json"
+            download="ren-avellano.resume.json"
+            onClick={() => track("resume_download", { format: "json" })}
+            className="inline-flex h-10 items-center rounded-full border border-input px-4 text-sm font-medium text-muted-foreground transition-colors hover:bg-accent hover:text-foreground"
+          >
+            JSON Resume
+          </a>
+          <a
+            href="/contact.vcf"
+            download="ren-avellano.vcf"
+            onClick={() => track("resume_download", { format: "vcard" })}
+            className="inline-flex h-10 items-center rounded-full border border-input px-4 text-sm font-medium text-muted-foreground transition-colors hover:bg-accent hover:text-foreground"
+          >
+            Save contact
+          </a>
+        </div>
       </div>
 
       {view === "resume" ? <ResumeView /> : <ClientProfileView />}
