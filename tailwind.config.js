@@ -86,6 +86,11 @@ module.exports = {
           from: { opacity: "0", transform: "translateY(-12px)" },
           to: { opacity: "1", transform: "translateY(0)" },
         },
+        blob: {
+          "0%, 100%": { transform: "translate3d(0, 0, 0) scale(1)" },
+          "33%": { transform: "translate3d(30px, -40px, 0) scale(1.1)" },
+          "66%": { transform: "translate3d(-24px, 24px, 0) scale(0.92)" },
+        },
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
@@ -93,6 +98,7 @@ module.exports = {
         "fade-in": "fade-in 0.5s ease-out both",
         "fade-up": "fade-up 0.6s cubic-bezier(0.22, 1, 0.36, 1) both",
         "fade-down": "fade-down 0.6s cubic-bezier(0.22, 1, 0.36, 1) both",
+        blob: "blob 18s ease-in-out infinite",
       },
     },
   },
