@@ -29,20 +29,20 @@ export function About() {
             Hi, I&apos;m Ren.
           </h2>
 
-          {/* DRAFT — verify: bio written from Ren's notes (6+ yrs, loves building) */}
+          {/* DRAFT - verify: bio written from Ren's notes (6+ yrs, loves building) */}
           <div className="mt-5 space-y-4 text-muted-foreground">
             <p>
               I&apos;m a full-stack developer with{" "}
               <span className="text-foreground">6+ years</span> of experience
               turning ideas into real, working products. Honestly, I just love
-              building — full web apps, internal systems, or the occasional
+              building - full web apps, internal systems, or the occasional
               weekend experiment. If it means taking something from a blank
               screen to a thing people actually use, that&apos;s my favorite
               kind of work.
             </p>
             <p>
               I build products end to end, owning everything from the database
-              to the interface — including{" "}
+              to the interface - including{" "}
               <span className="text-foreground">Vow Studio</span>, a self-serve
               wedding-website SaaS I started for my own wedding, and systems for
               real businesses. If you&apos;re creating something, I&apos;d love
@@ -78,13 +78,13 @@ export function About() {
 }
 
 /**
- * Headshot placeholder — branded monogram tile until a real photo is added
+ * Headshot placeholder - branded monogram tile until a real photo is added
  * to public/images/me/ (see CONTENT_TODO.md).
  */
 function Headshot() {
   return (
     <div className="relative aspect-square w-full max-w-[300px] overflow-hidden rounded-2xl border border-border">
-      <div className="flex h-full w-full items-center justify-center bg-linear-to-br from-brand/20 via-background to-brand-2/20">
+      <div className="flex size-full items-center justify-center bg-linear-to-br from-brand/20 via-background to-brand-2/20">
         <div className="absolute inset-0 bg-grid opacity-40 [mask-image:radial-gradient(ellipse_at_center,black,transparent_75%)]" />
         <span className="relative font-display text-7xl font-bold text-gradient">
           RA

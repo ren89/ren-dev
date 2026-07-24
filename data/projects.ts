@@ -1,5 +1,5 @@
 /**
- * Work / case-study data — the single source of truth for the Work section
+ * Work / case-study data - the single source of truth for the Work section
  * and the `/work/[slug]` pages. Add or edit projects here without touching
  * any layout code.
  *
@@ -38,7 +38,7 @@ export type Project = {
     role: string;
     decisions: string[];
     challenges: string[];
-    /** Qualitative impact — no invented metrics. */
+    /** Qualitative impact - no invented metrics. */
     result: string;
   };
 };
@@ -48,7 +48,7 @@ export const projects: Project[] = [
     slug: "vow-studio",
     name: "Vow Studio",
     tagline:
-      "A self-serve SaaS that lets couples build their entire wedding website — no designer required.",
+      "A self-serve SaaS that lets couples build their entire wedding website - no designer required.",
     context: "Personal SaaS product",
     year: "2026",
     status: "live",
@@ -72,7 +72,7 @@ export const projects: Project[] = [
       },
       {
         src: "/images/vowStudio/theming.png",
-        alt: "Theming controls — changing colors and fonts and hiding sections the couple doesn't want to show",
+        alt: "Theming controls - changing colors and fonts and hiding sections the couple doesn't want to show",
       },
       {
         src: "/images/vowStudio/seating.png",
@@ -92,11 +92,11 @@ export const projects: Project[] = [
         "Vow Studio began as the wedding website I was building for my fiancée and me. Partway through I realised the platform could work for any couple, so I redesigned it into a fully self-serve SaaS.",
       problem:
         "Most online wedding invitations are made-to-order: you buy a template, then trade messages with a designer who personalises it for you. Every change means another round-trip, and you never fully control the result.",
-      role: "Founder and sole full-stack developer — product design, data modelling, auth, storage, and the entire front end.",
+      role: "Founder and sole full-stack developer - product design, data modelling, auth, storage, and the entire front end.",
       decisions: [
-        "Built a fully dynamic, multi-tenant platform so each couple's site — home, story, wedding details, RSVP, seating plan and FAQs — is generated from their own data.",
+        "Built a fully dynamic, multi-tenant platform so each couple's site - home, story, wedding details, RSVP, seating plan and FAQs - is generated from their own data.",
         "Designed a guided onboarding flow that walks a couple through building and publishing their site end to end, removing any need to contact an admin.",
-        "Gave couples full control over the look — changing colors and fonts and showing or hiding any section — so each site feels personal without touching a line of code.",
+        "Gave couples full control over the look - changing colors and fonts and showing or hiding any section - so each site feels personal without touching a line of code.",
         "Used Postgres with Drizzle ORM and Zod validation at every route boundary to keep the data layer type-safe and predictable.",
         "Leaned on Supabase for auth and storage to ship a real product quickly without a bespoke backend.",
       ],
@@ -105,7 +105,7 @@ export const projects: Project[] = [
         "Making self-serve editing simple enough for non-technical users, largely on their phones.",
       ],
       result:
-        "A live, self-serve product where any couple can sign up and publish a complete, personalised wedding website themselves — no designer and no back-and-forth.",
+        "A live, self-serve product where any couple can sign up and publish a complete, personalised wedding website themselves - no designer and no back-and-forth.",
     },
   },
   {
@@ -139,7 +139,7 @@ export const projects: Project[] = [
       decisions: [
         "Built a client portal where policyholders can browse available plans, track their policy and payment progress, and download their documents.",
         "Built an admin console to manage users and policies, approve or reject applications, and generate the documents clients download.",
-        "Architected for scale from day one — the data model is prepared for a future agent tier (agent-managed clients and commission tracking) that isn't live yet.",
+        "Architected for scale from day one - the data model is prepared for a future agent tier (agent-managed clients and commission tracking) that isn't live yet.",
         "Used Postgres with Drizzle ORM, plus React Hook Form and Zod, for reliable, validated application and document workflows.",
       ],
       challenges: [
@@ -147,7 +147,7 @@ export const projects: Project[] = [
         "Preparing for a future agent and commission system without over-engineering the current client-first release.",
       ],
       result:
-        "The provider now has a genuine online presence and a system their clients use to track plans and payments — a foundation built to grow into agent management and commissions as their vision expands.",
+        "The provider now has a genuine online presence and a system their clients use to track plans and payments - a foundation built to grow into agent management and commissions as their vision expands.",
     },
   },
   {
@@ -175,13 +175,13 @@ export const projects: Project[] = [
     story: {
       // Kept high-level under NDA; product description mirrors the public site frntlne.com
       summary:
-        "frntlne is a mobile-first learning platform that helps brands and retailers train their frontline teams — store staff, distributors and contractors — with short, engaging videos that build product knowledge and sales skills. I work on it as one of the full-stack developers on the team.",
+        "frntlne is a mobile-first learning platform that helps brands and retailers train their frontline teams - store staff, distributors and contractors - with short, engaging videos that build product knowledge and sales skills. I work on it as one of the full-stack developers on the team.",
       problem:
-        "Traditional frontline training is long, forgettable, and hard to deliver to distributed teams — and even harder to measure. frntlne replaces it with fast, reward-driven video learning and real-time performance tracking.",
-      role: "One of the full-stack developers on the team. I build product features and develop related applications for the company — such as internal admin tools — across web and mobile.",
+        "Traditional frontline training is long, forgettable, and hard to deliver to distributed teams - and even harder to measure. frntlne replaces it with fast, reward-driven video learning and real-time performance tracking.",
+      role: "One of the full-stack developers on the team. I build product features and develop related applications for the company - such as internal admin tools - across web and mobile.",
       decisions: [
         "Contributed to taking the product cross-platform with React Native and Expo, shipping to the App Store, Google Play and web from a shared codebase.",
-        "Worked across a modern stack — Next.js on the web, GraphQL/Hasura for data, AWS for infrastructure, and Gluestack UI on mobile.",
+        "Worked across a modern stack - Next.js on the web, GraphQL/Hasura for data, AWS for infrastructure, and Gluestack UI on mobile.",
         "Helped bring AI into some of the product's features.",
       ],
       challenges: [
@@ -206,7 +206,7 @@ export function getProjectBySlug(slug: string): Project | undefined {
 }
 
 /* ─────────────────────────────────────────────────────────────
- * PLAYGROUND — smaller / older projects and experiments.
+ * PLAYGROUND - smaller / older projects and experiments.
  * Compact cards only (no case-study pages). "live" items link to a
  * working demo; "archived" items are no longer deployed (no dead links).
  * ───────────────────────────────────────────────────────────── */

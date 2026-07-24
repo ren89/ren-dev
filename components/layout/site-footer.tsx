@@ -3,7 +3,7 @@ import { ArrowUpRight, Mail } from "lucide-react";
 
 import { NAV_LINKS, SITE } from "@/lib/site";
 
-/** GitHub mark — inlined because lucide-react dropped brand icons in v1. */
+/** GitHub mark - inlined because lucide-react dropped brand icons in v1. */
 function GithubIcon({ className }: { className?: string }) {
   return (
     <svg
@@ -67,10 +67,10 @@ export function SiteFooter() {
                   rel="noopener noreferrer"
                   className="group inline-flex items-center gap-2 text-sm text-muted-foreground transition-colors hover:text-foreground"
                 >
-                  <GithubIcon className="h-4 w-4" />
+                  <GithubIcon className="size-4" />
                   GitHub
                   <ArrowUpRight
-                    className="h-3.5 w-3.5 opacity-0 transition-opacity group-hover:opacity-100"
+                    className="size-3.5 opacity-0 transition-opacity group-hover:opacity-100"
                     aria-hidden="true"
                   />
                 </a>
@@ -80,7 +80,7 @@ export function SiteFooter() {
                   href={`mailto:${SITE.email}`}
                   className="group inline-flex items-center gap-2 text-sm text-muted-foreground transition-colors hover:text-foreground"
                 >
-                  <Mail className="h-4 w-4" aria-hidden="true" />
+                  <Mail className="size-4" aria-hidden="true" />
                   {SITE.email}
                 </a>
               </li>

@@ -25,18 +25,18 @@ export function AvailabilityBadge({ className }: { className?: string }) {
         className,
       )}
     >
-      <span className="relative flex h-2 w-2">
+      <span className="relative flex size-2">
         {s.ping && (
           <span
             aria-hidden="true"
             className={cn(
-              "absolute inline-flex h-full w-full animate-ping rounded-full opacity-75",
+              "absolute inline-flex size-full animate-ping rounded-full opacity-75",
               s.dot,
             )}
           />
         )}
         <span
-          className={cn("relative inline-flex h-2 w-2 rounded-full", s.dot)}
+          className={cn("relative inline-flex size-2 rounded-full", s.dot)}
         />
       </span>
       {AVAILABILITY.label}

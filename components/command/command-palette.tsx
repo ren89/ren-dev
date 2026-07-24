@@ -63,7 +63,7 @@ export function CommandPalette({ posts }: { posts: PostLink[] }) {
       setCopied(true);
       setTimeout(() => setCopied(false), 1500);
     } catch {
-      // clipboard unavailable — no-op
+      // clipboard unavailable - no-op
     }
   };
 
@@ -88,7 +88,7 @@ export function CommandPalette({ posts }: { posts: PostLink[] }) {
             <Item
               key={link.id}
               onSelect={() => go(sectionHref(link))}
-              icon={<Hash className="h-4 w-4" />}
+              icon={<Hash className="size-4" />}
             >
               {link.label}
             </Item>
@@ -100,7 +100,7 @@ export function CommandPalette({ posts }: { posts: PostLink[] }) {
             <Item
               key={p.slug}
               onSelect={() => go(`/work/${p.slug}`)}
-              icon={<FolderClosed className="h-4 w-4" />}
+              icon={<FolderClosed className="size-4" />}
             >
               {p.name}
             </Item>
@@ -113,7 +113,7 @@ export function CommandPalette({ posts }: { posts: PostLink[] }) {
               <Item
                 key={p.slug}
                 onSelect={() => go(`/blog/${p.slug}`)}
-                icon={<FileText className="h-4 w-4" />}
+                icon={<FileText className="size-4" />}
               >
                 {p.title}
               </Item>
@@ -129,9 +129,9 @@ export function CommandPalette({ posts }: { posts: PostLink[] }) {
             }}
             icon={
               theme === "dark" ? (
-                <Sun className="h-4 w-4" />
+                <Sun className="size-4" />
               ) : (
-                <Moon className="h-4 w-4" />
+                <Moon className="size-4" />
               )
             }
           >
@@ -141,9 +141,9 @@ export function CommandPalette({ posts }: { posts: PostLink[] }) {
             onSelect={copyEmail}
             icon={
               copied ? (
-                <Check className="h-4 w-4 text-brand" />
+                <Check className="size-4 text-brand" />
               ) : (
-                <Copy className="h-4 w-4" />
+                <Copy className="size-4" />
               )
             }
           >
@@ -154,7 +154,7 @@ export function CommandPalette({ posts }: { posts: PostLink[] }) {
               setOpen(false);
               window.open(SITE.github, "_blank", "noopener,noreferrer");
             }}
-            icon={<ExternalLink className="h-4 w-4" />}
+            icon={<ExternalLink className="size-4" />}
           >
             Open GitHub
           </Item>

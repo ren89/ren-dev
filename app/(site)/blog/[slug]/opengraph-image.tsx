@@ -3,7 +3,7 @@ import { ImageResponse } from "next/og";
 import { getAllPosts, getPostBySlug } from "@/lib/blog";
 import { OgCard, OG_SIZE } from "@/lib/og-template";
 
-export const alt = "Blog — Ren Avellano";
+export const alt = "Blog - Ren Avellano";
 export const size = OG_SIZE;
 export const contentType = "image/png";
 

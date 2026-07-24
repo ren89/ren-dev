@@ -34,7 +34,7 @@ export function ProjectMedia({
     <div
       aria-hidden="true"
       className={cn(
-        "flex h-full w-full items-center justify-center bg-linear-to-br from-brand/15 via-background to-brand-2/15",
+        "flex size-full items-center justify-center bg-linear-to-br from-brand/15 via-background to-brand-2/15",
         className,
       )}
     >

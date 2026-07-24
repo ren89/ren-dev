@@ -16,7 +16,7 @@ type ThemeContextValue = {
   theme: Theme;
   toggleTheme: () => void;
   setTheme: (theme: Theme) => void;
-  /** False until mounted — lets UI avoid a hydration mismatch on the icon. */
+  /** False until mounted - lets UI avoid a hydration mismatch on the icon. */
   mounted: boolean;
 };
 

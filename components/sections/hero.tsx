@@ -5,7 +5,7 @@ import { TrackCta } from "@/components/analytics/track-cta";
 import { AvailabilityBadge } from "@/components/ui/availability-badge";
 
 /**
- * Hero — top of the homepage.
+ * Hero - top of the homepage.
  * Staggered entrance (fade-up with incremental delays); all motion collapses
  * to an instant reveal under prefers-reduced-motion via the global guard.
  * Background is the pure-CSS aurora below (no JS, no layout cost).
@@ -26,13 +26,13 @@ export function Hero() {
           </p>
 
           <h1 className="mt-5 animate-fade-up font-display text-[2.75rem] font-bold leading-[1.05] tracking-tight [animation-delay:140ms] sm:text-6xl md:text-7xl">
-            From idea to launched product —{" "}
+            From idea to launched product -{" "}
             <span className="text-gradient">built end to end.</span>
           </h1>
 
           <p className="mt-6 max-w-2xl animate-fade-up text-lg text-muted-foreground [animation-delay:260ms] sm:text-xl">
             I handle the full stack so you get a polished, production-ready web
-            app — without juggling multiple people.
+            app - without juggling multiple people.
           </p>
 
           <div className="mt-9 flex animate-fade-up flex-col gap-3 [animation-delay:380ms] sm:flex-row sm:items-center">
@@ -43,7 +43,7 @@ export function Hero() {
             >
               {CTA.label}
               <ArrowRight
-                className="h-4 w-4 transition-transform group-hover:translate-x-0.5"
+                className="size-4 transition-transform group-hover:translate-x-0.5"
                 aria-hidden="true"
               />
             </TrackCta>
@@ -76,9 +76,9 @@ function HeroAurora() {
 
       {/* Drifting glow blobs */}
       <div className="absolute inset-0 overflow-hidden">
-        <div className="absolute -left-24 -top-16 h-72 w-72 animate-blob rounded-full bg-brand/30 blur-3xl sm:h-96 sm:w-96 dark:bg-brand/40" />
-        <div className="absolute right-[-6rem] top-10 h-72 w-72 animate-blob rounded-full bg-brand-2/25 blur-3xl [animation-delay:-6s] sm:h-96 sm:w-96 dark:bg-brand-2/35" />
-        <div className="absolute bottom-[-6rem] left-1/3 h-72 w-72 animate-blob rounded-full bg-brand-3/20 blur-3xl [animation-delay:-12s] sm:h-96 sm:w-96 dark:bg-brand-3/25" />
+        <div className="absolute -left-24 -top-16 size-72 animate-blob rounded-full bg-brand/30 blur-3xl sm:size-96 dark:bg-brand/40" />
+        <div className="absolute right-[-6rem] top-10 size-72 animate-blob rounded-full bg-brand-2/25 blur-3xl [animation-delay:-6s] sm:size-96 dark:bg-brand-2/35" />
+        <div className="absolute bottom-[-6rem] left-1/3 size-72 animate-blob rounded-full bg-brand-3/20 blur-3xl [animation-delay:-12s] sm:size-96 dark:bg-brand-3/25" />
       </div>
     </div>
   );

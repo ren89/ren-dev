@@ -10,7 +10,7 @@ import "../styles/globals.css";
 const siteUrl = SITE.url;
 const title = "Ren Avellano | Full-Stack Developer";
 const description =
-  "Full-stack developer building fast, modern web apps with React, Next.js, and TypeScript — from idea to launched product. Open to freelance and full-time work.";
+  "Full-stack developer building fast, modern web apps with React, Next.js, and TypeScript - from idea to launched product. Open to freelance and full-time work.";
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),

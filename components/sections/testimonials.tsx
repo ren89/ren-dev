@@ -81,7 +81,7 @@ function TestimonialCard({ testimonial }: { testimonial: Testimonial }) {
   return (
     <figure className="flex h-full flex-col rounded-2xl border border-border bg-card p-6">
       <div className="flex items-center justify-between">
-        <Quote className="h-6 w-6 text-brand/50" aria-hidden="true" />
+        <Quote className="size-6 text-brand/50" aria-hidden="true" />
         {testimonial.placeholder && (
           <span className="rounded-full border border-dashed border-border px-2 py-0.5 font-mono text-[10px] uppercase tracking-widest text-muted-foreground">
             Placeholder
@@ -94,7 +94,7 @@ function TestimonialCard({ testimonial }: { testimonial: Testimonial }) {
       </blockquote>
 
       <figcaption className="mt-6 flex items-center gap-3 border-t border-border/60 pt-4">
-        <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-accent font-display text-sm font-semibold text-brand">
+        <span className="flex size-10 shrink-0 items-center justify-center rounded-full bg-accent font-display text-sm font-semibold text-brand">
           {testimonial.name.charAt(0)}
         </span>
         <span className="text-sm">

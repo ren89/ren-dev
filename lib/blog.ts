@@ -3,7 +3,7 @@ import path from "node:path";
 import matter from "gray-matter";
 
 /**
- * Blog content system — MDX files in content/blog/*.mdx.
+ * Blog content system - MDX files in content/blog/*.mdx.
  * Server-only (uses the filesystem). Add a post by dropping in a new .mdx
  * file with frontmatter; no code changes needed.
  */

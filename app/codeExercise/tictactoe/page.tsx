@@ -70,7 +70,7 @@ export default function TicTacToe() {
         {board.map((value, index) => (
           <button
             key={index}
-            className="w-20 h-20 bg-teal-400/10 text-2xl font-bold flex items-center justify-center text-teal-300 hover:bg-teal-800/10"
+            className="size-20 bg-teal-400/10 text-2xl font-bold flex items-center justify-center text-teal-300 hover:bg-teal-800/10"
             onClick={() => handleClick(index)}
           >
             {value}

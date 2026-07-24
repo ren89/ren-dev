@@ -3,7 +3,7 @@ import { ImageResponse } from "next/og";
 import { getProjectBySlug, getProjectSlugs } from "@/data/projects";
 import { OgCard, OG_SIZE } from "@/lib/og-template";
 
-export const alt = "Case study — Ren Avellano";
+export const alt = "Case study - Ren Avellano";
 export const size = OG_SIZE;
 export const contentType = "image/png";
 

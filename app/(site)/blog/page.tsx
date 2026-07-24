@@ -6,14 +6,14 @@ import { getAllPosts, type Post } from "@/lib/blog";
 import { Reveal } from "@/components/ui/reveal";
 
 export const metadata: Metadata = {
-  title: "Blog — Ren Avellano",
+  title: "Blog - Ren Avellano",
   description:
     "Writing on building products end to end, practical web-dev patterns, and lessons from real client work.",
   alternates: { canonical: "/blog" },
   openGraph: {
     type: "website",
     url: "/blog",
-    title: "Blog — Ren Avellano",
+    title: "Blog - Ren Avellano",
     description:
       "Writing on building products end to end, practical web-dev patterns, and lessons from real client work.",
   },
@@ -48,7 +48,7 @@ export default function BlogIndex() {
 
       {posts.length === 0 ? (
         <p className="mt-12 text-muted-foreground">
-          No posts yet — check back soon.
+          No posts yet - check back soon.
         </p>
       ) : (
         <ul className="mt-12 grid gap-6 sm:grid-cols-2">
@@ -94,7 +94,7 @@ function PostCard({ post }: { post: Post }) {
             </li>
           ))}
         </ul>
-        <ArrowUpRight className="h-4 w-4 text-muted-foreground transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-brand" />
+        <ArrowUpRight className="size-4 text-muted-foreground transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-brand" />
       </div>
     </article>
   );

@@ -5,16 +5,16 @@
 
 /*
  * ─────────────────────────────────────────────────────────────
- * DESIGN SYSTEM — Bold Modern
+ * DESIGN SYSTEM - Bold Modern
  * Near-black base, violet→fuchsia brand accent, cyan utility.
  * Tokens are HSL channels (used as `hsl(var(--token))` in Tailwind).
- * Keep all color/spacing/radius decisions here — single source of truth.
+ * Keep all color/spacing/radius decisions here - single source of truth.
  * ─────────────────────────────────────────────────────────────
  */
 
 @layer base {
   :root {
-    /* Surfaces & text — LIGHT */
+    /* Surfaces & text - LIGHT */
     --background: 240 33% 99%;
     --foreground: 240 10% 6%;
     --card: 0 0% 100%;
@@ -41,7 +41,7 @@
     --input: 240 6% 88%;
     --ring: 262 83% 55%;
 
-    /* Brand ramp — for gradients, glows, decorative accents */
+    /* Brand ramp - for gradients, glows, decorative accents */
     --brand: 262 83% 55%;
     --brand-2: 326 90% 56%;
     --brand-3: 190 95% 45%;
@@ -57,7 +57,7 @@
   }
 
   .dark {
-    /* Surfaces & text — DARK (primary experience) */
+    /* Surfaces & text - DARK (primary experience) */
     --background: 240 12% 5%;
     --foreground: 0 0% 98%;
     --card: 240 9% 8%;
@@ -118,7 +118,7 @@
     @apply mx-auto w-full max-w-6xl px-5 sm:px-8 lg:px-12;
   }
 
-  /* Gradient brand text — the signature accent of the design system */
+  /* Gradient brand text - the signature accent of the design system */
   .text-gradient {
     @apply bg-linear-to-r from-brand via-brand-2 to-brand-3 bg-clip-text text-transparent;
   }
@@ -133,7 +133,7 @@
 }
 
 /*
- * MOTION — global reduced-motion guard.
+ * MOTION - global reduced-motion guard.
  * Any user who prefers reduced motion gets animations/transitions
  * effectively removed, app-wide, with no per-component work.
  */
@@ -149,7 +149,7 @@
 }
 
 /*
- * BLOG — code blocks (rehype-pretty-code / Shiki dual theme).
+ * BLOG - code blocks (rehype-pretty-code / Shiki dual theme).
  * Light theme uses --shiki-light; the .dark class swaps to --shiki-dark.
  */
 .prose figure[data-rehype-pretty-code-figure] pre {
@@ -211,7 +211,7 @@
 }
 
 /*
- * COMMAND PALETTE (cmdk) — structural bits; visuals via Tailwind on the JSX.
+ * COMMAND PALETTE (cmdk) - structural bits; visuals via Tailwind on the JSX.
  */
 [cmdk-overlay] {
   position: fixed;

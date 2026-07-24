@@ -50,7 +50,7 @@ export function Reveal({
 
   return (
     <Tag
-      // @ts-expect-error — ref type varies with the chosen tag
+      // @ts-expect-error - ref type varies with the chosen tag
       ref={ref}
       className={cn(
         "transition-all duration-700 ease-out motion-reduce:transition-none",

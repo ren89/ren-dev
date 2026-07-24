@@ -6,13 +6,13 @@ tags: ["Next.js", "TypeScript", "Accessibility"]
 published: true
 ---
 
-Animation libraries are great, but they're not free — they add JavaScript to every
+Animation libraries are great, but they're not free - they add JavaScript to every
 page. For simple "fade in as it scrolls into view" effects, the platform already gives
 you everything you need: **IntersectionObserver** and a CSS transition.
 
 ## The component
 
-Here's the entire thing. It reveals its children once, and — importantly — shows them
+Here's the entire thing. It reveals its children once, and - importantly - shows them
 immediately for anyone who prefers reduced motion.
 
 ```tsx title="components/reveal.tsx"
@@ -70,7 +70,7 @@ export function Reveal({ children }: { children: ReactNode }) {
 - **Accessible by default.** Reduced-motion users get content instantly, no animation.
 - **Composable.** Wrap anything, stagger with a `delay` prop if you want.
 
-That's the whole trick. Reach for a library when you need orchestration or gestures —
+That's the whole trick. Reach for a library when you need orchestration or gestures -
 but for a tasteful reveal, the browser has your back.
 
-> Starter post — replace with your own writing whenever you're ready.
+> Starter post - replace with your own writing whenever you're ready.

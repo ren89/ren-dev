@@ -2,7 +2,7 @@
  * Testimonials + client logos.
  *
  * NOTE (Ren): the testimonials below are PLACEHOLDERS with obviously-fake
- * attribution — never ship fabricated quotes credited to a real person.
+ * attribution - never ship fabricated quotes credited to a real person.
  * Replace them with real quotes as you collect them (Eternal Homes to follow),
  * or set `SHOW_TESTIMONIALS` to false to hide the quotes grid until then.
  * Client logos are real; drop logo files in public/images/clients/ and set `logo`.
@@ -24,7 +24,7 @@ export const testimonials: Testimonial[] = [
   {
     placeholder: true,
     quote:
-      "A short, honest quote from a happy client will live here — what it was like to work together and the result they got.",
+      "A short, honest quote from a happy client will live here - what it was like to work together and the result they got.",
     name: "Client Name",
     role: "Founder",
     company: "Company",

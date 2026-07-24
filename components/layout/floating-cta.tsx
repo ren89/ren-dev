@@ -46,7 +46,7 @@ export function FloatingCta() {
       aria-hidden={!visible}
       tabIndex={visible ? 0 : -1}
     >
-      <MessageCircle className="h-4 w-4" aria-hidden="true" />
+      <MessageCircle className="size-4" aria-hidden="true" />
       {CTA.label}
     </a>
   );

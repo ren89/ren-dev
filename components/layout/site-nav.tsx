@@ -133,7 +133,7 @@ export function SiteNav() {
         <Link
           href="/"
           className="font-mono text-sm font-medium tracking-tight text-foreground"
-          aria-label={`${SITE.name} — home`}
+          aria-label={`${SITE.name} - home`}
         >
           ren<span className="text-brand">-</span>dev
         </Link>
@@ -159,7 +159,7 @@ export function SiteNav() {
             aria-label="Open command menu"
             className="hidden items-center gap-2 rounded-full border border-input px-3 py-1.5 text-xs text-muted-foreground transition-colors hover:text-foreground lg:inline-flex"
           >
-            <Search className="h-3.5 w-3.5" aria-hidden="true" />
+            <Search className="size-3.5" aria-hidden="true" />
             <kbd className="font-mono">{isMac ? "⌘K" : "Ctrl K"}</kbd>
           </button>
           <ThemeToggle />
@@ -183,7 +183,7 @@ export function SiteNav() {
             aria-label="Open command menu"
             onClick={openCommandPalette}
           >
-            <Search className="h-5 w-5" aria-hidden="true" />
+            <Search className="size-5" aria-hidden="true" />
           </Button>
           <ThemeToggle />
           <Button
@@ -197,7 +197,7 @@ export function SiteNav() {
             aria-controls="mobile-menu"
             onClick={() => setOpen(true)}
           >
-            <Menu className="h-5 w-5" aria-hidden="true" />
+            <Menu className="size-5" aria-hidden="true" />
           </Button>
         </div>
       </nav>
@@ -244,7 +244,7 @@ export function SiteNav() {
                 toggleRef.current?.focus();
               }}
             >
-              <X className="h-5 w-5" aria-hidden="true" />
+              <X className="size-5" aria-hidden="true" />
             </Button>
           </div>
 

@@ -25,7 +25,7 @@ export async function generateMetadata({
   const project = getProjectBySlug(slug);
   if (!project) return { title: "Work · Ren Avellano" };
   return {
-    title: `${project.name} · Case study — Ren Avellano`,
+    title: `${project.name} · Case study - Ren Avellano`,
     description: project.tagline,
     alternates: { canonical: `/work/${project.slug}` },
     openGraph: {
@@ -57,7 +57,7 @@ export default async function CaseStudyPage({
         href="/#work"
         className="inline-flex items-center gap-2 text-sm text-muted-foreground transition-colors hover:text-foreground"
       >
-        <ArrowLeft className="h-4 w-4" />
+        <ArrowLeft className="size-4" />
         Back to work
       </Link>
 
@@ -80,11 +80,11 @@ export default async function CaseStudyPage({
               className="inline-flex h-11 items-center justify-center gap-2 rounded-full bg-primary px-6 text-sm font-medium text-primary-foreground transition-colors hover:bg-primary/90"
             >
               Visit live site
-              <ExternalLink className="h-4 w-4" />
+              <ExternalLink className="size-4" />
             </a>
           ) : (
             <span className="inline-flex h-11 items-center justify-center gap-2 rounded-full border border-border px-6 text-sm text-muted-foreground">
-              <Lock className="h-4 w-4" />
+              <Lock className="size-4" />
               Private project
             </span>
           )}
@@ -133,7 +133,7 @@ export default async function CaseStudyPage({
           </Block>
         </div>
 
-        {/* Result — highlighted aside */}
+        {/* Result - highlighted aside */}
         <aside className="lg:sticky lg:top-24 lg:self-start">
           <div className="rounded-2xl border border-brand/30 bg-accent/40 p-6">
             <p className="font-mono text-xs uppercase tracking-widest text-brand">
@@ -194,7 +194,7 @@ function BulletList({ items }: { items: string[] }) {
         <li key={i} className="flex gap-3">
           <span
             aria-hidden="true"
-            className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-brand"
+            className="mt-2 size-1.5 shrink-0 rounded-full bg-brand"
           />
           <span>{item}</span>
         </li>

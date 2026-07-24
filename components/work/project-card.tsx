@@ -60,7 +60,7 @@ export function ProjectCard({ project }: { project: Project }) {
         <div className="mt-6 flex items-center justify-between pt-2">
           <span className="inline-flex items-center gap-1.5 text-sm font-medium text-foreground">
             View case study
-            <ArrowUpRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+            <ArrowUpRight className="size-4 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
           </span>
 
           {project.href && (
@@ -72,7 +72,7 @@ export function ProjectCard({ project }: { project: Project }) {
               className="relative z-10 inline-flex items-center gap-1.5 text-sm text-muted-foreground transition-colors hover:text-brand"
               aria-label={`Open ${project.name} live demo in a new tab`}
             >
-              <ExternalLink className="h-4 w-4" />
+              <ExternalLink className="size-4" />
               Live demo
             </a>
           )}
@@ -86,16 +86,16 @@ function StatusBadge({ project }: { project: Project }) {
   if (project.status === "private") {
     return (
       <span className="absolute left-4 top-4 inline-flex items-center gap-1.5 rounded-full bg-background/80 px-2.5 py-1 text-xs font-medium text-muted-foreground backdrop-blur-sm">
-        <Lock className="h-3 w-3" />
+        <Lock className="size-3" />
         Private
       </span>
     );
   }
   return (
     <span className="absolute left-4 top-4 inline-flex items-center gap-1.5 rounded-full bg-background/80 px-2.5 py-1 text-xs font-medium text-foreground backdrop-blur-sm">
-      <span className="relative flex h-2 w-2">
-        <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-500 opacity-75" />
-        <span className="relative inline-flex h-2 w-2 rounded-full bg-emerald-500" />
+      <span className="relative flex size-2">
+        <span className="absolute inline-flex size-full animate-ping rounded-full bg-emerald-500 opacity-75" />
+        <span className="relative inline-flex size-2 rounded-full bg-emerald-500" />
       </span>
       {project.nda ? "Live · NDA" : "Live"}
     </span>

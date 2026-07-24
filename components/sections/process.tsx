@@ -11,7 +11,7 @@ const STEPS = [
   },
   {
     title: "Build",
-    desc: "I develop it end to end — front end, back end, and data — with regular check-ins, no surprises.",
+    desc: "I develop it end to end - front end, back end, and data - with regular check-ins, no surprises.",
   },
   {
     title: "Launch",
@@ -37,7 +37,7 @@ export function Process() {
           A simple, predictable process
         </h2>
         <p className="mt-4 text-muted-foreground">
-          From first conversation to a launched product you can rely on — you
+          From first conversation to a launched product you can rely on - you
           always know what&apos;s happening and what&apos;s next.
         </p>
       </Reveal>
@@ -58,7 +58,7 @@ export function Process() {
               className="relative"
             >
               <div className="flex items-center gap-4 md:block">
-                <span className="relative z-10 flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-brand/40 bg-background font-mono text-sm font-semibold text-brand">
+                <span className="relative z-10 flex size-10 shrink-0 items-center justify-center rounded-full border border-brand/40 bg-background font-mono text-sm font-semibold text-brand">
                   {i + 1}
                 </span>
                 <h3 className="font-display text-lg font-semibold tracking-tight md:mt-5">

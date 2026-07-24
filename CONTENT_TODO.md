@@ -1,8 +1,8 @@
-# Content & Assets — What to Add and Where
+# Content & Assets - What to Add and Where
 
 This file tracks the **real content** you'll need to supply as we build. Everything
 listed here is currently a **placeholder** or **not yet created**. I'll keep this updated
-each phase. Nothing here blocks Phase 1 (foundation) — it's a running checklist.
+each phase. Nothing here blocks Phase 1 (foundation) - it's a running checklist.
 
 Legend: ⬜ needed · 🟡 placeholder in place · ✅ provided
 
@@ -14,7 +14,7 @@ Legend: ⬜ needed · 🟡 placeholder in place · ✅ provided
    Environment Variables, redeploy, and confirm the form via Formspree's first-submission email.
 2. **Analytics:** enable Analytics in the Vercel dashboard (the code is wired via
    `@vercel/analytics`; data only flows once enabled on a Vercel deployment).
-   Custom conversion events are also emitted — `contact_submitted` (with
+   Custom conversion events are also emitted - `contact_submitted` (with
    `projectType` / `hasBudget`, no PII) and `cta_click` (with `source`: nav, hero,
    floating, about, service_card, case_study, blog_post). These appear under
    Web Analytics → Events (availability depends on your Vercel plan); "top projects"
@@ -37,8 +37,8 @@ Legend: ⬜ needed · 🟡 placeholder in place · ✅ provided
 | Full name                    | ✅     | `app/layout.tsx` (metadata)                    | "Ren Avellano"                                               |
 | Role / positioning           | ✅     | metadata + hero (later)                        | "Full-stack developer, mainly web"                           |
 | Short tagline (1 line)       | ⬜     | Hero section (Phase 2)                         | e.g. "I build fast, modern web apps end to end."             |
-| About / bio paragraph        | 🟡     | `components/sections/about.tsx`                | DRAFT written for you (6+ yrs, loves building) — verify/edit |
-| Location                     | 🟡     | metadata                                       | Currently "Philippines" — confirm/refine                     |
+| About / bio paragraph        | 🟡     | `components/sections/about.tsx`                | DRAFT written for you (6+ yrs, loves building) - verify/edit |
+| Location                     | 🟡     | metadata                                       | Currently "Philippines" - confirm/refine                     |
 | Contact email                | ✅     | `lib/site.ts` → footer                         | `ren.avellano@gmail.com`                                     |
 | GitHub                       | ✅     | `lib/site.ts` → nav/footer                     | https://github.com/ren89                                     |
 | LinkedIn / X / other socials | ⬜     | `lib/site.ts` (`linkedin`, `twitter`) → footer | Add URLs here and they'll appear automatically               |
@@ -65,7 +65,7 @@ unused/legacy). Story prose has been reviewed and approved by Ren.
 | frntlne story             | ✅     | `data/projects.ts`             | Approved; kept high-level for NDA                                              |
 | Vow Studio screenshots    | ✅     | `public/images/vowStudio/`     | Wired: cover = hero-site; gallery = dashboard, theming, seating, rsvp, gallery |
 | Eternal Homes screenshots | ⬜     | `public/images/eternal-homes/` | Then set `cover:` / `gallery:`                                                 |
-| frntlne screenshots       | ⬜     | —                              | Intentionally none (legacy images retired; branded placeholder used)           |
+| frntlne screenshots       | ⬜     | -                              | Intentionally none (legacy images retired; branded placeholder used)           |
 
 ### Playground (smaller / past projects)
 
@@ -81,15 +81,15 @@ Compact cards in **`data/projects.ts`** → `playground` array (no case-study pa
 ## Testimonials & client logos
 
 Data in **`data/testimonials.ts`**. Quotes are **placeholders** with fake attribution
-(clearly labelled "Placeholder" in the UI) — never ship fabricated quotes as real. Set
+(clearly labelled "Placeholder" in the UI) - never ship fabricated quotes as real. Set
 `SHOW_TESTIMONIALS = false` to hide the quotes grid until you have real ones.
 
 | Item                                      | Status | Where to put it                       | Notes                                                                   |
 | ----------------------------------------- | ------ | ------------------------------------- | ----------------------------------------------------------------------- |
-| Real testimonial — Eternal Homes          | ⬜     | `data/testimonials.ts`                | You're collecting this; replace a placeholder, drop `placeholder: true` |
+| Real testimonial - Eternal Homes          | ⬜     | `data/testimonials.ts`                | You're collecting this; replace a placeholder, drop `placeholder: true` |
 | Other real testimonials (student clients) | ⬜     | `data/testimonials.ts`                | Replace remaining placeholders as collected                             |
-| Client logo — Eternal Homes               | ✅     | `public/images/eternalHomes/logo.png` | Wired into `clientLogos`                                                |
-| Client logo — frntlne                     | ✅     | `public/images/frntlne/logo.png`      | Wired into `clientLogos`                                                |
+| Client logo - Eternal Homes               | ✅     | `public/images/eternalHomes/logo.png` | Wired into `clientLogos`                                                |
+| Client logo - frntlne                     | ✅     | `public/images/frntlne/logo.png`      | Wired into `clientLogos`                                                |
 
 ---
 
@@ -102,7 +102,7 @@ The Contact form posts to Formspree, read from an env var so no keys live in the
 3. Production: add the same `NEXT_PUBLIC_FORMSPREE_ID` in **Vercel → Project → Settings → Environment Variables**, then redeploy.
 
 Until the ID is set, the form validates but shows a "please email me directly" message
-instead of sending. Honeypot spam protection is built in. Budget ranges are in PHP (₱) —
+instead of sending. Honeypot spam protection is built in. Budget ranges are in PHP (₱) -
 edit the `BUDGETS` array in `components/sections/contact.tsx` to change the values.
 
 | Item              | Status | Notes                                                  |
@@ -127,7 +127,7 @@ published: true         # false = hidden in prod, visible in dev
 
 - Reading time is auto-calculated; code blocks get syntax highlighting (light/dark).
 - Two **starter posts** are included (`welcome.mdx`, `scroll-reveal-without-a-library.mdx`)
-  — edit or replace them with your own writing.
+  - edit or replace them with your own writing.
 
 | Item          | Status | Notes                                             |
 | ------------- | ------ | ------------------------------------------------- |
@@ -145,7 +145,7 @@ published: true         # false = hidden in prod, visible in dev
 - **Dependencies: 0 known vulnerabilities** (`yarn audit`) after an aggressive transitive
   cleanup (brace-expansion, minimatch, picomatch, flatted, sharp, postcss via `resolutions`).
 
-**Get the real scores — run against the DEPLOYED site (not localhost):**
+**Get the real scores - run against the DEPLOYED site (not localhost):**
 
 1. Open the production URL in Chrome (Incognito).
 2. DevTools → **Lighthouse** → run **Mobile** and **Desktop**.

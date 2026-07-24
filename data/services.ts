@@ -1,5 +1,5 @@
 /**
- * Services shown in the Services section. Edit copy here freely — the
+ * Services shown in the Services section. Edit copy here freely - the
  * component maps `icon` to a lucide icon, so no layout changes are needed.
  */
 
@@ -19,7 +19,7 @@ export const services: Service[] = [
   {
     title: "Full-stack web apps",
     description:
-      "I design, build, and ship complete web applications end to end — so you get one person who owns the whole product.",
+      "I design, build, and ship complete web applications end to end - so you get one person who owns the whole product.",
     points: [
       "Auth, database, and dashboards wired together",
       "Built to scale as your users grow",
@@ -30,7 +30,7 @@ export const services: Service[] = [
   {
     title: "SaaS & MVPs for startups",
     description:
-      "Turn your concept into a working product you can put in front of real users — fast, without cutting corners on quality.",
+      "Turn your concept into a working product you can put in front of real users - fast, without cutting corners on quality.",
     points: [
       "Ship a focused first version quickly",
       "A clean codebase you can build on",

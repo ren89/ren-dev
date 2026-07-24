@@ -17,7 +17,7 @@ const PROJECT_TYPES = [
   "Something else",
 ];
 
-// PHP ranges — edit freely in this array.
+// PHP ranges - edit freely in this array.
 const BUDGETS = [
   "< ₱50k",
   "₱50k – ₱150k",
@@ -57,7 +57,7 @@ export function Contact() {
       next.email = "Please enter a valid email address.";
     if (!message) next.message = "Please enter a message.";
     else if (message.length < 10)
-      next.message = "A little more detail helps — at least 10 characters.";
+      next.message = "A little more detail helps - at least 10 characters.";
     return next;
   }
 
@@ -91,7 +91,7 @@ export function Contact() {
         body: new FormData(form),
       });
       if (res.ok) {
-        // Conversion event — no PII, just which service/budget was picked.
+        // Conversion event - no PII, just which service/budget was picked.
         const projectType =
           (form.elements.namedItem("projectType") as HTMLSelectElement)
             ?.value || "unspecified";
@@ -136,7 +136,7 @@ export function Contact() {
           </h2>
           <p className="mt-4 text-muted-foreground">
             Tell me a little about your project and I&apos;ll get back to you.
-            Not sure exactly what you need yet? Reach out anyway — happy to help
+            Not sure exactly what you need yet? Reach out anyway - happy to help
             you figure it out.
           </p>
 
@@ -148,7 +148,7 @@ export function Contact() {
               href={`mailto:${SITE.email}`}
               className="mt-3 inline-flex items-center gap-2 text-sm font-medium text-foreground transition-colors hover:text-brand"
             >
-              <Mail className="h-4 w-4" aria-hidden="true" />
+              <Mail className="size-4" aria-hidden="true" />
               {SITE.email}
             </a>
           </div>
@@ -160,7 +160,7 @@ export function Contact() {
             <SuccessPanel onReset={() => setStatus("idle")} />
           ) : (
             <form onSubmit={handleSubmit} noValidate className="space-y-5">
-              {/* Honeypot — hidden from users, catches bots */}
+              {/* Honeypot - hidden from users, catches bots */}
               <div className="absolute left-[-9999px]" aria-hidden="true">
                 <label>
                   Leave this field empty
@@ -269,7 +269,7 @@ export function Contact() {
                   className="flex items-start gap-2 rounded-lg border border-destructive/40 bg-destructive/10 px-3.5 py-3 text-sm text-destructive"
                 >
                   <AlertCircle
-                    className="mt-0.5 h-4 w-4 shrink-0"
+                    className="mt-0.5 size-4 shrink-0"
                     aria-hidden="true"
                   />
                   {errorMsg}
@@ -286,7 +286,7 @@ export function Contact() {
                 ) : (
                   <>
                     Send message
-                    <Send className="h-4 w-4" aria-hidden="true" />
+                    <Send className="size-4" aria-hidden="true" />
                   </>
                 )}
               </button>
@@ -342,9 +342,9 @@ function SuccessPanel({ onReset }: { onReset: () => void }) {
       aria-live="polite"
       className="flex h-full flex-col items-start justify-center rounded-2xl border border-brand/30 bg-accent/40 p-8"
     >
-      <CheckCircle2 className="h-10 w-10 text-brand" aria-hidden="true" />
+      <CheckCircle2 className="size-10 text-brand" aria-hidden="true" />
       <h3 className="mt-4 font-display text-2xl font-semibold tracking-tight">
-        Thanks — message sent!
+        Thanks - message sent!
       </h3>
       <p className="mt-2 text-muted-foreground">
         I&apos;ll get back to you as soon as I can, usually within a day or two.

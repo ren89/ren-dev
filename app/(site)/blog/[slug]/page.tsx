@@ -22,9 +22,9 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { slug } = await params;
   const post = getPostBySlug(slug);
-  if (!post) return { title: "Post not found — Ren Avellano" };
+  if (!post) return { title: "Post not found - Ren Avellano" };
   return {
-    title: `${post.title} — Ren Avellano`,
+    title: `${post.title} - Ren Avellano`,
     description: post.description,
     alternates: { canonical: `/blog/${post.slug}` },
     openGraph: {
@@ -88,7 +88,7 @@ export default async function BlogPostPage({
         href="/blog"
         className="inline-flex items-center gap-2 text-sm text-muted-foreground transition-colors hover:text-foreground"
       >
-        <ArrowLeft className="h-4 w-4" />
+        <ArrowLeft className="size-4" />
         Back to blog
       </Link>
 

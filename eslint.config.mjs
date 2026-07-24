@@ -1,6 +1,6 @@
 import next from "eslint-config-next";
 
-/** Flat config — eslint-config-next ships a native flat array in Next 15.3+. */
+/** Flat config - eslint-config-next ships a native flat array in Next 15.3+. */
 const eslintConfig = [
   ...next,
   {
