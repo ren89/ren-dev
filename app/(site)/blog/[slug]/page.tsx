@@ -9,6 +9,7 @@ import rehypePrettyCode, { type Options } from "rehype-pretty-code";
 import { getAllPosts, getPostBySlug } from "@/lib/blog";
 import { SITE } from "@/lib/site";
 import { TrackCta } from "@/components/analytics/track-cta";
+import { ReadingProgress } from "@/components/ui/reading-progress";
 
 export function generateStaticParams() {
   return getAllPosts().map((post) => ({ slug: post.slug }));
@@ -78,6 +79,7 @@ export default async function BlogPostPage({
 
   return (
     <article className="container-page py-16 sm:py-24">
+      <ReadingProgress />
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(articleLd) }}
