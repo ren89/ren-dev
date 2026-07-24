@@ -40,7 +40,9 @@ function parseFile(slug: string): Post {
     description: data.description ?? "",
     date: data.date ? String(data.date) : "",
     tags: Array.isArray(data.tags) ? data.tags : [],
-    published: data.published ?? false,
+    // Honor either `published: true` or the `draft` convention. A post is
+    // published unless explicitly drafted / unpublished.
+    published: data.published ?? data.draft !== true,
     cover: data.cover,
     readingTime: readingTime(content),
     content,

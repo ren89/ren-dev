@@ -1,0 +1,44 @@
+---
+title: "What I Learned From My First Real Business Client"
+description: "Building a phased memorial services platform for EternalHomes taught me as much about communication and trust as it did about code."
+date: "2026-07-24"
+tags: ["projects", "client-work", "web-app", "lessons"]
+author: "Ren"
+draft: false
+---
+
+EternalHomes was my first real business client, and I still remember how different it felt to build for a company that was paying me properly to solve a real problem. They offer memorial and funeral services, and they came to me with a vision that was honestly a little intimidating at first because of how big it was.
+
+## A big vision, built in phases
+
+Their idea was not just a website. They wanted a full platform with three kinds of people using it. Regular users who avail of a plan or service, agents who sell those plans and earn commission, and an admin layer on top to oversee everything. Users would track their payments and policy details, agents would track their commissions, and admin would keep watch over all of it.
+
+That is a lot of system, so the first thing I did was slow us down and break it into phases. You cannot build all of that at once and expect it to be stable, and trying to would have overwhelmed both of us. We agreed to ship it in stages, prove each piece works, then move forward.
+
+Right now we are in phase one, and it already does a lot. Anyone can visit the site without logging in and explore the plans to find the one that suits them best. When someone applies, admin can review, approve, or reject the application. Agents exist in the system too, though for now a user simply selects who their agent is when they apply, and admin can see that connection. Full agent accounts come later. Starting focused like this meant we shipped something solid instead of something half-finished in every direction.
+
+## The problem they actually had
+
+Before this, EternalHomes had almost no real online presence. They had a website at some point, but no accounts, no way for a customer to log in and see their own information. A lot of their work happened manually.
+
+The biggest pain was payments. To track them, they were jumping between different apps, checking a bank app here, an email there, piecing it together by hand. It was slow and easy to lose track of. So one of the most satisfying wins was putting all of that onto one screen. Now a user can open their payment history and see everything in one place, and admin can too.
+
+I also made the whole document process easier. Users can upload the documents their application needs, and admin reviews them. It works the other way as well. Admin can upload documents back to the user, like policy details and confirmations, which the user can then download from their own side. What used to be scattered became a clear back and forth in one place.
+
+## The tricky part I am proud of
+
+The payment feature is the piece I am proudest of solving, because it was harder than it looks.
+
+EternalHomes is a startup, and they wanted to avoid the fees that come with payment processors like Stripe, at least for now. So instead of processing payments in the app, our approach was simple on the surface. A user enters the amount they paid and uploads a screenshot as proof.
+
+Simple to describe, complicated to build well, because people make mistakes. Someone might pay too much, or too little, or not actually send anything and just submit the form anyway. I had to design for all of those cases. So admin still reviews every payment, and can approve it, make corrections, or flag it when something does not add up. It turned into a smooth, forgiving process that catches human error instead of breaking on it, and it let them skip processor fees for now. We can always add a proper processor later when it makes sense.
+
+## The lesson that stuck with me
+
+Here is the thing I did not expect. The biggest lesson from this project was not technical. It was about communication.
+
+Working with a business is different. You have to be genuinely professional, clear, and reliable in a way that raises your own standard. And you have to deliver, because they are trusting you and paying you to. That responsibility changed how I show up.
+
+It mattered even more because of what they went through before me. Their previous developer had gone quiet on them, leaving them unable to even get answers about whether accounts were possible. They had been ghosted and struggled to reach anyone. So beyond the features, a big part of the value I gave them was simply being present, responsive, and someone they could count on.
+
+They are really happy with where things are, and they have told me even the landing pages are a big step up from what they had before. And we are just getting started, since there are more phases still ahead.
