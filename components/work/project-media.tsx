@@ -38,7 +38,7 @@ export function ProjectMedia({
         className,
       )}
     >
-      <div className="absolute inset-0 bg-grid opacity-40 [mask-image:radial-gradient(ellipse_at_center,black,transparent_75%)]" />
+      <div className="absolute inset-0 bg-grid opacity-40 mask-[radial-gradient(ellipse_at_center,black,transparent_75%)]" />
       <span className="relative font-display text-6xl font-bold text-gradient">
         {project.name.charAt(0)}
       </span>

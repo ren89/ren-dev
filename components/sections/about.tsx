@@ -85,7 +85,7 @@ function Headshot() {
   return (
     <div className="relative aspect-square w-full max-w-[300px] overflow-hidden rounded-2xl border border-border">
       <div className="flex size-full items-center justify-center bg-linear-to-br from-brand/20 via-background to-brand-2/20">
-        <div className="absolute inset-0 bg-grid opacity-40 [mask-image:radial-gradient(ellipse_at_center,black,transparent_75%)]" />
+        <div className="absolute inset-0 bg-grid opacity-40 mask-[radial-gradient(ellipse_at_center,black,transparent_75%)]" />
         <span className="relative font-display text-7xl font-bold text-gradient">
           RA
         </span>

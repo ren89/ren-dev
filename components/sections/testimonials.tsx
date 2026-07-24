@@ -50,7 +50,7 @@ export function Testimonials() {
                     height={c.height ?? 120}
                     // Monochrome mark that adapts to the theme: dark logo in
                     // light mode, white logo in dark mode. Muted until hover.
-                    className="h-10 w-auto object-contain opacity-60 transition-opacity duration-300 [filter:brightness(0)] group-hover:opacity-100 dark:[filter:brightness(0)_invert(1)] sm:h-12"
+                    className="h-10 w-auto object-contain opacity-60 transition-opacity duration-300 filter-[brightness(0)] group-hover:opacity-100 dark:filter-[brightness(0)_invert(1)] sm:h-12"
                   />
                 ) : (
                   <span className="font-display text-lg font-semibold tracking-tight text-muted-foreground transition-colors group-hover:text-foreground">

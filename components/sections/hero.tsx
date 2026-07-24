@@ -69,10 +69,10 @@ function HeroAurora() {
   return (
     <div
       aria-hidden="true"
-      className="pointer-events-none absolute inset-0 -z-10 [mask-image:linear-gradient(to_bottom,black_50%,transparent_92%)]"
+      className="pointer-events-none absolute inset-0 -z-10 mask-[linear-gradient(to_bottom,black_50%,transparent_92%)]"
     >
       {/* Faint grid, masked to fade at the edges */}
-      <div className="absolute inset-0 bg-grid opacity-[0.5] [mask-image:radial-gradient(ellipse_at_center,black,transparent_75%)]" />
+      <div className="absolute inset-0 bg-grid opacity-[0.5] mask-[radial-gradient(ellipse_at_center,black,transparent_75%)]" />
 
       {/* Drifting glow blobs */}
       <div className="absolute inset-0 overflow-hidden">
