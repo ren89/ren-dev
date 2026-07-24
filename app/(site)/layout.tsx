@@ -3,6 +3,8 @@ import { ReactNode } from "react";
 import { SiteNav } from "@/components/layout/site-nav";
 import { SiteFooter } from "@/components/layout/site-footer";
 import { FloatingCta } from "@/components/layout/floating-cta";
+import { CommandPalette } from "@/components/command/command-palette";
+import { getAllPosts } from "@/lib/blog";
 
 /**
  * Layout for the portfolio site (home + case studies).
@@ -10,6 +12,8 @@ import { FloatingCta } from "@/components/layout/floating-cta";
  * standalone /codeExercise demos) intentionally render without them.
  */
 export default function SiteLayout({ children }: { children: ReactNode }) {
+  const posts = getAllPosts().map((p) => ({ slug: p.slug, title: p.title }));
+
   return (
     <>
       <a
@@ -22,6 +26,7 @@ export default function SiteLayout({ children }: { children: ReactNode }) {
       {children}
       <SiteFooter />
       <FloatingCta />
+      <CommandPalette posts={posts} />
     </>
   );
 }

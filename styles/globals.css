@@ -212,3 +212,30 @@
 .prose [data-rehype-pretty-code-title] + pre {
   border-radius: 0 0 0.75rem 0.75rem;
 }
+
+/*
+ * COMMAND PALETTE (cmdk) — structural bits; visuals via Tailwind on the JSX.
+ */
+[cmdk-overlay] {
+  position: fixed;
+  inset: 0;
+  z-index: 60;
+  background: hsl(var(--background) / 0.7);
+  backdrop-filter: blur(4px);
+}
+[cmdk-dialog] {
+  position: fixed;
+  z-index: 70;
+  top: 14vh;
+  left: 50%;
+  transform: translateX(-50%);
+  width: min(92vw, 640px);
+}
+[cmdk-group-heading] {
+  padding: 0.5rem 0.5rem 0.35rem;
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: hsl(var(--muted-foreground));
+}

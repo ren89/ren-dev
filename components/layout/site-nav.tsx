@@ -4,11 +4,12 @@ import { forwardRef, useCallback, useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { track } from "@vercel/analytics";
-import { Menu, X } from "lucide-react";
+import { Menu, Search, X } from "lucide-react";
 
 import { CTA, NAV_LINKS, SECTION_IDS, SITE, type NavLink } from "@/lib/site";
 import { useActiveSection } from "@/lib/use-active-section";
 import { ThemeToggle } from "@/components/theme/theme-toggle";
+import { openCommandPalette } from "@/components/command/command-palette";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 
@@ -48,6 +49,11 @@ export function SiteNav() {
   const ctaHref = isHome ? CTA.href : `/${CTA.href}`;
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const [isMac, setIsMac] = useState(false);
+
+  useEffect(() => {
+    setIsMac(/Mac|iPhone|iPad|iPod/.test(navigator.platform || navigator.userAgent));
+  }, []);
 
   const panelRef = useRef<HTMLDivElement>(null);
   const toggleRef = useRef<HTMLButtonElement>(null);
@@ -145,6 +151,15 @@ export function SiteNav() {
 
         {/* Desktop actions */}
         <div className="hidden items-center gap-2 md:flex">
+          <button
+            type="button"
+            onClick={openCommandPalette}
+            aria-label="Open command menu"
+            className="hidden items-center gap-2 rounded-full border border-input px-3 py-1.5 text-xs text-muted-foreground transition-colors hover:text-foreground lg:inline-flex"
+          >
+            <Search className="h-3.5 w-3.5" aria-hidden="true" />
+            <kbd className="font-mono">{isMac ? "⌘K" : "Ctrl K"}</kbd>
+          </button>
           <ThemeToggle />
           <Button asChild size="sm" className="rounded-full">
             <SmartLink
@@ -158,6 +173,16 @@ export function SiteNav() {
 
         {/* Mobile actions */}
         <div className="flex items-center gap-2 md:hidden">
+          <Button
+            type="button"
+            variant="outline"
+            size="icon"
+            className="rounded-full"
+            aria-label="Open command menu"
+            onClick={openCommandPalette}
+          >
+            <Search className="h-5 w-5" aria-hidden="true" />
+          </Button>
           <ThemeToggle />
           <Button
             ref={toggleRef}
