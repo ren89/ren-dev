@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, type FormEvent } from "react";
+import Link from "next/link";
 import { track } from "@vercel/analytics";
 import { Mail, Send, CheckCircle2, AlertCircle } from "lucide-react";
 
@@ -290,6 +291,15 @@ export function Contact() {
                   </>
                 )}
               </button>
+
+              <p className="text-xs text-muted-foreground">
+                By submitting, you agree to how your details are handled - see
+                the{" "}
+                <Link href="/privacy" className="underline hover:text-foreground">
+                  privacy policy
+                </Link>
+                .
+              </p>
             </form>
           )}
         </div>

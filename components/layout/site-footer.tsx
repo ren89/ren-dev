@@ -100,7 +100,15 @@ export function SiteFooter() {
           <p>
             © {year} {SITE.fullName}. All rights reserved.
           </p>
-          <p className="font-mono">Built with Next.js &amp; Tailwind CSS</p>
+          <div className="flex items-center gap-4">
+            <Link
+              href="/privacy"
+              className="transition-colors hover:text-foreground"
+            >
+              Privacy
+            </Link>
+            <span className="font-mono">Built with Next.js &amp; Tailwind CSS</span>
+          </div>
         </div>
       </div>
     </footer>
