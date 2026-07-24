@@ -2,11 +2,13 @@ import { Hero } from "@/components/sections/hero";
 import { Work } from "@/components/sections/work";
 import { Playground } from "@/components/sections/playground";
 import { Services } from "@/components/sections/services";
+import { About } from "@/components/sections/about";
+import { Process } from "@/components/sections/process";
+import { Testimonials } from "@/components/sections/testimonials";
 
 /**
  * Single-page portfolio.
- * Phases 3–4 add the hero (#home), Work (#work), and Playground. Remaining
- * sections are still PLACEHOLDERS, filled in by later phases.
+ * The Contact section (#contact) is the last remaining placeholder.
  */
 export default function Home() {
   return (
@@ -19,15 +21,15 @@ export default function Home() {
 
       <Services />
 
-      <PlaceholderSection
-        id="about"
-        eyebrow="04 · About"
-        title="A bit about me"
-        note="About content arrives in a later phase."
-      />
+      <About />
+
+      <Process />
+
+      <Testimonials />
+
       <PlaceholderSection
         id="contact"
-        eyebrow="05 · Contact"
+        eyebrow="07 · Contact"
         title="Let's build something"
         note="Contact form arrives in a later phase."
       />

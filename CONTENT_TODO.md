@@ -15,7 +15,7 @@ Legend: ⬜ needed · 🟡 placeholder in place · ✅ provided
 | Full name | ✅ | `app/layout.tsx` (metadata) | "Ren Avellano" |
 | Role / positioning | ✅ | metadata + hero (later) | "Full-stack developer, mainly web" |
 | Short tagline (1 line) | ⬜ | Hero section (Phase 2) | e.g. "I build fast, modern web apps end to end." |
-| About / bio paragraph | ⬜ | About section (later phase) | 2–4 sentences, first person |
+| About / bio paragraph | 🟡 | `components/sections/about.tsx` | DRAFT written for you (6+ yrs, loves building) — verify/edit |
 | Location | 🟡 | metadata | Currently "Philippines" — confirm/refine |
 | Contact email | ✅ | `lib/site.ts` → footer | `ren.avellano@gmail.com` |
 | GitHub | ✅ | `lib/site.ts` → nav/footer | https://github.com/ren89 |
@@ -25,7 +25,7 @@ Legend: ⬜ needed · 🟡 placeholder in place · ✅ provided
 
 | Item | Status | Where to put the file | Notes |
 |---|---|---|---|
-| Headshot / photo | ⬜ | `public/images/me/headshot.{jpg,webp}` | Square, ≥800px. Optional but recommended |
+| Headshot / photo | ⬜ | `public/images/me/headshot.{jpg,webp}` | Square, ≥800px. Placeholder "RA" tile shown in About until added |
 | Personal logo / mark | ⬜ | `public/logo.svg` | Optional; text wordmark used until provided |
 | Favicon / app icon | ⬜ | `app/icon.png` (Next.js convention) | 512×512 PNG |
 | OG / social share image | ⬜ | `public/og.png` | 1200×630 for link previews |
@@ -56,11 +56,18 @@ Compact cards in **`data/projects.ts`** → `playground` array (no case-study pa
 | Property Listing, Campus Entry Monitor | 🟡 archived | Vercel deploys are down; shown as Archived. Redeploy → set `status:"live"` + `href` |
 | Shuffled, Buildustry, E-Vill, frntlne V2, PicMe, Trashure, Portfolio v1 | 🟡 archived | Old/retired; PicMe & Trashure use placeholder (no images) |
 
-## Testimonials (optional)
+## Testimonials & client logos
 
-| Item | Status | Where it will live | Notes |
+Data in **`data/testimonials.ts`**. Quotes are **placeholders** with fake attribution
+(clearly labelled "Placeholder" in the UI) — never ship fabricated quotes as real. Set
+`SHOW_TESTIMONIALS = false` to hide the quotes grid until you have real ones.
+
+| Item | Status | Where to put it | Notes |
 |---|---|---|---|
-| Testimonials/quotes | ⬜ | TBD (later phase) | Name, role, company, quote, optional avatar |
+| Real testimonial — Eternal Homes | ⬜ | `data/testimonials.ts` | You're collecting this; replace a placeholder, drop `placeholder: true` |
+| Other real testimonials (student clients) | ⬜ | `data/testimonials.ts` | Replace remaining placeholders as collected |
+| Client logo — Eternal Homes | ✅ | `public/images/eternalHomes/logo.png` | Wired into `clientLogos` |
+| Client logo — frntlne | ✅ | `public/images/frntlne/logo.png` | Wired into `clientLogos` |
 
 ---
 
