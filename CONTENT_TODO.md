@@ -17,8 +17,9 @@ Legend: ⬜ needed · 🟡 placeholder in place · ✅ provided
 | Short tagline (1 line) | ⬜ | Hero section (Phase 2) | e.g. "I build fast, modern web apps end to end." |
 | About / bio paragraph | ⬜ | About section (later phase) | 2–4 sentences, first person |
 | Location | 🟡 | metadata | Currently "Philippines" — confirm/refine |
-| Contact email | 🟡 | Contact section (later) | Using `ren@frntlne.com` — confirm public-facing address |
-| Social links | ⬜ | Header/footer (later) | GitHub, LinkedIn, X, etc. — send URLs |
+| Contact email | ✅ | `lib/site.ts` → footer | `ren.avellano@gmail.com` |
+| GitHub | ✅ | `lib/site.ts` → nav/footer | https://github.com/ren89 |
+| LinkedIn / X / other socials | ⬜ | `lib/site.ts` (`linkedin`, `twitter`) → footer | Add URLs here and they'll appear automatically |
 
 ## Visual assets
 

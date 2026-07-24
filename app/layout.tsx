@@ -2,6 +2,8 @@ import { FC, ReactNode } from "react";
 
 import { fontDisplay, fontMono, fontSans } from "@/lib/fonts";
 import { ThemeProvider } from "@/components/theme/theme-provider";
+import { SiteNav } from "@/components/layout/site-nav";
+import { SiteFooter } from "@/components/layout/site-footer";
 import "../styles/globals.css";
 
 export const metadata = {
@@ -44,7 +46,17 @@ const RootLayout: FC<{ children: ReactNode }> = ({ children }) => {
         <script dangerouslySetInnerHTML={{ __html: themeScript }} />
       </head>
       <body className="min-h-screen bg-background font-sans text-foreground">
-        <ThemeProvider>{children}</ThemeProvider>
+        <ThemeProvider>
+          <a
+            href="#home"
+            className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[60] focus:rounded-md focus:bg-primary focus:px-4 focus:py-2 focus:text-primary-foreground"
+          >
+            Skip to content
+          </a>
+          <SiteNav />
+          {children}
+          <SiteFooter />
+        </ThemeProvider>
       </body>
     </html>
   );
