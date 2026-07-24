@@ -1,19 +1,19 @@
 import Image from "next/image";
 
 import { cn } from "@/lib/utils";
-import type { Project } from "@/data/projects";
 
 /**
  * Project cover imagery. Uses next/image when a cover exists; otherwise
  * renders a branded gradient tile with the project's initial so cards and
  * case studies look intentional before real screenshots are added.
+ * Accepts any object with a name and optional cover (Project or Playground).
  */
 export function ProjectMedia({
   project,
   className,
   priority,
 }: {
-  project: Project;
+  project: { name: string; cover?: string };
   className?: string;
   priority?: boolean;
 }) {

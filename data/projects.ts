@@ -204,3 +204,104 @@ export function getProjectSlugs(): string[] {
 export function getProjectBySlug(slug: string): Project | undefined {
   return projects.find((p) => p.slug === slug);
 }
+
+/* ─────────────────────────────────────────────────────────────
+ * PLAYGROUND — smaller / older projects and experiments.
+ * Compact cards only (no case-study pages). "live" items link to a
+ * working demo; "archived" items are no longer deployed (no dead links).
+ * ───────────────────────────────────────────────────────────── */
+
+export type PlaygroundStatus = "live" | "archived";
+
+export type PlaygroundProject = {
+  name: string;
+  tagline: string;
+  tech: string[];
+  status: PlaygroundStatus;
+  /** Demo URL (internal route or external). Omitted when archived. */
+  href?: string;
+  /** Cover image under /public; falls back to a branded tile. */
+  cover?: string;
+};
+
+export const playground: PlaygroundProject[] = [
+  {
+    name: "Tic Tac Toe",
+    tagline: "A classic player-vs-player Tic Tac Toe game.",
+    tech: ["Next.js", "TypeScript"],
+    status: "live",
+    href: "/codeExercise/tictactoe",
+    cover: "/images/tictactoe/tictactoe.png",
+  },
+  {
+    name: "Todo List",
+    tagline: "A small todo app built to practice clean code and custom hooks.",
+    tech: ["Next.js", "TypeScript"],
+    status: "live",
+    href: "/codeExercise/todo",
+    cover: "/images/todo/todo.png",
+  },
+  {
+    name: "Property Listing App",
+    tagline: "A property listing platform with search, filters, and admin CRUD.",
+    tech: ["Next.js", "TypeScript", "Supabase", "Tailwind CSS"],
+    status: "archived",
+    cover: "/images/propertyListing/home.jpg",
+  },
+  {
+    name: "Campus Entry Monitor",
+    tagline: "RFID campus-entry tracking with real-time guardian alerts.",
+    tech: ["Next.js", "Supabase", "Twilio", "RFID"],
+    status: "archived",
+    cover: "/images/campusEntryMonitor/home.jpg",
+  },
+  {
+    name: "Shuffled",
+    tagline: "A live-selling e-commerce platform for pre-loved clothing.",
+    tech: ["React", "Express", "MongoDB", "Node.js"],
+    status: "archived",
+    cover: "/images/shuffled/homeScreen.png",
+  },
+  {
+    name: "Buildustry",
+    tagline:
+      "A platform connecting clients, contractors, and laborers on construction projects.",
+    tech: ["Next.js", "Prisma", "SQLite"],
+    status: "archived",
+    cover: "/images/buildustry/dashboard.png",
+  },
+  {
+    name: "E-Vill",
+    tagline: "An online barangay portal for document requests and complaints.",
+    tech: ["Node.js", "Firebase", "HTML", "CSS"],
+    status: "archived",
+    cover: "/images/eVill/barangayHome.png",
+  },
+  {
+    name: "frntlne V2",
+    tagline: "An earlier version of the frntlne learning platform.",
+    tech: ["Python", "Flutter", "AWS"],
+    status: "archived",
+    cover: "/images/frntlne/frntlnev2.png",
+  },
+  {
+    name: "PicMe",
+    tagline: "A marketplace connecting people with photographers and models.",
+    tech: ["Flutter", "Firebase"],
+    status: "archived",
+  },
+  {
+    name: "Trashure",
+    tagline:
+      "A mobile app linking junk sellers with junkyards, with route optimization.",
+    tech: ["Flutter", "Firebase", "Google Maps"],
+    status: "archived",
+  },
+  {
+    name: "Portfolio (v1)",
+    tagline: "An experimental portfolio exploring MDX, caching, and theming.",
+    tech: ["Next.js", "MDX", "Tailwind CSS"],
+    status: "archived",
+    cover: "/images/blog/blog.png",
+  },
+];

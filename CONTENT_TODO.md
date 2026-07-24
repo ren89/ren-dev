@@ -45,6 +45,17 @@ unused/legacy). Story prose has been reviewed and approved by Ren.
 | Eternal Homes screenshots | ⬜ | `public/images/eternal-homes/` | Then set `cover:` / `gallery:` |
 | frntlne screenshots | ⬜ | — | Intentionally none (legacy images retired; branded placeholder used) |
 
+### Playground (smaller / past projects)
+
+Compact cards in **`data/projects.ts`** → `playground` array (no case-study pages).
+`status: "live"` shows a demo link; `status: "archived"` = no link.
+
+| Item | Status | Notes |
+|---|---|---|
+| Tic Tac Toe, Todo | ✅ live | On-site demos (`/codeExercise/*`) |
+| Property Listing, Campus Entry Monitor | 🟡 archived | Vercel deploys are down; shown as Archived. Redeploy → set `status:"live"` + `href` |
+| Shuffled, Buildustry, E-Vill, frntlne V2, PicMe, Trashure, Portfolio v1 | 🟡 archived | Old/retired; PicMe & Trashure use placeholder (no images) |
+
 ## Testimonials (optional)
 
 | Item | Status | Where it will live | Notes |
