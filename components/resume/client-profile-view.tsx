@@ -117,6 +117,17 @@ export function ClientProfileView() {
           >
             {CTA.label}
           </TrackCta>
+          {SITE.booking && (
+            <TrackCta
+              href={SITE.booking}
+              source="book_call"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex h-11 items-center justify-center rounded-full border border-input px-6 text-sm font-medium transition-colors hover:bg-accent hover:text-accent-foreground"
+            >
+              Book a call
+            </TrackCta>
+          )}
           <a
             href={`mailto:${SITE.email}`}
             className="text-sm text-muted-foreground transition-colors hover:text-brand"

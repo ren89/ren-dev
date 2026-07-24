@@ -53,6 +53,9 @@ export const SITE = {
   url: (
     process.env.NEXT_PUBLIC_SITE_URL ?? "https://ren-dev-black.vercel.app"
   ).replace(/\/+$/, ""),
+  // Booking/scheduling link (e.g. Calendly). Empty = "Book a call" affordances
+  // stay hidden and flows fall back to the contact form / email.
+  booking: "",
   // Add when available (see CONTENT_TODO.md):
   linkedin: "",
   twitter: "",
