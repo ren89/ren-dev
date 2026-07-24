@@ -20,13 +20,11 @@ export default async function Image({
   const project = getProjectBySlug(slug);
 
   return new ImageResponse(
-    (
-      <OgCard
-        eyebrow={project ? `${project.context} · ${project.year}` : "Case study"}
-        title={project?.name ?? "Case study"}
-        subtitle={project?.tagline}
-      />
-    ),
+    <OgCard
+      eyebrow={project ? `${project.context} · ${project.year}` : "Case study"}
+      title={project?.name ?? "Case study"}
+      subtitle={project?.tagline}
+    />,
     { ...OG_SIZE },
   );
 }

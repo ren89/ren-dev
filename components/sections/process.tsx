@@ -51,7 +51,12 @@ export function Process() {
 
         <ol className="grid gap-y-10 md:grid-cols-5 md:gap-x-6">
           {STEPS.map((step, i) => (
-            <Reveal as="li" key={step.title} delayMs={i * 90} className="relative">
+            <Reveal
+              as="li"
+              key={step.title}
+              delayMs={i * 90}
+              className="relative"
+            >
               <div className="flex items-center gap-4 md:block">
                 <span className="relative z-10 flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-brand/40 bg-background font-mono text-sm font-semibold text-brand">
                   {i + 1}

@@ -41,9 +41,15 @@ export function Contact() {
 
   function validate(form: HTMLFormElement): Errors {
     const next: Errors = {};
-    const name = (form.elements.namedItem("name") as HTMLInputElement)?.value.trim();
-    const email = (form.elements.namedItem("email") as HTMLInputElement)?.value.trim();
-    const message = (form.elements.namedItem("message") as HTMLTextAreaElement)?.value.trim();
+    const name = (
+      form.elements.namedItem("name") as HTMLInputElement
+    )?.value.trim();
+    const email = (
+      form.elements.namedItem("email") as HTMLInputElement
+    )?.value.trim();
+    const message = (
+      form.elements.namedItem("message") as HTMLTextAreaElement
+    )?.value.trim();
 
     if (!name) next.name = "Please enter your name.";
     if (!email) next.email = "Please enter your email.";
@@ -87,8 +93,8 @@ export function Contact() {
       if (res.ok) {
         // Conversion event — no PII, just which service/budget was picked.
         const projectType =
-          (form.elements.namedItem("projectType") as HTMLSelectElement)?.value ||
-          "unspecified";
+          (form.elements.namedItem("projectType") as HTMLSelectElement)
+            ?.value || "unspecified";
         const budget =
           (form.elements.namedItem("budget") as HTMLSelectElement)?.value || "";
         track("contact_submitted", {
@@ -173,12 +179,7 @@ export function Contact() {
               />
 
               <div className="grid gap-5 sm:grid-cols-2">
-                <Field
-                  id="name"
-                  label="Name"
-                  required
-                  error={errors.name}
-                >
+                <Field id="name" label="Name" required error={errors.name}>
                   <input
                     id="name"
                     name="name"
@@ -243,14 +244,21 @@ export function Contact() {
                 </Field>
               </div>
 
-              <Field id="message" label="Message" required error={errors.message}>
+              <Field
+                id="message"
+                label="Message"
+                required
+                error={errors.message}
+              >
                 <textarea
                   id="message"
                   name="message"
                   rows={5}
                   placeholder="What are you building, and how can I help?"
                   aria-invalid={!!errors.message}
-                  aria-describedby={errors.message ? "message-error" : undefined}
+                  aria-describedby={
+                    errors.message ? "message-error" : undefined
+                  }
                   className={cn(fieldClass, "resize-y")}
                 />
               </Field>
@@ -260,7 +268,10 @@ export function Contact() {
                   role="alert"
                   className="flex items-start gap-2 rounded-lg border border-destructive/40 bg-destructive/10 px-3.5 py-3 text-sm text-destructive"
                 >
-                  <AlertCircle className="mt-0.5 h-4 w-4 shrink-0" aria-hidden="true" />
+                  <AlertCircle
+                    className="mt-0.5 h-4 w-4 shrink-0"
+                    aria-hidden="true"
+                  />
                   {errorMsg}
                 </p>
               )}

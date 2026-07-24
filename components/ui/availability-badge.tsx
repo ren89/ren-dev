@@ -35,7 +35,9 @@ export function AvailabilityBadge({ className }: { className?: string }) {
             )}
           />
         )}
-        <span className={cn("relative inline-flex h-2 w-2 rounded-full", s.dot)} />
+        <span
+          className={cn("relative inline-flex h-2 w-2 rounded-full", s.dot)}
+        />
       </span>
       {AVAILABILITY.label}
     </span>

@@ -20,13 +20,11 @@ export default async function Image({
   const post = getPostBySlug(slug);
 
   return new ImageResponse(
-    (
-      <OgCard
-        eyebrow="Blog"
-        title={post?.title ?? "Blog"}
-        subtitle={post?.description}
-      />
-    ),
+    <OgCard
+      eyebrow="Blog"
+      title={post?.title ?? "Blog"}
+      subtitle={post?.description}
+    />,
     { ...OG_SIZE },
   );
 }

@@ -4,11 +4,7 @@
  */
 
 export type ServiceIcon =
-  | "layers"
-  | "rocket"
-  | "dashboard"
-  | "template"
-  | "gauge";
+  "layers" | "rocket" | "dashboard" | "template" | "gauge";
 
 export type Service = {
   title: string;

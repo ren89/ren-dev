@@ -1,6 +1,10 @@
 "use client";
 
-import { forwardRef, type ComponentPropsWithoutRef, type MouseEvent } from "react";
+import {
+  forwardRef,
+  type ComponentPropsWithoutRef,
+  type MouseEvent,
+} from "react";
 import Link from "next/link";
 import { track } from "@vercel/analytics";
 

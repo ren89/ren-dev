@@ -37,8 +37,8 @@ export function Services() {
         </h2>
         <p className="mt-4 text-muted-foreground">
           Whether you&apos;re starting from scratch or improving something you
-          already have. Not sure which fits? Get a quote and we&apos;ll figure it
-          out together.
+          already have. Not sure which fits? Get a quote and we&apos;ll figure
+          it out together.
         </p>
       </Reveal>
 
@@ -65,7 +65,9 @@ function ServiceCard({ service }: { service: Service }) {
       <h3 className="mt-5 font-display text-xl font-semibold tracking-tight">
         {service.title}
       </h3>
-      <p className="mt-2 text-sm text-muted-foreground">{service.description}</p>
+      <p className="mt-2 text-sm text-muted-foreground">
+        {service.description}
+      </p>
 
       <ul className="mt-5 space-y-2.5">
         {service.points.map((point) => (

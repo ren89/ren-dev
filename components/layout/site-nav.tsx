@@ -52,7 +52,9 @@ export function SiteNav() {
   const [isMac, setIsMac] = useState(false);
 
   useEffect(() => {
-    setIsMac(/Mac|iPhone|iPad|iPod/.test(navigator.platform || navigator.userAgent));
+    setIsMac(
+      /Mac|iPhone|iPad|iPod/.test(navigator.platform || navigator.userAgent),
+    );
   }, []);
 
   const panelRef = useRef<HTMLDivElement>(null);
@@ -95,7 +97,7 @@ export function SiteNav() {
       if (e.key !== "Tab") return;
 
       const focusables = panelRef.current?.querySelectorAll<HTMLElement>(
-        'a[href], button:not([disabled])',
+        "a[href], button:not([disabled])",
       );
       if (!focusables || focusables.length === 0) return;
 
@@ -301,7 +303,9 @@ function NavItem({
       aria-current={active ? "true" : undefined}
       className={cn(
         "relative rounded-md px-3 py-2 text-sm font-medium transition-colors",
-        active ? "text-foreground" : "text-muted-foreground hover:text-foreground",
+        active
+          ? "text-foreground"
+          : "text-muted-foreground hover:text-foreground",
       )}
     >
       {link.label}

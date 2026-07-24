@@ -11,7 +11,12 @@ export type NavLink = {
 export const NAV_LINKS: NavLink[] = [
   { id: "home", label: "Home", href: "#home", type: "anchor" },
   { id: "work", label: "Work", href: "#work", type: "anchor" },
-  { id: "playground", label: "Playground", href: "#playground", type: "anchor" },
+  {
+    id: "playground",
+    label: "Playground",
+    href: "#playground",
+    type: "anchor",
+  },
   { id: "services", label: "Services", href: "#services", type: "anchor" },
   { id: "about", label: "About", href: "#about", type: "anchor" },
   { id: "blog", label: "Blog", href: "/blog", type: "route" },

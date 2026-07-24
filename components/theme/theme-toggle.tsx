@@ -21,14 +21,8 @@ export function ThemeToggle() {
     >
       {/* Cross-fade/rotate the two icons. Until mounted, render a stable
           placeholder so server and client markup match. */}
-      <Sun
-        className={cnIcon(mounted && !isDark)}
-        aria-hidden="true"
-      />
-      <Moon
-        className={cnIcon(mounted && isDark)}
-        aria-hidden="true"
-      />
+      <Sun className={cnIcon(mounted && !isDark)} aria-hidden="true" />
+      <Moon className={cnIcon(mounted && isDark)} aria-hidden="true" />
     </Button>
   );
 }
@@ -37,8 +31,6 @@ export function ThemeToggle() {
 function cnIcon(active: boolean) {
   return [
     "absolute h-[1.15rem] w-[1.15rem] transition-all duration-300",
-    active
-      ? "rotate-0 scale-100 opacity-100"
-      : "rotate-90 scale-0 opacity-0",
+    active ? "rotate-0 scale-100 opacity-100" : "rotate-90 scale-0 opacity-0",
   ].join(" ");
 }

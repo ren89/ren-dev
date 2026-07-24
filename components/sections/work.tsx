@@ -18,8 +18,9 @@ export function Work() {
           Selected work
         </h2>
         <p className="mt-4 text-muted-foreground">
-          A few products I&apos;ve built end to end — from data model and APIs to
-          the interface people actually use. Open a case study for the full story.
+          A few products I&apos;ve built end to end — from data model and APIs
+          to the interface people actually use. Open a case study for the full
+          story.
         </p>
       </Reveal>
 

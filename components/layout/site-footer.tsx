@@ -69,7 +69,10 @@ export function SiteFooter() {
                 >
                   <GithubIcon className="h-4 w-4" />
                   GitHub
-                  <ArrowUpRight className="h-3.5 w-3.5 opacity-0 transition-opacity group-hover:opacity-100" aria-hidden="true" />
+                  <ArrowUpRight
+                    className="h-3.5 w-3.5 opacity-0 transition-opacity group-hover:opacity-100"
+                    aria-hidden="true"
+                  />
                 </a>
               </li>
               <li>

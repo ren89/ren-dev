@@ -243,7 +243,8 @@ export const playground: PlaygroundProject[] = [
   },
   {
     name: "Property Listing App",
-    tagline: "A property listing platform with search, filters, and admin CRUD.",
+    tagline:
+      "A property listing platform with search, filters, and admin CRUD.",
     tech: ["Next.js", "TypeScript", "Supabase", "Tailwind CSS"],
     status: "archived",
     cover: "/images/propertyListing/home.jpg",

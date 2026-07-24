@@ -37,16 +37,16 @@ export function About() {
               turning ideas into real, working products. Honestly, I just love
               building — full web apps, internal systems, or the occasional
               weekend experiment. If it means taking something from a blank
-              screen to a thing people actually use, that&apos;s my favorite kind
-              of work.
+              screen to a thing people actually use, that&apos;s my favorite
+              kind of work.
             </p>
             <p>
-              I build products end to end, owning everything from the database to
-              the interface — including{" "}
+              I build products end to end, owning everything from the database
+              to the interface — including{" "}
               <span className="text-foreground">Vow Studio</span>, a self-serve
               wedding-website SaaS I started for my own wedding, and systems for
-              real businesses. If you&apos;re creating something, I&apos;d love to
-              help you build it.
+              real businesses. If you&apos;re creating something, I&apos;d love
+              to help you build it.
             </p>
           </div>
 
@@ -57,7 +57,9 @@ export function About() {
                 <dt className="font-display text-xl font-semibold tracking-tight sm:text-2xl">
                   {f.value}
                 </dt>
-                <dd className="mt-1 text-xs text-muted-foreground">{f.label}</dd>
+                <dd className="mt-1 text-xs text-muted-foreground">
+                  {f.label}
+                </dd>
               </div>
             ))}
           </dl>

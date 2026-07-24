@@ -16,7 +16,8 @@ export function PlaygroundCard({ project }: { project: PlaygroundProject }) {
     <article
       className={cn(
         "group relative flex flex-col overflow-hidden rounded-xl border border-border bg-card transition-all duration-300 focus-within:ring-2 focus-within:ring-ring focus-within:ring-offset-2 focus-within:ring-offset-background",
-        isLive && "hover:-translate-y-1 hover:border-brand/40 hover:shadow-lg hover:shadow-brand/5",
+        isLive &&
+          "hover:-translate-y-1 hover:border-brand/40 hover:shadow-lg hover:shadow-brand/5",
       )}
     >
       <div className="relative aspect-[16/10] overflow-hidden border-b border-border">
@@ -65,7 +66,9 @@ export function PlaygroundCard({ project }: { project: PlaygroundProject }) {
           )}
         </h3>
 
-        <p className="mt-1.5 text-sm text-muted-foreground">{project.tagline}</p>
+        <p className="mt-1.5 text-sm text-muted-foreground">
+          {project.tagline}
+        </p>
 
         <ul className="mt-4 flex flex-wrap gap-1.5">
           {tags.map((t) => (
