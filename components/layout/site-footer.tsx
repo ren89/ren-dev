@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { ArrowUpRight, Mail } from "lucide-react";
 
 import { NAV_LINKS, SITE } from "@/lib/site";
@@ -25,9 +26,9 @@ export function SiteFooter() {
         <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-[1.5fr_1fr_1fr]">
           {/* Brand + blurb */}
           <div className="space-y-3">
-            <a href="#home" className="font-mono text-sm font-medium">
+            <Link href="/" className="font-mono text-sm font-medium">
               ren<span className="text-brand">-</span>dev
-            </a>
+            </Link>
             <p className="max-w-xs text-sm text-muted-foreground">
               {SITE.role} building fast, modern web apps end to end. Open to
               freelance and full-time work.
@@ -42,12 +43,12 @@ export function SiteFooter() {
             <ul className="mt-4 space-y-2">
               {NAV_LINKS.map((link) => (
                 <li key={link.id}>
-                  <a
-                    href={link.href}
+                  <Link
+                    href={link.type === "route" ? link.href : `/${link.href}`}
                     className="text-sm text-muted-foreground transition-colors hover:text-foreground"
                   >
                     {link.label}
-                  </a>
+                  </Link>
                 </li>
               ))}
             </ul>

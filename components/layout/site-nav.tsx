@@ -1,16 +1,50 @@
 "use client";
 
-import { useCallback, useEffect, useRef, useState } from "react";
+import { forwardRef, useCallback, useEffect, useRef, useState } from "react";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { Menu, X } from "lucide-react";
 
-import { CTA, NAV_LINKS, SECTION_IDS, SITE } from "@/lib/site";
+import { CTA, NAV_LINKS, SECTION_IDS, SITE, type NavLink } from "@/lib/site";
 import { useActiveSection } from "@/lib/use-active-section";
 import { ThemeToggle } from "@/components/theme/theme-toggle";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 
+/** In-page anchors become absolute ("/#work") when away from the homepage. */
+function resolveHref(link: NavLink, isHome: boolean): string {
+  if (link.type === "route") return link.href;
+  return isHome ? link.href : `/${link.href}`;
+}
+
+function isLinkActive(
+  link: NavLink,
+  pathname: string,
+  activeSection: string,
+): boolean {
+  if (link.type === "route")
+    return pathname === link.href || pathname.startsWith(`${link.href}/`);
+  return pathname === "/" && activeSection === link.id;
+}
+
+/**
+ * Uses a plain <a> for same-page hash links (preserves native smooth-scroll)
+ * and next/link for real navigation ("/blog", "/#work" from a subpage).
+ * forwardRef so it can be a Radix Slot child (Button asChild).
+ */
+const SmartLink = forwardRef<
+  HTMLAnchorElement,
+  { href: string } & React.ComponentPropsWithoutRef<"a">
+>(function SmartLink({ href, ...props }, ref) {
+  if (href.startsWith("#")) return <a ref={ref} href={href} {...props} />;
+  return <Link ref={ref} href={href} {...props} />;
+});
+
 export function SiteNav() {
   const active = useActiveSection(SECTION_IDS);
+  const pathname = usePathname();
+  const isHome = pathname === "/";
+  const ctaHref = isHome ? CTA.href : `/${CTA.href}`;
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
 
@@ -87,19 +121,23 @@ export function SiteNav() {
         className="container-page flex h-16 items-center justify-between gap-4"
       >
         {/* Brand */}
-        <a
-          href="#home"
+        <Link
+          href="/"
           className="font-mono text-sm font-medium tracking-tight text-foreground"
           aria-label={`${SITE.name} — home`}
         >
           ren<span className="text-brand">-</span>dev
-        </a>
+        </Link>
 
         {/* Desktop links */}
         <ul className="hidden items-center gap-1 md:flex">
           {NAV_LINKS.map((link) => (
             <li key={link.id}>
-              <NavItem link={link} active={active === link.id} />
+              <NavItem
+                link={link}
+                href={resolveHref(link, isHome)}
+                active={isLinkActive(link, pathname, active)}
+              />
             </li>
           ))}
         </ul>
@@ -108,7 +146,7 @@ export function SiteNav() {
         <div className="hidden items-center gap-2 md:flex">
           <ThemeToggle />
           <Button asChild size="sm" className="rounded-full">
-            <a href={CTA.href}>{CTA.label}</a>
+            <SmartLink href={ctaHref}>{CTA.label}</SmartLink>
           </Button>
         </div>
 
@@ -178,29 +216,32 @@ export function SiteNav() {
           </div>
 
           <ul className="mt-4 flex flex-col gap-1">
-            {NAV_LINKS.map((link) => (
-              <li key={link.id}>
-                <a
-                  href={link.href}
-                  onClick={closeMenu}
-                  aria-current={active === link.id ? "true" : undefined}
-                  className={cn(
-                    "block rounded-lg px-3 py-3 font-display text-2xl font-semibold tracking-tight transition-colors",
-                    active === link.id
-                      ? "text-foreground"
-                      : "text-muted-foreground hover:text-foreground",
-                  )}
-                >
-                  {link.label}
-                </a>
-              </li>
-            ))}
+            {NAV_LINKS.map((link) => {
+              const linkActive = isLinkActive(link, pathname, active);
+              return (
+                <li key={link.id}>
+                  <SmartLink
+                    href={resolveHref(link, isHome)}
+                    onClick={closeMenu}
+                    aria-current={linkActive ? "true" : undefined}
+                    className={cn(
+                      "block rounded-lg px-3 py-3 font-display text-2xl font-semibold tracking-tight transition-colors",
+                      linkActive
+                        ? "text-foreground"
+                        : "text-muted-foreground hover:text-foreground",
+                    )}
+                  >
+                    {link.label}
+                  </SmartLink>
+                </li>
+              );
+            })}
           </ul>
 
           <Button asChild size="lg" className="mt-6 w-full rounded-full">
-            <a href={CTA.href} onClick={closeMenu}>
+            <Link href={ctaHref} onClick={closeMenu}>
               {CTA.label}
-            </a>
+            </Link>
           </Button>
         </div>
       </div>
@@ -208,10 +249,18 @@ export function SiteNav() {
   );
 }
 
-function NavItem({ link, active }: { link: (typeof NAV_LINKS)[number]; active: boolean }) {
+function NavItem({
+  link,
+  href,
+  active,
+}: {
+  link: NavLink;
+  href: string;
+  active: boolean;
+}) {
   return (
-    <a
-      href={link.href}
+    <SmartLink
+      href={href}
       aria-current={active ? "true" : undefined}
       className={cn(
         "relative rounded-md px-3 py-2 text-sm font-medium transition-colors",
@@ -227,6 +276,6 @@ function NavItem({ link, active }: { link: (typeof NAV_LINKS)[number]; active: b
           active ? "opacity-100" : "opacity-0",
         )}
       />
-    </a>
+    </SmartLink>
   );
 }

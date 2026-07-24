@@ -105,6 +105,29 @@ edit the `BUDGETS` array in `components/sections/contact.tsx` to change the valu
 | Formspree form ID | ⬜ | Add via `NEXT_PUBLIC_FORMSPREE_ID` (see above) |
 | Book-a-call link | ⬜ | Optional; none yet. Add later next to the email option |
 
+## Blog (MDX)
+
+Posts are MDX files in **`content/blog/*.mdx`**. Add a post = drop in a new file; no
+code changes. Frontmatter:
+
+```
+---
+title: "..."
+description: "..."      # shown on cards + used for SEO
+date: "2026-07-22"      # YYYY-MM-DD, controls sort order
+tags: ["Next.js", "..."]
+published: true         # false = hidden in prod, visible in dev
+---
+```
+
+- Reading time is auto-calculated; code blocks get syntax highlighting (light/dark).
+- Two **starter posts** are included (`welcome.mdx`, `scroll-reveal-without-a-library.mdx`)
+  — edit or replace them with your own writing.
+
+| Item | Status | Notes |
+|---|---|---|
+| Starter posts | 🟡 | Replace/expand with real posts in `content/blog/` |
+
 ### How to give me content
 
 - **Text:** paste it directly in chat, or add it to the relevant file and tell me.
