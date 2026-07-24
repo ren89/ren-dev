@@ -45,7 +45,7 @@ export function Hero() {
             </a>
             <a
               href="#work"
-              className="inline-flex h-12 items-center justify-center rounded-full border border-input bg-background/50 px-7 text-sm font-medium backdrop-blur transition-colors hover:bg-accent hover:text-accent-foreground"
+              className="inline-flex h-12 items-center justify-center rounded-full border border-input bg-background/50 px-7 text-sm font-medium backdrop-blur-sm transition-colors hover:bg-accent hover:text-accent-foreground"
             >
               View my work
             </a>
@@ -63,7 +63,10 @@ export function Hero() {
  */
 function HeroAurora() {
   return (
-    <div aria-hidden="true" className="pointer-events-none absolute inset-0 -z-10">
+    <div
+      aria-hidden="true"
+      className="pointer-events-none absolute inset-0 -z-10 [mask-image:linear-gradient(to_bottom,black_50%,transparent_92%)]"
+    >
       {/* Faint grid, masked to fade at the edges */}
       <div className="absolute inset-0 bg-grid opacity-[0.5] [mask-image:radial-gradient(ellipse_at_center,black,transparent_75%)]" />
 

@@ -31,12 +31,19 @@ Legend: ⬜ needed · 🟡 placeholder in place · ✅ provided
 | OG / social share image | ⬜ | `public/og.png` | 1200×630 for link previews |
 | Résumé / CV | ⬜ | `public/ren-avellano-cv.pdf` | Linked from header/contact later |
 
-## Projects
+## Projects (Work section)
 
-| Item | Status | Where it lives | Notes |
+Featured case studies live in **`data/projects.ts`** (the old `data/data.ts` is now
+unused/legacy). Story prose has been reviewed and approved by Ren.
+
+| Item | Status | Where to put it | Notes |
 |---|---|---|---|
-| Project data | 🟡 | `data/data.ts` | Real projects already exist here; we'll refine copy & imagery in the Projects phase |
-| Project screenshots | ✅ | `public/images/**` | Many already present |
+| Vow Studio story | ✅ | `data/projects.ts` | Approved |
+| Eternal Homes story | ✅ | `data/projects.ts` | Approved |
+| frntlne story | ✅ | `data/projects.ts` | Approved; kept high-level for NDA |
+| Vow Studio screenshots | ✅ | `public/images/vowStudio/` | Wired: cover = hero-site; gallery = dashboard, theming, seating, rsvp, gallery |
+| Eternal Homes screenshots | ⬜ | `public/images/eternal-homes/` | Then set `cover:` / `gallery:` |
+| frntlne screenshots | ⬜ | — | Intentionally none (legacy images retired; branded placeholder used) |
 
 ## Testimonials (optional)
 

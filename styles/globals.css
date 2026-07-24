@@ -1,6 +1,6 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
+@import "tw-animate-css";
+@config "../tailwind.config.js";
 
 /*
  * ─────────────────────────────────────────────────────────────
@@ -119,7 +119,7 @@
 
   /* Gradient brand text — the signature accent of the design system */
   .text-gradient {
-    @apply bg-gradient-to-r from-brand via-brand-2 to-brand-3 bg-clip-text text-transparent;
+    @apply bg-linear-to-r from-brand via-brand-2 to-brand-3 bg-clip-text text-transparent;
   }
 
   /* Faint grid backdrop (uses the border token, so it adapts per theme) */

@@ -1,21 +1,18 @@
 import { Hero } from "@/components/sections/hero";
+import { Work } from "@/components/sections/work";
 
 /**
  * Single-page portfolio.
- * Phase 3 adds the real hero (#home). The remaining sections are still
- * PLACEHOLDERS, filled in by later phases.
+ * Phases 3–4 add the hero (#home) and Work (#work). Remaining sections are
+ * still PLACEHOLDERS, filled in by later phases.
  */
 export default function Home() {
   return (
     <>
       <Hero />
 
-      <PlaceholderSection
-        id="work"
-        eyebrow="01 · Work"
-        title="Selected projects"
-        note="Project grid arrives in a later phase."
-      />
+      <Work />
+
       <PlaceholderSection
         id="services"
         eyebrow="02 · Services"

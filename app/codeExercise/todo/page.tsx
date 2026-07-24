@@ -75,7 +75,7 @@ export default function TodoPage() {
   return (
     <div className="flex flex-col gap-6 max-w-[600px] mx-auto my-12 px-4">
       <div className="text-center">
-        <h1 className="text-4xl font-bold mb-2 bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
+        <h1 className="text-4xl font-bold mb-2 bg-linear-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
           To Do
         </h1>
         <p className="text-gray-400">Stay organized and get things done</p>

@@ -78,7 +78,7 @@ export function SiteNav() {
       className={cn(
         "sticky top-0 z-50 animate-fade-down border-b transition-colors duration-300",
         scrolled
-          ? "border-border/60 bg-background/80 backdrop-blur supports-[backdrop-filter]:bg-background/60"
+          ? "border-border/60 bg-background/80 backdrop-blur-sm supports-[backdrop-filter]:bg-background/60"
           : "border-transparent bg-transparent",
       )}
     >
@@ -223,7 +223,7 @@ function NavItem({ link, active }: { link: (typeof NAV_LINKS)[number]; active: b
       <span
         aria-hidden="true"
         className={cn(
-          "absolute inset-x-3 -bottom-px h-0.5 rounded-full bg-gradient-to-r from-brand to-brand-2 transition-all duration-300",
+          "absolute inset-x-3 -bottom-px h-0.5 rounded-full bg-linear-to-r from-brand to-brand-2 transition-all duration-300",
           active ? "opacity-100" : "opacity-0",
         )}
       />
