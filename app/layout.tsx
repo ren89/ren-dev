@@ -11,32 +11,7 @@ export const metadata = {
     "Freelance Frontend Developer",
     "Web Developer Philippines",
   ],
-  authors: [{ name: "Ren Avellano", url: "https://yourdomain.com" }],
   creator: "Ren Avellano",
-  metadataBase: new URL("https://yourdomain.com"),
-  openGraph: {
-    title: "Ren Avellano | Frontend Developer",
-    description:
-      "See my work in React, Next.js, and TypeScript. Available for freelance and full-time opportunities.",
-    url: "https://yourdomain.com",
-    siteName: "Ren Avellano Portfolio",
-    images: [
-      {
-        url: "/og-image.png",
-        width: 1200,
-        height: 630,
-        alt: "Ren Avellano - Frontend Developer Portfolio",
-      },
-    ],
-    type: "website",
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: "Ren Avellano | Frontend Developer",
-    description:
-      "Building clean UIs with React, Next.js, and TypeScript. View my portfolio.",
-    images: ["/og-image.png"],
-  },
   robots: {
     index: true,
     follow: true,

@@ -1,4 +1,4 @@
-import { Experience, Project } from "@/lib/types";
+import { Project } from "@/lib/types";
 
 // Shuffled images
 import shuffledHome from "@/public/images/shuffled/homeScreen.png";
@@ -85,43 +85,6 @@ import campusEntryMonitorLogin from "@/public/images/campusEntryMonitor/login.jp
 import blogPosts from "@/public/images/blog/blog.png";
 import blogHome from "@/public/images/blog/home.png";
 import blogProject from "@/public/images/blog/project.png";
-
-export const myExperiences: Experience[] = [
-  {
-    company: "Frntlne",
-    date: "2024 - Present",
-    description:
-      "a marketing-tech platform dedicated to enhancing customer engagement and boosting sales confidence, I serve as a full stack developer. My role involves creating innovative features, optimizing code for scalability, resolving bugs, and occasionally providing technical support, reflecting the dynamic nature of our startup environment.",
-    technologies: [
-      "TypeScript",
-      "React Native",
-      "NextJS",
-      "Native Base",
-      "Hasura",
-      "GraphQL",
-      "AWS",
-      "Expo",
-    ],
-    title: "Full Stack Developer",
-  },
-  {
-    company: "Servscale",
-    date: "2022 - 2024",
-    description:
-      "During my time at Servscale, an outsourcing company, I developed numerous projects utilizing a diverse range of technologies and stacks. This exploration allowed me to identify my true focus in development. I successfully deployed these projects for various clients and had the opportunity to lead a team on several small-scale initiatives.",
-    technologies: [
-      "JavaScript",
-      "TypeScript",
-      "Flutter",
-      "Firebase",
-      "SQL",
-      "AWS",
-      "Python",
-      "NextJS",
-    ],
-    title: "Junior Software Engineer",
-  },
-];
 
 export const myProjects: Project[] = [
   // {
