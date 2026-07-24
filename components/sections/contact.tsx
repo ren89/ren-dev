@@ -6,6 +6,7 @@ import { Mail, Send, CheckCircle2, AlertCircle } from "lucide-react";
 
 import { SITE } from "@/lib/site";
 import { cn } from "@/lib/utils";
+import { AvailabilityBadge } from "@/components/ui/availability-badge";
 
 const PROJECT_TYPES = [
   "Full-stack web app",
@@ -120,6 +121,7 @@ export function Contact() {
       <div className="grid gap-12 lg:grid-cols-2 lg:gap-16">
         {/* Left: pitch + direct alternative */}
         <div className="max-w-md">
+          <AvailabilityBadge className="mb-5" />
           <p className="font-mono text-xs uppercase tracking-widest text-brand">
             07 · Contact
           </p>

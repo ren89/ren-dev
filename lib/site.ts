@@ -25,6 +25,18 @@ export const SECTION_IDS = NAV_LINKS.filter((l) => l.type === "anchor").map(
 
 export const CTA = { label: "Let's talk", href: "#contact" };
 
+/**
+ * Freelance availability — single source of truth for the badge.
+ * Edit `status` / `label` here and it updates everywhere it appears.
+ */
+export const AVAILABILITY: {
+  status: "available" | "limited" | "booked";
+  label: string;
+} = {
+  status: "available",
+  label: "Available for new projects",
+};
+
 export const SITE = {
   name: "ren-dev",
   fullName: "Ren Avellano",

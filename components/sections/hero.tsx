@@ -2,6 +2,7 @@ import { ArrowRight } from "lucide-react";
 
 import { CTA } from "@/lib/site";
 import { TrackCta } from "@/components/analytics/track-cta";
+import { AvailabilityBadge } from "@/components/ui/availability-badge";
 
 /**
  * Hero — top of the homepage.
@@ -19,7 +20,8 @@ export function Hero() {
 
       <div className="container-page py-24">
         <div className="max-w-4xl">
-          <p className="animate-fade-up font-mono text-sm uppercase tracking-widest text-brand [animation-delay:60ms]">
+          <AvailabilityBadge className="animate-fade-up" />
+          <p className="mt-5 animate-fade-up font-mono text-sm uppercase tracking-widest text-brand [animation-delay:60ms]">
             Full-stack developer
           </p>
 
