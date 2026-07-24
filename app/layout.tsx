@@ -1,22 +1,45 @@
 import { FC, ReactNode } from "react";
+import type { Metadata } from "next";
+import { Analytics } from "@vercel/analytics/react";
 
 import { fontDisplay, fontMono, fontSans } from "@/lib/fonts";
 import { ThemeProvider } from "@/components/theme/theme-provider";
 import "../styles/globals.css";
 
-export const metadata = {
-  title: "Ren Avellano | Full-Stack Developer",
-  description:
-    "Full-stack developer in the Philippines building fast, modern web apps with React, Next.js, and TypeScript. Open to freelance and full-time work.",
+const siteUrl =
+  process.env.NEXT_PUBLIC_SITE_URL ?? "https://ren-dev-black.vercel.app";
+const title = "Ren Avellano | Full-Stack Developer";
+const description =
+  "Full-stack developer building fast, modern web apps with React, Next.js, and TypeScript — from idea to launched product. Open to freelance and full-time work.";
+
+export const metadata: Metadata = {
+  metadataBase: new URL(siteUrl),
+  title,
+  description,
   keywords: [
     "Full-Stack Developer",
     "Frontend Developer",
     "React Developer",
-    "Next.js Portfolio",
-    "Web Developer Philippines",
+    "Next.js Developer",
+    "Web App Developer",
+    "SaaS Developer",
   ],
   creator: "Ren Avellano",
-  robots: { index: true, follow: true, nocache: false },
+  authors: [{ name: "Ren Avellano" }],
+  alternates: { canonical: "/" },
+  robots: { index: true, follow: true },
+  openGraph: {
+    type: "website",
+    url: siteUrl,
+    siteName: "Ren Avellano",
+    title,
+    description,
+  },
+  twitter: {
+    card: "summary_large_image",
+    title,
+    description,
+  },
 };
 
 // Runs before paint to set the theme class, preventing a light/dark flash.
@@ -45,6 +68,7 @@ const RootLayout: FC<{ children: ReactNode }> = ({ children }) => {
       </head>
       <body className="min-h-screen bg-background font-sans text-foreground">
         <ThemeProvider>{children}</ThemeProvider>
+        <Analytics />
       </body>
     </html>
   );

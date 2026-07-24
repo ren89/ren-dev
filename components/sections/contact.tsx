@@ -198,7 +198,7 @@ export function Contact() {
                     id="projectType"
                     name="projectType"
                     defaultValue=""
-                    className={cn(fieldClass, "appearance-none")}
+                    className={fieldClass}
                   >
                     <option value="" disabled>
                       Select one…
@@ -216,7 +216,7 @@ export function Contact() {
                     id="budget"
                     name="budget"
                     defaultValue=""
-                    className={cn(fieldClass, "appearance-none")}
+                    className={fieldClass}
                   >
                     <option value="" disabled>
                       Select a range…

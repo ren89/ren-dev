@@ -8,6 +8,23 @@ Legend: ⬜ needed · 🟡 placeholder in place · ✅ provided
 
 ---
 
+## 🚀 Launch checklist (do before going live)
+
+1. **Contact form (prod):** add `NEXT_PUBLIC_FORMSPREE_ID` in Vercel → Settings →
+   Environment Variables, redeploy, and confirm the form via Formspree's first-submission email.
+2. **Analytics:** enable Analytics in the Vercel dashboard (the code is wired via
+   `@vercel/analytics`; data only flows once enabled on a Vercel deployment).
+3. **Site URL:** if you use a custom domain later, set `NEXT_PUBLIC_SITE_URL=https://yourdomain`
+   in Vercel so canonical + OG/Twitter links are absolute and correct. (Defaults to
+   `https://ren-dev-black.vercel.app`.)
+4. **Real content:** headshot (`public/images/me/`), real testimonials
+   (`data/testimonials.ts`), Eternal Homes case-study screenshots (`public/images/eternal-homes/`).
+5. **Deploy:** merge `dev` → `main` (or push), and Vercel builds/deploys automatically.
+6. **Verify a live share:** paste your URL into a Slack/LinkedIn message or
+   [opengraph.xyz](https://www.opengraph.xyz) to confirm the preview card renders.
+
+---
+
 ## Identity & copy
 
 | Item | Status | Where it will live | Notes |
@@ -27,8 +44,8 @@ Legend: ⬜ needed · 🟡 placeholder in place · ✅ provided
 |---|---|---|---|
 | Headshot / photo | ⬜ | `public/images/me/headshot.{jpg,webp}` | Square, ≥800px. Placeholder "RA" tile shown in About until added |
 | Personal logo / mark | ⬜ | `public/logo.svg` | Optional; text wordmark used until provided |
-| Favicon / app icon | ⬜ | `app/icon.png` (Next.js convention) | 512×512 PNG |
-| OG / social share image | ⬜ | `public/og.png` | 1200×630 for link previews |
+| Favicon / app icon | ✅ | `app/icon.svg` | On-brand "R" mark generated; replace file to change |
+| OG / social share image | ✅ | `app/opengraph-image.tsx` | Generated via next/og (also used for Twitter); edit the JSX or replace with a static image to change |
 | Résumé / CV | ⬜ | `public/ren-avellano-cv.pdf` | Linked from header/contact later |
 
 ## Projects (Work section)

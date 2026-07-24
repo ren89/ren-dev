@@ -11,7 +11,7 @@ export function ProjectCard({ project }: { project: Project }) {
   const extra = project.tech.length - tags.length;
 
   return (
-    <article className="group relative flex flex-col overflow-hidden rounded-2xl border border-border bg-card transition-all duration-300 hover:-translate-y-1 hover:border-brand/40 hover:shadow-xl hover:shadow-brand/5">
+    <article className="group relative flex flex-col overflow-hidden rounded-2xl border border-border bg-card transition-all duration-300 hover:-translate-y-1 hover:border-brand/40 hover:shadow-xl hover:shadow-brand/5 focus-within:ring-2 focus-within:ring-ring focus-within:ring-offset-2 focus-within:ring-offset-background">
       {/* Media */}
       <div className="relative aspect-[16/10] overflow-hidden border-b border-border">
         <div className="absolute inset-0 transition-transform duration-500 group-hover:scale-105">
