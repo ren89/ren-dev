@@ -133,6 +133,24 @@ published: true         # false = hidden in prod, visible in dev
 |---|---|---|
 | Starter posts | 🟡 | Replace/expand with real posts in `content/blog/` |
 
+## Performance & accessibility (Phase I)
+
+**Addressed in code:**
+- `<main>` landmark + skip-to-content link; one `h1` per page; semantic headings/landmarks.
+- `theme-color` + `color-scheme` meta for light & dark (mobile browser chrome).
+- Images via `next/image` (lazy + responsive `sizes`; case-study cover uses `priority`);
+  aspect ratios reserved to avoid layout shift; self-hosted fonts (no font CLS).
+- `prefers-reduced-motion` respected globally; visible focus rings; token-based contrast.
+- **Dependencies: 0 known vulnerabilities** (`yarn audit`) after an aggressive transitive
+  cleanup (brace-expansion, minimatch, picomatch, flatted, sharp, postcss via `resolutions`).
+
+**Get the real scores — run against the DEPLOYED site (not localhost):**
+1. Open the production URL in Chrome (Incognito).
+2. DevTools → **Lighthouse** → run **Mobile** and **Desktop**.
+   (CLI alternative: `npx lighthouse https://<your-url> --view`.)
+3. Optionally run the **axe DevTools** extension for a deeper a11y check.
+Expect green across the board; investigate anything under ~90.
+
 ### How to give me content
 
 - **Text:** paste it directly in chat, or add it to the relevant file and tell me.
