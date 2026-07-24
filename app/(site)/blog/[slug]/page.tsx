@@ -7,6 +7,7 @@ import remarkGfm from "remark-gfm";
 import rehypePrettyCode, { type Options } from "rehype-pretty-code";
 
 import { getAllPosts, getPostBySlug } from "@/lib/blog";
+import { SITE } from "@/lib/site";
 
 export function generateStaticParams() {
   return getAllPosts().map((post) => ({ slug: post.slug }));
@@ -63,8 +64,23 @@ export default async function BlogPostPage({
   const post = getPostBySlug(slug);
   if (!post) notFound();
 
+  const articleLd = {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    headline: post.title,
+    description: post.description,
+    datePublished: post.date || undefined,
+    keywords: post.tags.join(", "),
+    url: `${SITE.url}/blog/${post.slug}`,
+    author: { "@type": "Person", name: SITE.fullName, url: SITE.url },
+  };
+
   return (
     <article className="container-page py-16 sm:py-24">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(articleLd) }}
+      />
       <Link
         href="/blog"
         className="inline-flex items-center gap-2 text-sm text-muted-foreground transition-colors hover:text-foreground"

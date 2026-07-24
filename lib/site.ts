@@ -31,6 +31,11 @@ export const SITE = {
   role: "Full-stack developer",
   email: "ren.avellano@gmail.com",
   github: "https://github.com/ren89",
+  // Production URL (override via NEXT_PUBLIC_SITE_URL for a custom domain).
+  // Trailing slashes are stripped so joined paths never double up ("//").
+  url: (
+    process.env.NEXT_PUBLIC_SITE_URL ?? "https://ren-dev-black.vercel.app"
+  ).replace(/\/+$/, ""),
   // Add when available (see CONTENT_TODO.md):
   linkedin: "",
   twitter: "",

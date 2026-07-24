@@ -26,6 +26,18 @@ export async function generateMetadata({
   return {
     title: `${project.name} · Case study — Ren Avellano`,
     description: project.tagline,
+    alternates: { canonical: `/work/${project.slug}` },
+    openGraph: {
+      type: "article",
+      url: `/work/${project.slug}`,
+      title: `${project.name} · Case study`,
+      description: project.tagline,
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: `${project.name} · Case study`,
+      description: project.tagline,
+    },
   };
 }
 

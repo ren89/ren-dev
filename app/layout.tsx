@@ -4,10 +4,10 @@ import { Analytics } from "@vercel/analytics/react";
 
 import { fontDisplay, fontMono, fontSans } from "@/lib/fonts";
 import { ThemeProvider } from "@/components/theme/theme-provider";
+import { SITE } from "@/lib/site";
 import "../styles/globals.css";
 
-const siteUrl =
-  process.env.NEXT_PUBLIC_SITE_URL ?? "https://ren-dev-black.vercel.app";
+const siteUrl = SITE.url;
 const title = "Ren Avellano | Full-Stack Developer";
 const description =
   "Full-stack developer building fast, modern web apps with React, Next.js, and TypeScript — from idea to launched product. Open to freelance and full-time work.";
