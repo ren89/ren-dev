@@ -1,6 +1,7 @@
 import { Hero } from "@/components/sections/hero";
 import { Work } from "@/components/sections/work";
 import { Playground } from "@/components/sections/playground";
+import { Services } from "@/components/sections/services";
 
 /**
  * Single-page portfolio.
@@ -16,12 +17,8 @@ export default function Home() {
 
       <Playground />
 
-      <PlaceholderSection
-        id="services"
-        eyebrow="03 · Services"
-        title="How I can help"
-        note="Services content arrives in a later phase."
-      />
+      <Services />
+
       <PlaceholderSection
         id="about"
         eyebrow="04 · About"
