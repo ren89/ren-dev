@@ -2,6 +2,7 @@ import { ReactNode } from "react";
 
 import { SiteNav } from "@/components/layout/site-nav";
 import { SiteFooter } from "@/components/layout/site-footer";
+import { FloatingCta } from "@/components/layout/floating-cta";
 
 /**
  * Layout for the portfolio site (home + case studies).
@@ -20,6 +21,7 @@ export default function SiteLayout({ children }: { children: ReactNode }) {
       <SiteNav />
       {children}
       <SiteFooter />
+      <FloatingCta />
     </>
   );
 }

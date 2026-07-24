@@ -71,6 +71,23 @@ Data in **`data/testimonials.ts`**. Quotes are **placeholders** with fake attrib
 
 ---
 
+## Contact form (Formspree)
+
+The Contact form posts to Formspree, read from an env var so no keys live in the repo.
+
+1. Create a form at **https://formspree.io** → copy its **form ID** (e.g. `xrgkabcd`).
+2. Local: copy `.env.example` → `.env.local` and set `NEXT_PUBLIC_FORMSPREE_ID=<your id>`.
+3. Production: add the same `NEXT_PUBLIC_FORMSPREE_ID` in **Vercel → Project → Settings → Environment Variables**, then redeploy.
+
+Until the ID is set, the form validates but shows a "please email me directly" message
+instead of sending. Honeypot spam protection is built in. Budget ranges are in PHP (₱) —
+edit the `BUDGETS` array in `components/sections/contact.tsx` to change the values.
+
+| Item | Status | Notes |
+|---|---|---|
+| Formspree form ID | ⬜ | Add via `NEXT_PUBLIC_FORMSPREE_ID` (see above) |
+| Book-a-call link | ⬜ | Optional; none yet. Add later next to the email option |
+
 ### How to give me content
 
 - **Text:** paste it directly in chat, or add it to the relevant file and tell me.
