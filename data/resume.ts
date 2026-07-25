@@ -40,7 +40,8 @@ export type SkillGroup = { label: string; items: string[] };
 export const updatedAt = "July 2026";
 
 export const profile: ResumeProfile = {
-  name: SITE.fullName,
+  // Full legal name for the résumé/professional exports; the rest of the site uses SITE.fullName ("Ren Avellano").
+  name: "Reniel Avellano",
   title: "Full-Stack Web Developer",
   location: "Pasig, Metro Manila, Philippines",
   phone: "0995 984 8364",

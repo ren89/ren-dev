@@ -40,7 +40,7 @@ export function ResumeShell() {
       const url = URL.createObjectURL(blob);
       const a = document.createElement("a");
       a.href = url;
-      a.download = "Ren-Avellano-Resume.pdf";
+      a.download = "Reniel-Avellano-Resume.pdf";
       document.body.appendChild(a);
       a.click();
       a.remove();
