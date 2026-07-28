@@ -11,6 +11,11 @@ import {
 } from "@/data/projects";
 import { ProjectMedia } from "@/components/work/project-media";
 import { TrackCta } from "@/components/analytics/track-cta";
+import { Button, buttonVariants } from "@/components/ui/button";
+import { Card } from "@/components/ui/card";
+import { Badge } from "@/components/ui/badge";
+import { ParallaxLayer } from "@/components/motion/parallax";
+import { cn } from "@/lib/utils";
 
 export function generateStaticParams() {
   return getProjectSlugs().map((slug) => ({ slug }));
@@ -73,17 +78,19 @@ export default async function CaseStudyPage({
 
         <div className="mt-6 flex flex-wrap items-center gap-3">
           {project.href ? (
-            <a
-              href={project.href}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex h-11 items-center justify-center gap-2 rounded-full bg-primary px-6 text-sm font-medium text-primary-foreground transition-colors hover:bg-primary/90"
-            >
-              Visit live site
-              <ExternalLink className="size-4" />
-            </a>
+            <Button asChild size="md" shape="pill">
+              <a href={project.href} target="_blank" rel="noopener noreferrer">
+                Visit live site
+                <ExternalLink className="size-4" />
+              </a>
+            </Button>
           ) : (
-            <span className="inline-flex h-11 items-center justify-center gap-2 rounded-full border border-border px-6 text-sm text-muted-foreground">
+            <span
+              className={cn(
+                buttonVariants({ variant: "outline", size: "md", shape: "pill" }),
+                "border-border text-muted-foreground",
+              )}
+            >
               <Lock className="size-4" />
               Private project
             </span>
@@ -98,19 +105,18 @@ export default async function CaseStudyPage({
         {/* Tech */}
         <ul className="mt-6 flex flex-wrap gap-2">
           {project.tech.map((t) => (
-            <li
-              key={t}
-              className="rounded-full border border-border bg-secondary px-2.5 py-1 text-xs text-secondary-foreground"
-            >
+            <Badge as="li" key={t}>
               {t}
-            </li>
+            </Badge>
           ))}
         </ul>
       </header>
 
       {/* Media */}
       <div className="relative mt-12 aspect-[16/9] overflow-hidden rounded-2xl border border-border">
-        <ProjectMedia project={project} priority />
+        <ParallaxLayer className="absolute inset-0" distance={24}>
+          <ProjectMedia project={project} priority />
+        </ParallaxLayer>
       </div>
 
       {/* Story */}
@@ -135,12 +141,12 @@ export default async function CaseStudyPage({
 
         {/* Result - highlighted aside */}
         <aside className="lg:sticky lg:top-24 lg:self-start">
-          <div className="rounded-2xl border border-brand/30 bg-accent/40 p-6">
+          <Card variant="highlight">
             <p className="font-mono text-xs uppercase tracking-widest text-brand">
               Result
             </p>
             <p className="mt-3 text-foreground">{project.story.result}</p>
-          </div>
+          </Card>
         </aside>
       </div>
 
@@ -150,7 +156,7 @@ export default async function CaseStudyPage({
       )}
 
       {/* CTA */}
-      <div className="mt-20 rounded-2xl border border-border bg-card p-8 text-center sm:p-12">
+      <Card variant="panel" padding="xl" className="mt-20">
         <h2 className="font-display text-2xl font-semibold tracking-tight sm:text-3xl">
           Have a project like this?
         </h2>
@@ -158,14 +164,12 @@ export default async function CaseStudyPage({
           I build products end to end. Tell me what you&apos;re planning and
           let&apos;s see if I can help.
         </p>
-        <TrackCta
-          href="/#contact"
-          source="case_study"
-          className="mt-6 inline-flex h-11 items-center justify-center rounded-full bg-primary px-7 text-sm font-medium text-primary-foreground transition-colors hover:bg-primary/90"
-        >
-          Let&apos;s talk
-        </TrackCta>
-      </div>
+        <Button asChild size="md" shape="pill" className="mt-6 px-7">
+          <TrackCta href="/#contact" source="case_study">
+            Let&apos;s talk
+          </TrackCta>
+        </Button>
+      </Card>
     </article>
   );
 }

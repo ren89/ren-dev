@@ -1,7 +1,13 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   darkMode: ["class"],
-  content: ["./app/**/*.{js,ts,jsx,tsx}", "./components/**/*.{js,ts,jsx,tsx}"],
+  content: [
+    "./app/**/*.{js,ts,jsx,tsx}",
+    "./components/**/*.{js,ts,jsx,tsx}",
+    "./lib/**/*.{js,ts,jsx,tsx}",
+    "./hooks/**/*.{js,ts}",
+    "./data/**/*.{js,ts}",
+  ],
   theme: {
     extend: {
       fontFamily: {
@@ -13,6 +19,17 @@ module.exports = {
         lg: "var(--radius)",
         md: "calc(var(--radius) - 2px)",
         sm: "calc(var(--radius) - 4px)",
+      },
+      transitionDuration: {
+        micro: "var(--dur-micro)",
+        control: "var(--dur-control)",
+        hover: "var(--dur-hover)",
+        media: "var(--dur-media)",
+        entrance: "var(--dur-entrance)",
+        reveal: "var(--dur-reveal)",
+      },
+      transitionTimingFunction: {
+        expo: "var(--ease-expo)",
       },
       colors: {
         background: "hsl(var(--background))",
@@ -48,6 +65,8 @@ module.exports = {
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
         ring: "hsl(var(--ring))",
+        success: "hsl(var(--success))",
+        warning: "hsl(var(--warning))",
         // Brand ramp for gradients / glows / decorative accents
         brand: {
           DEFAULT: "hsl(var(--brand))",
@@ -63,18 +82,6 @@ module.exports = {
         },
       },
       keyframes: {
-        "accordion-down": {
-          from: { height: "0" },
-          to: { height: "var(--radix-accordion-content-height)" },
-        },
-        "accordion-up": {
-          from: { height: "var(--radix-accordion-content-height)" },
-          to: { height: "0" },
-        },
-        "fade-in": {
-          from: { opacity: "0" },
-          to: { opacity: "1" },
-        },
         "fade-up": {
           from: { opacity: "0", transform: "translateY(12px)" },
           to: { opacity: "1", transform: "translateY(0)" },
@@ -94,13 +101,10 @@ module.exports = {
         },
       },
       animation: {
-        "accordion-down": "accordion-down 0.2s ease-out",
-        "accordion-up": "accordion-up 0.2s ease-out",
-        "fade-in": "fade-in 0.5s ease-out both",
-        "fade-up": "fade-up 0.6s cubic-bezier(0.22, 1, 0.36, 1) both",
-        "fade-down": "fade-down 0.6s cubic-bezier(0.22, 1, 0.36, 1) both",
+        "fade-up": "fade-up var(--dur-entrance) var(--ease-expo) both",
+        "fade-down": "fade-down var(--dur-entrance) var(--ease-expo) both",
         blob: "blob 18s ease-in-out infinite",
-        "page-in": "page-in 0.28s cubic-bezier(0.22, 1, 0.36, 1) both",
+        "page-in": "page-in var(--dur-control) var(--ease-expo) both",
       },
     },
   },

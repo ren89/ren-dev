@@ -3,6 +3,9 @@ import { ArrowUpRight, ExternalLink, Lock } from "lucide-react";
 
 import type { Project } from "@/data/projects";
 import { ProjectMedia } from "@/components/work/project-media";
+import { Card, CardMedia } from "@/components/ui/card";
+import { Badge, StatusDot } from "@/components/ui/badge";
+import { Spotlight } from "@/components/motion/spotlight";
 
 const MAX_TAGS = 5;
 
@@ -11,14 +14,21 @@ export function ProjectCard({ project }: { project: Project }) {
   const extra = project.tech.length - tags.length;
 
   return (
-    <article className="group relative flex flex-col overflow-hidden rounded-2xl border border-border bg-card transition-all duration-300 hover:-translate-y-1 hover:border-brand/40 hover:shadow-xl hover:shadow-brand/5 focus-within:ring-2 focus-within:ring-ring focus-within:ring-offset-2 focus-within:ring-offset-background">
+    <Card
+      as="article"
+      variant="interactive"
+      padding="none"
+      radius="lg"
+      focusRing
+      className="group overflow-hidden"
+    >
+      <Spotlight />
+
       {/* Media */}
-      <div className="relative aspect-[16/10] overflow-hidden border-b border-border">
-        <div className="absolute inset-0 transition-transform duration-500 group-hover:scale-105">
-          <ProjectMedia project={project} />
-        </div>
-        <StatusBadge project={project} />
-      </div>
+      <CardMedia zoom parallax>
+        <ProjectMedia project={project} />
+      </CardMedia>
+      <StatusBadge project={project} />
 
       {/* Body */}
       <div className="flex flex-1 flex-col p-6">
@@ -42,12 +52,9 @@ export function ProjectCard({ project }: { project: Project }) {
         {/* Tech tags */}
         <ul className="mt-4 flex flex-wrap gap-2">
           {tags.map((t) => (
-            <li
-              key={t}
-              className="rounded-full border border-border bg-secondary px-2.5 py-1 text-xs text-secondary-foreground"
-            >
+            <Badge as="li" key={t}>
               {t}
-            </li>
+            </Badge>
           ))}
           {extra > 0 && (
             <li className="rounded-full px-2.5 py-1 text-xs text-muted-foreground">
@@ -78,26 +85,27 @@ export function ProjectCard({ project }: { project: Project }) {
           )}
         </div>
       </div>
-    </article>
+    </Card>
   );
 }
 
 function StatusBadge({ project }: { project: Project }) {
   if (project.status === "private") {
     return (
-      <span className="absolute left-4 top-4 inline-flex items-center gap-1.5 rounded-full bg-background/80 px-2.5 py-1 text-xs font-medium text-muted-foreground backdrop-blur-sm">
+      <Badge
+        variant="overlay"
+        size="md"
+        className="absolute left-4 top-4 text-muted-foreground"
+      >
         <Lock className="size-3" />
         Private
-      </span>
+      </Badge>
     );
   }
   return (
-    <span className="absolute left-4 top-4 inline-flex items-center gap-1.5 rounded-full bg-background/80 px-2.5 py-1 text-xs font-medium text-foreground backdrop-blur-sm">
-      <span className="relative flex size-2">
-        <span className="absolute inline-flex size-full animate-ping rounded-full bg-emerald-500 opacity-75" />
-        <span className="relative inline-flex size-2 rounded-full bg-emerald-500" />
-      </span>
+    <Badge variant="overlay" size="md" className="absolute left-4 top-4">
+      <StatusDot tone="live" />
       {project.nda ? "Live · NDA" : "Live"}
-    </span>
+    </Badge>
   );
 }

@@ -5,9 +5,14 @@ import Link from "next/link";
 import { track } from "@vercel/analytics";
 import { Mail, Send, CheckCircle2, AlertCircle } from "lucide-react";
 
-import { SITE } from "@/lib/site";
-import { cn } from "@/lib/utils";
+import { SECTIONS, SITE } from "@/lib/site";
 import { AvailabilityBadge } from "@/components/ui/availability-badge";
+import { Section, SectionHeader } from "@/components/ui/section";
+import { Button } from "@/components/ui/button";
+import { Card } from "@/components/ui/card";
+import { fieldVariants } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
+import { Field } from "@/components/ui/field";
 
 const PROJECT_TYPES = [
   "Full-stack web app",
@@ -31,9 +36,6 @@ const FORMSPREE_ID = process.env.NEXT_PUBLIC_FORMSPREE_ID;
 
 type Status = "idle" | "submitting" | "success" | "error";
 type Errors = { name?: string; email?: string; message?: string };
-
-const fieldClass =
-  "w-full rounded-lg border border-input bg-background px-3.5 py-2.5 text-sm text-foreground placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background aria-[invalid=true]:border-destructive";
 
 export function Contact() {
   const [status, setStatus] = useState<Status>("idle");
@@ -121,38 +123,30 @@ export function Contact() {
   }
 
   return (
-    <section
-      id="contact"
-      className="container-page scroll-mt-20 border-t border-border/60 py-24 sm:py-28"
-    >
+    <Section id="contact">
       <div className="grid gap-12 lg:grid-cols-2 lg:gap-16">
         {/* Left: pitch + direct alternative */}
         <div className="max-w-md">
           <AvailabilityBadge className="mb-5" />
-          <p className="font-mono text-xs uppercase tracking-widest text-brand">
-            07 · Contact
-          </p>
-          <h2 className="mt-3 font-display text-3xl font-semibold tracking-tight sm:text-4xl">
-            Let&apos;s build something
-          </h2>
-          <p className="mt-4 text-muted-foreground">
-            Tell me a little about your project and I&apos;ll get back to you.
-            Not sure exactly what you need yet? Reach out anyway - happy to help
-            you figure it out.
-          </p>
-
-          <div className="mt-8">
-            <p className="font-mono text-xs uppercase tracking-widest text-muted-foreground">
-              Prefer email?
-            </p>
-            <a
-              href={`mailto:${SITE.email}`}
-              className="mt-3 inline-flex items-center gap-2 text-sm font-medium text-foreground transition-colors hover:text-brand"
-            >
-              <Mail className="size-4" aria-hidden="true" />
-              {SITE.email}
-            </a>
-          </div>
+          <SectionHeader
+            {...SECTIONS.contact}
+            title="Let's build something"
+            lede="Tell me a little about your project and I'll get back to you. Not sure exactly what you need yet? Reach out anyway - happy to help you figure it out."
+            className=""
+          >
+            <div className="mt-8">
+              <p className="font-mono text-xs uppercase tracking-widest text-muted-foreground">
+                Prefer email?
+              </p>
+              <a
+                href={`mailto:${SITE.email}`}
+                className="mt-3 inline-flex items-center gap-2 text-sm font-medium text-foreground transition-colors hover:text-brand"
+              >
+                <Mail className="size-4" aria-hidden="true" />
+                {SITE.email}
+              </a>
+            </div>
+          </SectionHeader>
         </div>
 
         {/* Right: form or success */}
@@ -189,7 +183,7 @@ export function Contact() {
                     placeholder="Your name"
                     aria-invalid={!!errors.name}
                     aria-describedby={errors.name ? "name-error" : undefined}
-                    className={fieldClass}
+                    className={fieldVariants()}
                   />
                 </Field>
 
@@ -202,7 +196,7 @@ export function Contact() {
                     placeholder="you@example.com"
                     aria-invalid={!!errors.email}
                     aria-describedby={errors.email ? "email-error" : undefined}
-                    className={fieldClass}
+                    className={fieldVariants()}
                   />
                 </Field>
               </div>
@@ -213,7 +207,7 @@ export function Contact() {
                     id="projectType"
                     name="projectType"
                     defaultValue=""
-                    className={fieldClass}
+                    className={fieldVariants()}
                   >
                     <option value="" disabled>
                       Select one…
@@ -231,7 +225,7 @@ export function Contact() {
                     id="budget"
                     name="budget"
                     defaultValue=""
-                    className={fieldClass}
+                    className={fieldVariants()}
                   >
                     <option value="" disabled>
                       Select a range…
@@ -251,7 +245,7 @@ export function Contact() {
                 required
                 error={errors.message}
               >
-                <textarea
+                <Textarea
                   id="message"
                   name="message"
                   rows={5}
@@ -260,7 +254,6 @@ export function Contact() {
                   aria-describedby={
                     errors.message ? "message-error" : undefined
                   }
-                  className={cn(fieldClass, "resize-y")}
                 />
               </Field>
 
@@ -277,10 +270,12 @@ export function Contact() {
                 </p>
               )}
 
-              <button
+              <Button
                 type="submit"
+                size="md"
+                shape="pill"
                 disabled={status === "submitting"}
-                className="inline-flex h-11 w-full items-center justify-center gap-2 rounded-full bg-primary px-6 text-sm font-medium text-primary-foreground transition-colors hover:bg-primary/90 disabled:cursor-not-allowed disabled:opacity-60 sm:w-auto"
+                className="w-full disabled:cursor-not-allowed sm:w-auto"
               >
                 {status === "submitting" ? (
                   "Sending…"
@@ -290,7 +285,7 @@ export function Contact() {
                     <Send className="size-4" aria-hidden="true" />
                   </>
                 )}
-              </button>
+              </Button>
 
               <p className="text-xs text-muted-foreground">
                 By submitting, you agree to how your details are handled - see
@@ -304,53 +299,18 @@ export function Contact() {
           )}
         </div>
       </div>
-    </section>
-  );
-}
-
-function Field({
-  id,
-  label,
-  required,
-  optional,
-  error,
-  children,
-}: {
-  id: string;
-  label: string;
-  required?: boolean;
-  optional?: boolean;
-  error?: string;
-  children: React.ReactNode;
-}) {
-  return (
-    <div>
-      <label
-        htmlFor={id}
-        className="mb-1.5 flex items-center gap-1.5 text-sm font-medium"
-      >
-        {label}
-        {required && <span className="text-brand">*</span>}
-        {optional && (
-          <span className="font-normal text-muted-foreground">(optional)</span>
-        )}
-      </label>
-      {children}
-      {error && (
-        <p id={`${id}-error`} className="mt-1.5 text-xs text-destructive">
-          {error}
-        </p>
-      )}
-    </div>
+    </Section>
   );
 }
 
 function SuccessPanel({ onReset }: { onReset: () => void }) {
   return (
-    <div
+    <Card
+      variant="highlight"
+      padding="lg"
       role="status"
       aria-live="polite"
-      className="flex h-full flex-col items-start justify-center rounded-2xl border border-brand/30 bg-accent/40 p-8"
+      className="h-full items-start justify-center"
     >
       <CheckCircle2 className="size-10 text-brand" aria-hidden="true" />
       <h3 className="mt-4 font-display text-2xl font-semibold tracking-tight">
@@ -366,6 +326,6 @@ function SuccessPanel({ onReset }: { onReset: () => void }) {
       >
         Send another message
       </button>
-    </div>
+    </Card>
   );
 }

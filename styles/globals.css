@@ -2,6 +2,9 @@
 @import "tw-animate-css";
 @config "../tailwind.config.js";
 @plugin "@tailwindcss/typography";
+@source "../lib";
+@source "../hooks";
+@source "../data";
 
 /*
  * ─────────────────────────────────────────────────────────────
@@ -41,6 +44,10 @@
     --input: 240 6% 88%;
     --ring: 262 83% 55%;
 
+    /* Status tones - values match emerald-500 / amber-500 exactly */
+    --success: 160 84% 39%;
+    --warning: 38 92% 50%;
+
     /* Brand ramp - for gradients, glows, decorative accents */
     --brand: 262 83% 55%;
     --brand-2: 326 90% 56%;
@@ -54,6 +61,22 @@
     --chart-5: 160 70% 45%;
 
     --radius: 0.75rem;
+
+    /* ── MOTION ──────────────────────────────────────────────
+     * Single source of truth for timing, mirrored (in seconds)
+     * in components/motion/transitions.ts for framer-motion.
+     * Change both together - see that file's top-of-file JSDoc.
+     */
+    --dur-micro: 200ms; /* color/opacity hover on text + icons */
+    --dur-control: 280ms; /* buttons, nav, page-in */
+    --dur-hover: 300ms; /* card lift, chip, underline */
+    --dur-media: 500ms; /* image scale inside card media */
+    --dur-entrance: 600ms; /* fade-up entrance */
+    --dur-reveal: 700ms; /* scroll reveal */
+
+    --ease-expo: cubic-bezier(0.22, 1, 0.36, 1);
+
+    --stagger: 90ms; /* choreography step */
   }
 
   .dark {
@@ -81,6 +104,9 @@
     --border: 240 6% 17%;
     --input: 240 6% 18%;
     --ring: 262 83% 66%;
+
+    --success: 160 84% 39%;
+    --warning: 38 92% 50%;
 
     --brand: 262 83% 66%;
     --brand-2: 326 90% 66%;
@@ -130,12 +156,41 @@
       linear-gradient(to bottom, hsl(var(--border) / 0.7) 1px, transparent 1px);
     background-size: 56px 56px;
   }
+
+  /*
+   * Mouse-follow glow overlay for cards (components/motion/spotlight.tsx).
+   * --spot-x/--spot-y are written on the card (Spotlight's parent) via
+   * pointermove; .group is Tailwind's group utility, already present on
+   * every card that mounts a <Spotlight/> - no extra marker class needed,
+   * the descendant selector already scopes this to cards that have one.
+   */
+  .spotlight-glow {
+    background: radial-gradient(
+      18rem circle at var(--spot-x, 50%) var(--spot-y, 0%),
+      hsl(var(--brand) / 0.16),
+      transparent 65%
+    );
+    opacity: 0;
+    transition: opacity 240ms ease-out;
+  }
+  @media (hover: hover) and (pointer: fine) {
+    .group:hover .spotlight-glow {
+      opacity: 1;
+    }
+  }
 }
 
 /*
  * MOTION - global reduced-motion guard.
  * Any user who prefers reduced motion gets animations/transitions
  * effectively removed, app-wide, with no per-component work.
+ *
+ * This guard is CSS-only, so it cannot touch framer-motion's inline
+ * `style="opacity:0;transform:..."` (computed styles, not animations/
+ * transitions). Elements that ship a hidden framer `initial` state carry
+ * `data-motion`, and an !important author rule DOES override a non-important
+ * inline style - so this line is the belt-and-braces half of the coverage
+ * MotionConfig's reducedMotion="user" (transform/box keys only) provides.
  */
 @media (prefers-reduced-motion: reduce) {
   *,
@@ -146,6 +201,23 @@
     transition-duration: 0.01ms !important;
     scroll-behavior: auto !important;
   }
+  [data-motion] {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+  .spotlight-glow {
+    display: none !important;
+  }
+}
+
+/*
+ * Keyboard focus must never land on content a scroll-reveal hasn't shown
+ * yet - Tab can reach an off-screen [data-motion] element before its
+ * IntersectionObserver fires.
+ */
+[data-motion]:focus-within {
+  opacity: 1 !important;
+  transform: none !important;
 }
 
 /*
@@ -260,9 +332,13 @@
   body {
     background: #fff !important;
   }
-  .animate-page-in {
+  .animate-page-in,
+  [data-motion] {
     opacity: 1 !important;
     transform: none !important;
+  }
+  .spotlight-glow {
+    display: none !important;
   }
   *,
   *::before,

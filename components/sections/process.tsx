@@ -1,4 +1,7 @@
-import { Reveal } from "@/components/ui/reveal";
+import { SECTIONS } from "@/lib/site";
+import { RevealItem, RevealList } from "@/components/motion/reveal";
+import { Section, SectionHeader } from "@/components/ui/section";
+import { ProcessSteps } from "@/components/sections/process-steps";
 
 const STEPS = [
   {
@@ -25,38 +28,17 @@ const STEPS = [
 
 export function Process() {
   return (
-    <section
-      id="process"
-      className="container-page scroll-mt-20 border-t border-border/60 py-24 sm:py-28"
-    >
-      <Reveal className="max-w-2xl">
-        <p className="font-mono text-xs uppercase tracking-widest text-brand">
-          05 · How I work
-        </p>
-        <h2 className="mt-3 font-display text-3xl font-semibold tracking-tight sm:text-4xl">
-          A simple, predictable process
-        </h2>
-        <p className="mt-4 text-muted-foreground">
-          From first conversation to a launched product you can rely on - you
-          always know what&apos;s happening and what&apos;s next.
-        </p>
-      </Reveal>
+    <Section id="process">
+      <SectionHeader
+        {...SECTIONS.process}
+        title="A simple, predictable process"
+        lede="From first conversation to a launched product you can rely on - you always know what's happening and what's next."
+      />
 
-      <div className="relative mt-14">
-        {/* Horizontal connector (desktop) */}
-        <div
-          aria-hidden="true"
-          className="absolute inset-x-0 top-5 hidden h-px bg-border md:block"
-        />
-
-        <ol className="grid gap-y-10 md:grid-cols-5 md:gap-x-6">
+      <ProcessSteps>
+        <RevealList as="ol" className="grid gap-y-10 md:grid-cols-5 md:gap-x-6">
           {STEPS.map((step, i) => (
-            <Reveal
-              as="li"
-              key={step.title}
-              delayMs={i * 90}
-              className="relative"
-            >
+            <RevealItem key={step.title} className="relative">
               <div className="flex items-center gap-4 md:block">
                 <span className="relative z-10 flex size-10 shrink-0 items-center justify-center rounded-full border border-brand/40 bg-background font-mono text-sm font-semibold text-brand">
                   {i + 1}
@@ -68,10 +50,10 @@ export function Process() {
               <p className="mt-2 text-sm text-muted-foreground md:pr-4">
                 {step.desc}
               </p>
-            </Reveal>
+            </RevealItem>
           ))}
-        </ol>
-      </div>
-    </section>
+        </RevealList>
+      </ProcessSteps>
+    </Section>
   );
 }

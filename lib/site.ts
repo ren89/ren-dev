@@ -31,6 +31,22 @@ export const SECTION_IDS = NAV_LINKS.filter((l) => l.type === "anchor").map(
 export const CTA = { label: "Let's talk", href: "#contact" };
 
 /**
+ * Homepage section eyebrow numbering, spread into <SectionHeader {...}>.
+ * Not derived from SECTION_IDS - that list is built from NAV_LINKS, which
+ * omits "process" and "testimonials", so deriving from it would silently
+ * renumber every section. Reorder here and every heading renumbers.
+ */
+export const SECTIONS = {
+  work: { index: 1, eyebrow: "Work" },
+  playground: { index: 2, eyebrow: "Playground" },
+  services: { index: 3, eyebrow: "Services" },
+  about: { index: 4, eyebrow: "About" },
+  process: { index: 5, eyebrow: "How I work" },
+  testimonials: { index: 6, eyebrow: "Testimonials" },
+  contact: { index: 7, eyebrow: "Contact" },
+} as const;
+
+/**
  * Freelance availability - single source of truth for the badge.
  * Edit `status` / `label` here and it updates everywhere it appears.
  */

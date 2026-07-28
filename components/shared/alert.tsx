@@ -1,3 +1,6 @@
+import React from "react";
+import { XCircleIcon } from "lucide-react";
+
 import {
   AlertDialog,
   AlertDialogAction,
@@ -9,8 +12,6 @@ import {
   AlertDialogTitle,
   AlertDialogTrigger,
 } from "@/components/ui/alert-dialog";
-import { XCircleIcon } from "lucide-react";
-import React from "react";
 
 export function Alert({
   children,
@@ -41,11 +42,11 @@ export function Alert({
       {!isControlled && children && (
         <AlertDialogTrigger className="w-full">{children}</AlertDialogTrigger>
       )}
-      <AlertDialogContent className="bg-slate-900 p-4 rounded-2xl w-full sm:w-[60%] justify-center">
+      <AlertDialogContent className="w-full justify-center rounded-2xl p-4 sm:w-[60%]">
         {showCloseButton && (
           <div className="absolute right-4 top-3">
             <AlertDialogCancel
-              className="p-0 m-0 text-white bg-transparent border-0 h-auto"
+              className="m-0 h-auto border-0 bg-transparent p-0 text-muted-foreground hover:text-foreground"
               onClick={onClose}
             >
               <XCircleIcon size={26} />
@@ -59,17 +60,10 @@ export function Alert({
         </AlertDialogHeader>
         <AlertDialogFooter className="flex !justify-center">
           {cancelText && (
-            <AlertDialogCancel
-              className="bg-[#fff] text-black"
-              onClick={onClose}
-            >
-              {cancelText}
-            </AlertDialogCancel>
+            <AlertDialogCancel onClick={onClose}>{cancelText}</AlertDialogCancel>
           )}
           {actionText && (
-            <AlertDialogAction className="bg-[#1e2e54] rounded hover:bg-teal-400/10 hover:text-teal-300">
-              {actionText}
-            </AlertDialogAction>
+            <AlertDialogAction>{actionText}</AlertDialogAction>
           )}
         </AlertDialogFooter>
       </AlertDialogContent>

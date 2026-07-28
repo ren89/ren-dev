@@ -8,8 +8,12 @@ import rehypePrettyCode, { type Options } from "rehype-pretty-code";
 
 import { getAllPosts, getPostBySlug } from "@/lib/blog";
 import { SITE } from "@/lib/site";
+import { formatDate } from "@/lib/utils";
 import { TrackCta } from "@/components/analytics/track-cta";
-import { ReadingProgress } from "@/components/ui/reading-progress";
+import { ScrollProgressBar } from "@/components/motion/scroll-progress-bar";
+import { Button } from "@/components/ui/button";
+import { Card } from "@/components/ui/card";
+import { Badge } from "@/components/ui/badge";
 
 export function generateStaticParams() {
   return getAllPosts().map((post) => ({ slug: post.slug }));
@@ -48,15 +52,6 @@ const prettyCodeOptions: Options = {
   keepBackground: true,
 };
 
-function formatDate(iso: string): string {
-  if (!iso) return "";
-  return new Intl.DateTimeFormat("en-US", {
-    year: "numeric",
-    month: "long",
-    day: "numeric",
-  }).format(new Date(iso));
-}
-
 export default async function BlogPostPage({
   params,
 }: {
@@ -79,7 +74,7 @@ export default async function BlogPostPage({
 
   return (
     <article className="container-page py-16 sm:py-24">
-      <ReadingProgress />
+      <ScrollProgressBar />
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(articleLd) }}
@@ -107,12 +102,9 @@ export default async function BlogPostPage({
         {post.tags.length > 0 && (
           <ul className="mt-5 flex flex-wrap gap-2">
             {post.tags.map((t) => (
-              <li
-                key={t}
-                className="rounded-full border border-border bg-secondary px-2.5 py-1 text-xs text-secondary-foreground"
-              >
+              <Badge as="li" key={t}>
                 {t}
-              </li>
+              </Badge>
             ))}
           </ul>
         )}
@@ -133,21 +125,19 @@ export default async function BlogPostPage({
       </div>
 
       {/* CTA */}
-      <div className="mt-16 max-w-2xl rounded-2xl border border-border bg-card p-8 text-center">
+      <Card variant="panel" padding="lg" className="mt-16 max-w-2xl">
         <h2 className="font-display text-xl font-semibold tracking-tight sm:text-2xl">
           Working on something similar?
         </h2>
         <p className="mx-auto mt-2 max-w-md text-sm text-muted-foreground">
           I build web apps end to end. Tell me about your project.
         </p>
-        <TrackCta
-          href="/#contact"
-          source="blog_post"
-          className="mt-5 inline-flex h-11 items-center justify-center rounded-full bg-primary px-6 text-sm font-medium text-primary-foreground transition-colors hover:bg-primary/90"
-        >
-          Let&apos;s talk
-        </TrackCta>
-      </div>
+        <Button asChild size="md" shape="pill" className="mt-5">
+          <TrackCta href="/#contact" source="blog_post">
+            Let&apos;s talk
+          </TrackCta>
+        </Button>
+      </Card>
     </article>
   );
 }

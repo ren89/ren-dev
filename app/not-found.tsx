@@ -1,6 +1,8 @@
 import Link from "next/link";
 import { ArrowLeft } from "lucide-react";
 
+import { Button } from "@/components/ui/button";
+
 export const metadata = {
   title: "Page not found | Ren Avellano",
 };
@@ -35,19 +37,15 @@ export default function NotFound() {
       </p>
 
       <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
-        <Link
-          href="/"
-          className="inline-flex h-11 items-center justify-center gap-2 rounded-full bg-primary px-6 text-sm font-medium text-primary-foreground transition-colors hover:bg-primary/90"
-        >
-          <ArrowLeft className="size-4" aria-hidden="true" />
-          Back home
-        </Link>
-        <Link
-          href="/#work"
-          className="inline-flex h-11 items-center justify-center rounded-full border border-input px-6 text-sm font-medium transition-colors hover:bg-accent hover:text-accent-foreground"
-        >
-          View my work
-        </Link>
+        <Button asChild size="md" shape="pill">
+          <Link href="/">
+            <ArrowLeft className="size-4" aria-hidden="true" />
+            Back home
+          </Link>
+        </Button>
+        <Button asChild variant="outline" size="md" shape="pill">
+          <Link href="/#work">View my work</Link>
+        </Button>
       </div>
     </main>
   );

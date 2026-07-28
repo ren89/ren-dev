@@ -1,21 +1,25 @@
 import Link from "next/link";
 
-import { CTA } from "@/lib/site";
-import { Reveal } from "@/components/ui/reveal";
+import { CTA, SECTIONS } from "@/lib/site";
+import { Reveal } from "@/components/motion/reveal";
+import { Section, SectionHeader } from "@/components/ui/section";
 import { TrackCta } from "@/components/analytics/track-cta";
+import { Button } from "@/components/ui/button";
+import { CountUp } from "@/components/motion/count-up";
 
-const FACTS = [
-  { value: "6+ yrs", label: "Experience" },
+type Fact =
+  | { count: number; suffix: string; label: string }
+  | { value: string; label: string };
+
+const FACTS: Fact[] = [
+  { count: 6, suffix: "+ yrs", label: "Experience" },
   { value: "Full-stack", label: "Web & mobile" },
   { value: "Founder", label: "of Vow Studio" },
 ];
 
 export function About() {
   return (
-    <section
-      id="about"
-      className="container-page scroll-mt-20 border-t border-border/60 py-24 sm:py-28"
-    >
+    <Section id="about">
       <div className="grid gap-10 lg:grid-cols-[300px_1fr] lg:gap-16">
         {/* Headshot */}
         <Reveal>
@@ -23,14 +27,7 @@ export function About() {
         </Reveal>
 
         {/* Bio */}
-        <Reveal delayMs={120} className="max-w-2xl">
-          <p className="font-mono text-xs uppercase tracking-widest text-brand">
-            04 · About
-          </p>
-          <h2 className="mt-3 font-display text-3xl font-semibold tracking-tight sm:text-4xl">
-            Hi, I&apos;m Ren.
-          </h2>
-
+        <SectionHeader {...SECTIONS.about} title="Hi, I'm Ren." delay={0.12}>
           <div className="mt-5 space-y-4 text-muted-foreground">
             <p>
               I&apos;m a full-stack developer with{" "}
@@ -55,8 +52,12 @@ export function About() {
           <dl className="mt-8 grid grid-cols-3 gap-4 border-t border-border/60 pt-6">
             {FACTS.map((f) => (
               <div key={f.label}>
-                <dt className="font-display text-xl font-semibold tracking-tight sm:text-2xl">
-                  {f.value}
+                <dt className="font-display text-xl font-semibold tracking-tight tabular-nums sm:text-2xl">
+                  {"count" in f ? (
+                    <CountUp to={f.count} suffix={f.suffix} />
+                  ) : (
+                    f.value
+                  )}
                 </dt>
                 <dd className="mt-1 text-xs text-muted-foreground">
                   {f.label}
@@ -66,13 +67,11 @@ export function About() {
           </dl>
 
           <div className="mt-8 flex flex-wrap items-center gap-4">
-            <TrackCta
-              href={CTA.href}
-              source="about"
-              className="inline-flex h-11 items-center justify-center rounded-full bg-primary px-6 text-sm font-medium text-primary-foreground transition-colors hover:bg-primary/90"
-            >
-              {CTA.label}
-            </TrackCta>
+            <Button asChild size="md" shape="pill">
+              <TrackCta href={CTA.href} source="about">
+                {CTA.label}
+              </TrackCta>
+            </Button>
             <Link
               href="/resume"
               className="text-sm font-medium text-muted-foreground transition-colors hover:text-brand"
@@ -80,9 +79,9 @@ export function About() {
               View résumé
             </Link>
           </div>
-        </Reveal>
+        </SectionHeader>
       </div>
-    </section>
+    </Section>
   );
 }
 

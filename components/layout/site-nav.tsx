@@ -4,14 +4,18 @@ import { forwardRef, useCallback, useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { track } from "@vercel/analytics";
+import { m, useMotionValueEvent, useScroll } from "framer-motion";
 import { Menu, Search, X } from "lucide-react";
 
 import { CTA, NAV_LINKS, SECTION_IDS, SITE, type NavLink } from "@/lib/site";
 import { useActiveSection } from "@/lib/use-active-section";
+import { SPRING } from "@/components/motion/transitions";
 import { ThemeToggle } from "@/components/theme/theme-toggle";
 import { openCommandPalette } from "@/components/command/command-palette";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
+
+type UnderlineBox = { x: number; width: number } | null;
 
 /** In-page anchors become absolute ("/#work") when away from the homepage. */
 function resolveHref(link: NavLink, isHome: boolean): string {
@@ -59,14 +63,39 @@ export function SiteNav() {
 
   const panelRef = useRef<HTMLDivElement>(null);
   const toggleRef = useRef<HTMLButtonElement>(null);
+  const navListRef = useRef<HTMLUListElement>(null);
+  const [underline, setUnderline] = useState<UnderlineBox>(null);
 
-  // Add a subtle border/shadow once the page is scrolled.
+  // Add a subtle border/shadow once the page is scrolled. Runs on framer's
+  // rAF-batched frameloop instead of a raw scroll listener - shares the
+  // same scroll subscription the underline/parallax code elsewhere uses,
+  // rather than adding a second one.
+  const { scrollY } = useScroll();
+  useMotionValueEvent(scrollY, "change", (y) => setScrolled(y > 8));
+
+  // Measure the active link and slide a shared underline to it. Reads
+  // aria-current (already the single source of truth for "which link is
+  // active"), not framer's layoutId - layoutId only ships in framer's
+  // heavier domMax feature bundle, not worth +13KB gzipped for one 2px
+  // underline site-wide.
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 8);
-    onScroll();
-    window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
-  }, []);
+    const list = navListRef.current;
+    if (!list) return;
+
+    const measure = () => {
+      const el = list.querySelector<HTMLElement>('[aria-current="true"]');
+      setUnderline(
+        el ? { x: el.offsetLeft + 12, width: el.offsetWidth - 24 } : null,
+      );
+    };
+
+    measure();
+    const ro = new ResizeObserver(measure);
+    ro.observe(list);
+    document.fonts?.ready.then(measure).catch(() => {});
+
+    return () => ro.disconnect();
+  }, [active, pathname, isHome]);
 
   // Lock body scroll + trap focus while the mobile menu is open.
   useEffect(() => {
@@ -139,7 +168,10 @@ export function SiteNav() {
         </Link>
 
         {/* Desktop links */}
-        <ul className="hidden items-center gap-1 md:flex">
+        <ul
+          ref={navListRef}
+          className="relative hidden items-center gap-1 md:flex"
+        >
           {NAV_LINKS.map((link) => (
             <li key={link.id}>
               <NavItem
@@ -149,21 +181,34 @@ export function SiteNav() {
               />
             </li>
           ))}
+          <m.span
+            aria-hidden="true"
+            initial={false}
+            animate={{
+              x: underline?.x ?? 0,
+              width: underline?.width ?? 0,
+              opacity: underline ? 1 : 0,
+            }}
+            transition={SPRING.underline}
+            className="pointer-events-none absolute -bottom-px left-0 h-0.5 rounded-full bg-linear-to-r from-brand to-brand-2"
+          />
         </ul>
 
         {/* Desktop actions */}
         <div className="hidden items-center gap-2 md:flex">
-          <button
-            type="button"
+          <Button
+            variant="outline"
+            size="xs"
+            shape="pill"
             onClick={openCommandPalette}
             aria-label="Open command menu"
-            className="hidden items-center gap-2 rounded-full border border-input px-3 py-1.5 text-xs text-muted-foreground transition-colors hover:text-foreground lg:inline-flex"
+            className="hidden text-muted-foreground lg:inline-flex"
           >
             <Search className="size-3.5" aria-hidden="true" />
             <kbd className="font-mono">{isMac ? "⌘K" : "Ctrl K"}</kbd>
-          </button>
+          </Button>
           <ThemeToggle />
-          <Button asChild size="sm" className="rounded-full">
+          <Button asChild size="sm" shape="pill">
             <SmartLink
               href={ctaHref}
               onClick={() => track("cta_click", { source: "nav" })}
@@ -179,7 +224,7 @@ export function SiteNav() {
             type="button"
             variant="outline"
             size="icon"
-            className="rounded-full"
+            shape="pill"
             aria-label="Open command menu"
             onClick={openCommandPalette}
           >
@@ -191,7 +236,7 @@ export function SiteNav() {
             type="button"
             variant="outline"
             size="icon"
-            className="rounded-full"
+            shape="pill"
             aria-label="Open menu"
             aria-expanded={open}
             aria-controls="mobile-menu"
@@ -237,7 +282,7 @@ export function SiteNav() {
               type="button"
               variant="outline"
               size="icon"
-              className="rounded-full"
+              shape="pill"
               aria-label="Close menu"
               onClick={() => {
                 setOpen(false);
@@ -271,7 +316,7 @@ export function SiteNav() {
             })}
           </ul>
 
-          <Button asChild size="lg" className="mt-6 w-full rounded-full">
+          <Button asChild size="lg" shape="pill" className="mt-6 w-full">
             <SmartLink
               href={ctaHref}
               onClick={() => {
@@ -302,21 +347,13 @@ function NavItem({
       href={href}
       aria-current={active ? "true" : undefined}
       className={cn(
-        "relative rounded-md px-3 py-2 text-sm font-medium transition-colors",
+        "rounded-md px-3 py-2 text-sm font-medium transition-colors",
         active
           ? "text-foreground"
           : "text-muted-foreground hover:text-foreground",
       )}
     >
       {link.label}
-      {/* Active underline */}
-      <span
-        aria-hidden="true"
-        className={cn(
-          "absolute inset-x-3 -bottom-px h-0.5 rounded-full bg-linear-to-r from-brand to-brand-2 transition-all duration-300",
-          active ? "opacity-100" : "opacity-0",
-        )}
-      />
     </SmartLink>
   );
 }

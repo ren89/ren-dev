@@ -3,6 +3,9 @@ import { ArrowUpRight, Archive } from "lucide-react";
 
 import type { PlaygroundProject } from "@/data/projects";
 import { ProjectMedia } from "@/components/work/project-media";
+import { Card, CardMedia } from "@/components/ui/card";
+import { Badge, StatusDot } from "@/components/ui/badge";
+import { Spotlight } from "@/components/motion/spotlight";
 import { cn } from "@/lib/utils";
 
 const MAX_TAGS = 4;
@@ -13,42 +16,41 @@ export function PlaygroundCard({ project }: { project: PlaygroundProject }) {
   const external = project.href?.startsWith("http");
 
   return (
-    <article
-      className={cn(
-        "group relative flex flex-col overflow-hidden rounded-xl border border-border bg-card transition-all duration-300 focus-within:ring-2 focus-within:ring-ring focus-within:ring-offset-2 focus-within:ring-offset-background",
-        isLive &&
-          "hover:-translate-y-1 hover:border-brand/40 hover:shadow-lg hover:shadow-brand/5",
-      )}
+    <Card
+      as="article"
+      variant={isLive ? "interactive" : "surface"}
+      padding="none"
+      radius="md"
+      focusRing
+      className="group overflow-hidden"
     >
-      <div className="relative aspect-[16/10] overflow-hidden border-b border-border">
-        <div
-          className={cn(
-            "absolute inset-0 transition-transform duration-500",
-            isLive && "group-hover:scale-105",
-            !isLive && "opacity-70 saturate-[0.6]",
-          )}
-        >
-          <ProjectMedia project={project} />
-        </div>
-        <span
-          className={cn(
-            "absolute left-3 top-3 inline-flex items-center gap-1.5 rounded-full bg-background/80 px-2.5 py-1 text-xs font-medium backdrop-blur-sm",
-            isLive ? "text-foreground" : "text-muted-foreground",
-          )}
-        >
-          {isLive ? (
-            <>
-              <span className="size-2 rounded-full bg-emerald-500" />
-              Live
-            </>
-          ) : (
-            <>
-              <Archive className="size-3" />
-              Archived
-            </>
-          )}
-        </span>
-      </div>
+      {isLive && <Spotlight />}
+      <CardMedia
+        zoom={isLive}
+        className={cn(!isLive && "opacity-70 saturate-[0.6]")}
+      >
+        <ProjectMedia project={project} />
+      </CardMedia>
+      <Badge
+        variant="overlay"
+        size="md"
+        className={cn(
+          "absolute left-3 top-3",
+          !isLive && "text-muted-foreground",
+        )}
+      >
+        {isLive ? (
+          <>
+            <StatusDot tone="live" ping={false} />
+            Live
+          </>
+        ) : (
+          <>
+            <Archive className="size-3" />
+            Archived
+          </>
+        )}
+      </Badge>
 
       <div className="flex flex-1 flex-col p-5">
         <h3 className="font-display text-lg font-semibold tracking-tight">
@@ -72,12 +74,9 @@ export function PlaygroundCard({ project }: { project: PlaygroundProject }) {
 
         <ul className="mt-4 flex flex-wrap gap-1.5">
           {tags.map((t) => (
-            <li
-              key={t}
-              className="rounded-full border border-border bg-secondary px-2 py-0.5 text-xs text-secondary-foreground"
-            >
+            <Badge as="li" key={t} size="sm">
               {t}
-            </li>
+            </Badge>
           ))}
         </ul>
 
@@ -88,6 +87,6 @@ export function PlaygroundCard({ project }: { project: PlaygroundProject }) {
           </span>
         )}
       </div>
-    </article>
+    </Card>
   );
 }

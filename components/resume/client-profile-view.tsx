@@ -9,6 +9,8 @@ import {
 import { CTA, SITE } from "@/lib/site";
 import { AvailabilityBadge } from "@/components/ui/availability-badge";
 import { TrackCta } from "@/components/analytics/track-cta";
+import { Button } from "@/components/ui/button";
+import { Card } from "@/components/ui/card";
 
 /**
  * Client-facing profile: what I do, results, social proof, and a contact CTA.
@@ -31,7 +33,7 @@ export function ClientProfileView() {
         <p className="mt-4 leading-relaxed text-foreground/90">{summary}</p>
       </header>
 
-      <Section title="What I do">
+      <ProfileSection title="What I do">
         <ul className="space-y-4">
           {services.map((s) => (
             <li key={s.title}>
@@ -40,9 +42,9 @@ export function ClientProfileView() {
             </li>
           ))}
         </ul>
-      </Section>
+      </ProfileSection>
 
-      <Section title="Selected work">
+      <ProfileSection title="Selected work">
         <div className="space-y-5">
           {projects.map((p) => (
             <div key={p.slug}>
@@ -72,9 +74,9 @@ export function ClientProfileView() {
             </div>
           ))}
         </div>
-      </Section>
+      </ProfileSection>
 
-      <Section title="Worked with">
+      <ProfileSection title="Worked with">
         <ul className="flex flex-wrap gap-x-8 gap-y-3">
           {clientLogos.map((c) => (
             <li
@@ -100,9 +102,9 @@ export function ClientProfileView() {
             ))}
           </div>
         )}
-      </Section>
+      </ProfileSection>
 
-      <section className="mt-10 rounded-2xl border border-border bg-card p-6 text-center print:hidden">
+      <Card as="section" variant="panel" className="mt-10 print:hidden">
         <h2 className="font-display text-xl font-semibold tracking-tight">
           Let&apos;s build something
         </h2>
@@ -110,23 +112,22 @@ export function ClientProfileView() {
           Tell me about your project.
         </p>
         <div className="mt-4 flex flex-wrap items-center justify-center gap-4">
-          <TrackCta
-            href="/#contact"
-            source="resume_profile"
-            className="inline-flex h-11 items-center justify-center rounded-full bg-primary px-6 text-sm font-medium text-primary-foreground transition-colors hover:bg-primary/90"
-          >
-            {CTA.label}
-          </TrackCta>
-          {SITE.booking && (
-            <TrackCta
-              href={SITE.booking}
-              source="book_call"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex h-11 items-center justify-center rounded-full border border-input px-6 text-sm font-medium transition-colors hover:bg-accent hover:text-accent-foreground"
-            >
-              Book a call
+          <Button asChild size="md" shape="pill">
+            <TrackCta href="/#contact" source="resume_profile">
+              {CTA.label}
             </TrackCta>
+          </Button>
+          {SITE.booking && (
+            <Button asChild variant="outline" size="md" shape="pill">
+              <TrackCta
+                href={SITE.booking}
+                source="book_call"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Book a call
+              </TrackCta>
+            </Button>
           )}
           <a
             href={`mailto:${SITE.email}`}
@@ -135,12 +136,12 @@ export function ClientProfileView() {
             {SITE.email}
           </a>
         </div>
-      </section>
+      </Card>
     </div>
   );
 }
 
-function Section({
+function ProfileSection({
   title,
   children,
 }: {

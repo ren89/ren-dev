@@ -7,28 +7,23 @@ import {
   testimonials,
   type Testimonial,
 } from "@/data/testimonials";
-import { Reveal } from "@/components/ui/reveal";
+import { SECTIONS } from "@/lib/site";
+import { Reveal, RevealItem, RevealList } from "@/components/motion/reveal";
+import { Section, SectionHeader, sectionGrid } from "@/components/ui/section";
+import { Card } from "@/components/ui/card";
+import { Badge } from "@/components/ui/badge";
 
 export function Testimonials() {
   return (
-    <section
-      id="testimonials"
-      className="container-page scroll-mt-20 border-t border-border/60 py-24 sm:py-28"
-    >
-      <Reveal className="max-w-2xl">
-        <p className="font-mono text-xs uppercase tracking-widest text-brand">
-          06 · Testimonials
-        </p>
-        <h2 className="mt-3 font-display text-3xl font-semibold tracking-tight sm:text-4xl">
-          Trusted by the people I build with
-        </h2>
-        <p className="mt-4 text-muted-foreground">
-          A few of the businesses and clients I&apos;ve worked with.
-        </p>
-      </Reveal>
+    <Section id="testimonials">
+      <SectionHeader
+        {...SECTIONS.testimonials}
+        title="Trusted by the people I build with"
+        lede="A few of the businesses and clients I've worked with."
+      />
 
       {/* Client logos (real) */}
-      <Reveal delayMs={80} className="mt-10">
+      <Reveal delay={0.08} className="mt-10">
         <p className="font-mono text-xs uppercase tracking-widest text-muted-foreground">
           Worked with
         </p>
@@ -65,27 +60,27 @@ export function Testimonials() {
 
       {/* Quotes */}
       {SHOW_TESTIMONIALS && (
-        <ul className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        <RevealList as="ul" className={sectionGrid(3)}>
           {testimonials.map((t, i) => (
-            <Reveal as="li" key={i} delayMs={(i % 3) * 90}>
+            <RevealItem key={i}>
               <TestimonialCard testimonial={t} />
-            </Reveal>
+            </RevealItem>
           ))}
-        </ul>
+        </RevealList>
       )}
-    </section>
+    </Section>
   );
 }
 
 function TestimonialCard({ testimonial }: { testimonial: Testimonial }) {
   return (
-    <figure className="flex h-full flex-col rounded-2xl border border-border bg-card p-6">
+    <Card as="figure" className="h-full">
       <div className="flex items-center justify-between">
         <Quote className="size-6 text-brand/50" aria-hidden="true" />
         {testimonial.placeholder && (
-          <span className="rounded-full border border-dashed border-border px-2 py-0.5 font-mono text-[10px] uppercase tracking-widest text-muted-foreground">
+          <Badge variant="dashed" size="xs">
             Placeholder
-          </span>
+          </Badge>
         )}
       </div>
 
@@ -106,6 +101,6 @@ function TestimonialCard({ testimonial }: { testimonial: Testimonial }) {
           </span>
         </span>
       </figcaption>
-    </figure>
+    </Card>
   );
 }

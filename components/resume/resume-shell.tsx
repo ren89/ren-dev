@@ -4,7 +4,8 @@ import { useEffect, useState } from "react";
 import { track } from "@vercel/analytics";
 import { Download } from "lucide-react";
 
-import { cn } from "@/lib/utils";
+import { Button } from "@/components/ui/button";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { ResumeView } from "./resume-view";
 import { ClientProfileView } from "./client-profile-view";
 
@@ -54,81 +55,78 @@ export function ResumeShell() {
   };
 
   return (
-    <div className="container-page py-16 sm:py-24">
+    <Tabs
+      value={view}
+      onValueChange={(v) => change(v as View)}
+      className="container-page py-16 sm:py-24"
+    >
       <div className="mb-10 flex flex-col items-center justify-center gap-4 print:hidden sm:flex-row">
-        <div
-          role="tablist"
+        <TabsList
           aria-label="Resume view"
-          className="inline-flex rounded-full border border-border bg-card p-1"
+          className="h-auto rounded-full border border-border bg-card p-1"
         >
-          <TabButton active={view === "resume"} onClick={() => change("resume")}>
+          <TabsTrigger
+            value="resume"
+            className="rounded-full px-4 py-1.5 data-[state=active]:bg-primary data-[state=active]:text-primary-foreground data-[state=active]:shadow-none"
+          >
             Résumé
-          </TabButton>
-          <TabButton
-            active={view === "profile"}
-            onClick={() => change("profile")}
+          </TabsTrigger>
+          <TabsTrigger
+            value="profile"
+            className="rounded-full px-4 py-1.5 data-[state=active]:bg-primary data-[state=active]:text-primary-foreground data-[state=active]:shadow-none"
           >
             Client profile
-          </TabButton>
-        </div>
+          </TabsTrigger>
+        </TabsList>
 
         <div className="flex flex-wrap items-center justify-center gap-2">
-          <button
-            type="button"
+          <Button
+            variant="outline"
+            shape="pill"
             onClick={downloadPdf}
             disabled={downloading}
-            className="inline-flex h-10 items-center gap-2 rounded-full border border-input px-5 text-sm font-medium transition-colors hover:bg-accent hover:text-accent-foreground disabled:opacity-60"
+            className="px-5"
           >
             <Download className="size-4" aria-hidden="true" />
             {downloading ? "Preparing…" : "Download PDF"}
-          </button>
-          <a
-            href="/resume.json"
-            download="ren-avellano.resume.json"
-            onClick={() => track("resume_download", { format: "json" })}
-            className="inline-flex h-10 items-center rounded-full border border-input px-4 text-sm font-medium text-muted-foreground transition-colors hover:bg-accent hover:text-foreground"
+          </Button>
+          <Button
+            asChild
+            variant="outline"
+            shape="pill"
+            className="text-muted-foreground hover:text-foreground"
           >
-            JSON Resume
-          </a>
-          <a
-            href="/contact.vcf"
-            download="ren-avellano.vcf"
-            onClick={() => track("resume_download", { format: "vcard" })}
-            className="inline-flex h-10 items-center rounded-full border border-input px-4 text-sm font-medium text-muted-foreground transition-colors hover:bg-accent hover:text-foreground"
+            <a
+              href="/resume.json"
+              download="ren-avellano.resume.json"
+              onClick={() => track("resume_download", { format: "json" })}
+            >
+              JSON Resume
+            </a>
+          </Button>
+          <Button
+            asChild
+            variant="outline"
+            shape="pill"
+            className="text-muted-foreground hover:text-foreground"
           >
-            Save contact
-          </a>
+            <a
+              href="/contact.vcf"
+              download="ren-avellano.vcf"
+              onClick={() => track("resume_download", { format: "vcard" })}
+            >
+              Save contact
+            </a>
+          </Button>
         </div>
       </div>
 
-      {view === "resume" ? <ResumeView /> : <ClientProfileView />}
-    </div>
-  );
-}
-
-function TabButton({
-  active,
-  onClick,
-  children,
-}: {
-  active: boolean;
-  onClick: () => void;
-  children: React.ReactNode;
-}) {
-  return (
-    <button
-      type="button"
-      role="tab"
-      aria-selected={active}
-      onClick={onClick}
-      className={cn(
-        "rounded-full px-4 py-1.5 text-sm font-medium transition-colors",
-        active
-          ? "bg-primary text-primary-foreground"
-          : "text-muted-foreground hover:text-foreground",
-      )}
-    >
-      {children}
-    </button>
+      <TabsContent value="resume" className="mt-0">
+        <ResumeView />
+      </TabsContent>
+      <TabsContent value="profile" className="mt-0">
+        <ClientProfileView />
+      </TabsContent>
+    </Tabs>
   );
 }

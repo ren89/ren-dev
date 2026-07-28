@@ -73,6 +73,11 @@ const RootLayout: FC<{ children: ReactNode }> = ({ children }) => {
     >
       <head>
         <script dangerouslySetInnerHTML={{ __html: themeScript }} />
+        {/* If JS never runs, framer-motion's hidden `initial` state (marked
+            data-motion) would otherwise stay invisible forever. */}
+        <noscript>
+          <style>{`[data-motion]{opacity:1!important;transform:none!important}`}</style>
+        </noscript>
       </head>
       <body className="min-h-screen bg-background font-sans text-foreground">
         <ThemeProvider>{children}</ThemeProvider>
